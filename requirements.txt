@@ -1,0 +1,7 @@
+aiogram==3.22.0
+python-dotenv==1.2.1
+yt-dlp==2025.10.14
+firebase-admin
+streamlit
+pandas
+plotly
