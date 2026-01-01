@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>يديره</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 تغيير اللغة: /lang</b>"
-    TO_USE_MSG = "<i>لاستخدام هذا البوت تحتاج إلى الاشتراك في قناة تليجرام @tg_ytdlp.</i>\nبعد انضمامك إلى القناة، <b>أعد إرسال رابط الفيديو مرة أخرى وسيقوم البوت بتحميله لك</b> ❤️\n\n<blockquote>P.S. تحميل 🔞NSFW المحتوى والملفات من ☁️Cloud Storage هو مدفوع! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ لا تغادر القناة - سيتم حظرك من استخدام البوت ⛔️</blockquote>"
+    TO_USE_MSG = "<i>لاستخدام هذا البوت تحتاج إلى الاشتراك في قناة تليجرام @startupvisamentor.</i>\nبعد انضمامك إلى القناة، <b>أعد إرسال رابط الفيديو مرة أخرى وسيقوم البوت بتحميله لك</b> ❤️\n\n<blockquote>P.S. تحميل 🔞NSFW المحتوى والملفات من ☁️Cloud Storage هو مدفوع! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ لا تغادر القناة - سيتم حظرك من استخدام البوت ⛔️</blockquote>"
 
     ERROR1 = "لم يتم العثور على رابط URL. يرجى إدخال رابط يحتوي على <b>https://</b> أو <b>http://</b>"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → تحميل نطاق محدد
 • <code>/img 11- URL</code> → تحميل من 11 إلى النهاية
 
-👨‍💻 <i>Developer:</i> @upekshaip
+👨‍💻 <i>Developer:</i> @farjadp
 🤝 <i>Contributor:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>التعليمات:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ نطاقات قوائم التشغيل غير مسموحة في وضع الروابط المتعددة. أرسل روابط فردية فقط بدون نطاقات (*1*5، /vid 1-10، إلخ)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "تحقق <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>هنا</a> إذا كان موقعك مدعوماً"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "تحقق <a href='https://github.com/farjadp/tg-ytdlp-bot'>هنا</a> إذا كان موقعك مدعوماً"
     ERROR_COOKIE_NEEDED_MSG = "قد تحتاج <code>cookie</code> لتحميل هذا الفيديو. أولاً، نظف مساحة العمل عبر أمر <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "لـ YouTube - احصل على <code>cookie</code> عبر أمر <b>/cookie</b>. لأي موقع مدعوم آخر - أرسل ملف cookie الخاص بك (<a href='https://t.me/tg_ytdlp/203'>دليل1</a>) (<a href='https://t.me/tg_ytdlp/214'>دليل2</a>) وبعد ذلك أرسل رابط الفيديو مرة أخرى."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "لـ YouTube - احصل على <code>cookie</code> عبر أمر <b>/cookie</b>. لأي موقع مدعوم آخر - أرسل ملف cookie الخاص بك (<a href='https://t.me/startupvisamentor/203'>دليل1</a>) (<a href='https://t.me/startupvisamentor/214'>دليل2</a>) وبعد ذلك أرسل رابط الفيديو مرة أخرى."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "اختر لغة الترجمة"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "لا توجد لغات صوت بديلة"
     CHOOSE_AUDIO_LANGUAGE_MSG = "اختر لغة الصوت"

@@ -5,7 +5,7 @@
 [![yt-dlp](https://img.shields.io/badge/yt--dlp-Latest-red.svg)](https://github.com/yt-dlp/yt-dlp)
 [![gallery-dl](https://img.shields.io/badge/gallery--dl-Latest-orange.svg)](https://github.com/mikf/gallery-dl)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/gheychee)
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/startupvisamentor)
 
 > 🎥 **Advanced Telegram bot for downloading videos and media from 1500+ platforms**
 
@@ -38,14 +38,14 @@ A powerful Telegram bot that downloads videos, audio, and images from YouTube, T
 ### Try the Bot
 
 **Live Demo Bots:**
-- 🇮🇹 [@gheychee_it_bot](https://t.me/gheychee_it_bot) - Main IT bot
-- 🇦🇪 [@gheychee_uae_bot](https://t.me/gheychee_uae_bot) - UAE server
-- 🇬🇧 [@gheychee_uk_bot](https://t.me/gheychee_uk_bot) - UK server
-- 🇫🇷 [@gheychee_fr_bot](https://t.me/gheychee_fr_bot) - FR server
+- 🇮🇹 [@startupvisamentor_it_bot](https://t.me/startupvisamentor_it_bot) - Main IT bot
+- 🇦🇪 [@startupvisamentor_uae_bot](https://t.me/startupvisamentor_uae_bot) - UAE server
+- 🇬🇧 [@startupvisamentor_uk_bot](https://t.me/startupvisamentor_uk_bot) - UK server
+- 🇫🇷 [@startupvisamentor_fr_bot](https://t.me/startupvisamentor_fr_bot) - FR server
 
-**Community Channel:** [@gheychee](https://t.me/gheychee)
+**Community Channel:** [@startupvisamentor](https://t.me/startupvisamentor)
 
-**Backup mirror (Redirector):** [@gheychee](https://t.me/gheychee)
+**Backup mirror (Redirector):** [@startupvisamentor](https://t.me/startupvisamentor)
 
 ### Basic Usage
 
@@ -1610,7 +1610,7 @@ These commands integrate with the existing porn detection system:
 
 ## Updating the bot (updater scripts)
 
-You can update code from the `newdesign2` branch (or `main` branch) of `chelaxian/tg-ytdlp-bot` using provided scripts. The updater will:
+You can update code from the `newdesign2` branch (or `main` branch) of `farjadp/tg-ytdlp-bot` using provided scripts. The updater will:
 - Clone the repository to a temporary directory
 - Update Python files (`.py`), shell scripts (`.sh`), Docker files (`Dockerfile`, `docker-compose.yml`, `.dockerignore`), and documentation (`.md`)
 - Preserve your `CONFIG/config.py`, `.env`, and other excluded files/directories with sensitive data
@@ -1919,7 +1919,7 @@ These rules allow read and write operations only if the request contains a valid
 
 ### 5. Autostart service
 
-To create auto-start service for this bot - copy text from this file https://github.com/chelaxian/tg-ytdlp-bot/blob/main/etc/systemd/system/tg-ytdlp-bot.service and paste it to 
+To create auto-start service for this bot - copy text from this file https://github.com/farjadp/tg-ytdlp-bot/blob/main/etc/systemd/system/tg-ytdlp-bot.service and paste it to 
 ```bash
 /etc/systemd/system/tg-ytdlp-bot.service
 ```
@@ -2074,7 +2074,7 @@ If you encounter issues:
 1. **Check Logs**: Review bot logs for error messages
 2. **Verify Configuration**: Ensure all config fields are correct
 3. **Test Components**: Test individual components (cookies, Firebase, channels)
-4. **GitHub Issues**: Check [GitHub Issues](https://github.com/chelaxian/tg-ytdlp-bot/issues) for similar problems
+4. **GitHub Issues**: Check [GitHub Issues](https://github.com/farjadp/tg-ytdlp-bot/issues) for similar problems
 5. **Create Issue**: Create a new issue with detailed error information and logs
 
 ---
@@ -2119,9 +2119,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Original Author**: [upekshaip](https://github.com/upekshaip)
-- **Main Developer and Contrubutor**: [chelaxian](https://github.com/chelaxian)
-- **Telegram Bot's Admin**: [@IIlIlIlIIIlllIIlIIlIllIIllIlIIIl](https://t.me/IIlIlIlIIIlllIIlIIlIllIIllIlIIIl)
+- **Original Author**: [farjadp](https://github.com/farjadp)
+- **Main Developer and Contrubutor**: [farjadp](https://github.com/farjadp)
+- **Telegram Bot's Admin**: [@startupvisamentor](https://t.me/startupvisamentor)
+- **Website**: [Ashavid](http://www.ashavid.ca/)
+- **Twitter**: [@farjaditman](https://www.twitter.com/farjaditman)
+- **LinkedIn**: [Farjad Pourmohammad](https://www.linkedin.com/in/farjadpourmohammad)
 - **yt-dlp**: [yt-dlp](https://github.com/yt-dlp/yt-dlp) for video extraction
 - **gallery-dl**: [gallery-dl](https://github.com/mikf/gallery-dl) for image extraction
 - **PyroTGFork**: [PyroTGFork](https://telegramplayground.github.io/pyrogram/) for Telegram API

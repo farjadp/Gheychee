@@ -9,8 +9,8 @@ class Messages(object):
     #######################################################
     # Messages and errors
     #######################################################
-    CREDITS_MSG = "<blockquote><i>مدیریت شده توسط</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @gheychee_it_bot\n🇦🇪 @gheychee_uae_bot\n🇬🇧 @gheychee_uk_bot\n🇫🇷 @gheychee_fr_bot</blockquote>\n<b>🌍 تغییر زبان: /lang</b>"
-    TO_USE_MSG = "<i>برای استفاده از این ربات باید به کانال تلگرام @gheychee مشترک شوید.</i>\nپس از پیوستن به کانال، <b>لینک ویدیوی خود را دوباره ارسال کنید و ربات آن را برای شما دانلود می‌کند</b> ❤️\n\n<blockquote>P.S. دانلود محتوای 🔞NSFW و فایل‌ها از ☁️Cloud Storage پولی است! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ کانال را ترک نکنید - از استفاده از ربات محروم خواهید شد ⛔️</blockquote>"
+    CREDITS_MSG = "<blockquote><i>مدیریت شده توسط</i> @farjadp\n🇮🇹 @startupvisamentor\n🇦🇪 @startupvisamentor\n🇬🇧 @startupvisamentor\n🇫🇷 @startupvisamentor</blockquote>\n<b>🌍 تغییر زبان: /lang</b>"
+    TO_USE_MSG = "<i>برای استفاده از این ربات باید به کانال تلگرام @startupvisamentor مشترک شوید.</i>\nپس از پیوستن به کانال، <b>لینک ویدیوی خود را دوباره ارسال کنید و ربات آن را برای شما دانلود می‌کند</b> ❤️\n\n<blockquote>P.S. دانلود محتوای 🔞NSFW و فایل‌ها از ☁️Cloud Storage پولی است! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ کانال را ترک نکنید - از استفاده از ربات محروم خواهید شد ⛔️</blockquote>"
 
     ERROR1 = "لینک URL یافت نشد. لطفاً یک URL با <b>https://</b> یا <b>http://</b> وارد کنید"
 
@@ -152,8 +152,11 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → دانلود محدوده خاص
 • <code>/img 11- URL</code> → دانلود از 11ام تا آخر
 
-👨‍💻 <i>توسعه‌دهنده:</i> @upekshaip
-🤝 <i>مشارکت‌کننده:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
+👨‍💻 <i>توسعه‌دهنده:</i> @farjadp
+🌐 <i>وب‌سایت:</i> <a href='http://www.ashavid.ca/'>Ashavid</a>
+🐦 <i>توییتر:</i> <a href='https://www.twitter.com/farjaditman'>@farjaditman</a>
+💼 <i>لینکدین:</i> <a href='https://www.linkedin.com/in/farjadpourmohammad'>Farjad Pourmohammad</a>
+🤝 <i>مشارکت‌کننده:</i> @startupvisamentor
 </blockquote>
     """
     
@@ -173,8 +176,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>دستورالعمل‌ها:</u></b>\n"
-        "https://t.me/gheychee/203 \n"
-        "https://t.me/gheychee/214 "
+        "https://t.me/startupvisamentor \n"
+        "https://t.me/startupvisamentor "
         "</blockquote>"
     )
     
@@ -265,12 +268,12 @@ class Messages(object):
 ————————————
 💰 <b>قیمت‌گذاری و راه‌اندازی:</b>
 <blockquote>• قیمت: <b>$5/ماه</b> برای 1 ربات در گروه
-• راه‌اندازی: تماس با @iilililiiillliiliililliilliliiil
+• راه‌اندازی: تماس با @farjadp
 • پرداخت: 💎TON یا روش‌های دیگر💲
 • پشتیبانی: پشتیبانی فنی کامل شامل می‌شود</blockquote>
 ————————————
 می‌توانید ربات‌های من را به گروه خود اضافه کنید تا 🔞<b>NSFW</b> رایگان را باز کنید و همه محدودیت‌ها را دو برابر (x2️⃣) کنید.
-اگر می‌خواهید من اجازه دهم گروه شما از ربات‌های من استفاده کند با من تماس بگیرید @iilililiiillliiliililliilliliiil
+اگر می‌خواهید من اجازه دهم گروه شما از ربات‌های من استفاده کند با من تماس بگیرید @farjadp
 ————————————
 💡<b>نکته:</b> <blockquote>می‌توانید با هر تعداد از دوستان خود (مثلاً 100 نفر) پول جمع کنید و 1 خرید برای کل گروه انجام دهید - همه اعضای گروه دسترسی کامل نامحدود به همه عملکردهای ربات در آن گروه را فقط با <b>0.05$</b> خواهند داشت</blockquote>
     """
@@ -1425,9 +1428,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ محدوده‌های لیست پخش در حالت چند URL مجاز نیست. فقط URLهای تکی بدون محدوده ارسال کنید (*1*5، /vid 1-10 و غیره)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "بررسی کنید <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>اینجا</a> اگر سایت شما پشتیبانی می‌شود"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "بررسی کنید <a href='https://github.com/farjadp/tg-ytdlp-bot'>اینجا</a> اگر سایت شما پشتیبانی می‌شود"
     ERROR_COOKIE_NEEDED_MSG = "ممکن است برای دانلود این ویدیو به <code>cookie</code> نیاز داشته باشید. ابتدا فضای کاری خود را از طریق دستور <b>/clean</b> پاک کنید"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "برای YouTube - <code>cookie</code> را از طریق دستور <b>/cookie</b> دریافت کنید. برای هر سایت پشتیبانی شده دیگر - کوکی خود را ارسال کنید (<a href='https://t.me/tg_ytdlp/203'>راهنما1</a>) (<a href='https://t.me/tg_ytdlp/214'>راهنما2</a>) و پس از آن لینک ویدیوی خود را دوباره ارسال کنید."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "برای YouTube - <code>cookie</code> را از طریق دستور <b>/cookie</b> دریافت کنید. برای هر سایت پشتیبانی شده دیگر - کوکی خود را ارسال کنید (<a href='https://t.me/startupvisamentor'>راهنما</a>) و پس از آن لینک ویدیوی خود را دوباره ارسال کنید."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "زبان زیرنویس را انتخاب کنید"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "هیچ زبان صوتی جایگزینی وجود ندارد"
     CHOOSE_AUDIO_LANGUAGE_MSG = "زبان صوتی را انتخاب کنید"

@@ -1470,9 +1470,9 @@ def down_and_audio(app, message, url, tags, quality_key=None, playlist_name=None
                     
                     send_error_to_user(
                         message,
-                        "<blockquote>Check <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>here</a> if your site supported</blockquote>\n"
+                        "<blockquote>Check <a href='https://github.com/farjadp/tg-ytdlp-bot'>here</a> if your site supported</blockquote>\n"
                         "<blockquote>You may need <code>cookie</code> for downloading this audio. First, clean your workspace via <b>/clean</b> command</blockquote>\n"
-                        "<blockquote>For Youtube - get <code>cookie</code> via <b>/cookie</b> command. For any other supported site - send your own cookie (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>) and after that send your audio link again.</blockquote>\n"
+                        "<blockquote>For Youtube - get <code>cookie</code> via <b>/cookie</b> command. For any other supported site - send your own cookie (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>) and after that send your audio link again.</blockquote>\n"
                         f"────────────────\n"
                         f"❌ <b>Error Code:</b> <code>{error_code}</code>\n"
                         f"📝 <b>Description:</b> {error_description}\n"

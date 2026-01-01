@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>จัดการโดย</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 เปลี่ยนภาษา: /lang</b>"
-    TO_USE_MSG = "<i>เพื่อใช้บอทนี้คุณต้องสมัครสมาชิกช่อง Telegram @tg_ytdlp</i>\nหลังจากเข้าร่วมช่องแล้ว <b>ส่งลิงก์วิดีโอของคุณอีกครั้งและบอทจะดาวน์โหลดให้คุณ</b> ❤️\n\n<blockquote>P.S. การดาวน์โหลดเนื้อหา 🔞NSFW และไฟล์จาก ☁️Cloud Storage เป็นแบบเสียเงิน! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ อย่าออกจากช่อง - คุณจะถูกแบนจากการใช้บอท ⛔️</blockquote>"
+    TO_USE_MSG = "<i>เพื่อใช้บอทนี้คุณต้องสมัครสมาชิกช่อง Telegram @startupvisamentor</i>\nหลังจากเข้าร่วมช่องแล้ว <b>ส่งลิงก์วิดีโอของคุณอีกครั้งและบอทจะดาวน์โหลดให้คุณ</b> ❤️\n\n<blockquote>P.S. การดาวน์โหลดเนื้อหา 🔞NSFW และไฟล์จาก ☁️Cloud Storage เป็นแบบเสียเงิน! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ อย่าออกจากช่อง - คุณจะถูกแบนจากการใช้บอท ⛔️</blockquote>"
 
     ERROR1 = "ไม่พบลิงก์ URL กรุณาใส่ URL ที่มี <b>https://</b> หรือ <b>http://</b>"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → ดาวน์โหลดช่วงเฉพาะ
 • <code>/img 11- URL</code> → ดาวน์โหลดจากที่ 11 ถึงท้าย
 
-👨‍💻 <i>นักพัฒนา:</i> @upekshaip
+👨‍💻 <i>นักพัฒนา:</i> @farjadp
 🤝 <i>ผู้มีส่วนร่วม:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>คำแนะนำ:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ ไม่อนุญาตให้ใช้ช่วงเพลย์ลิสต์ในโหมด URL หลายโหมด ส่ง URL เดียวเท่านั้นโดยไม่มีช่วง (*1*5, /vid 1-10 ฯลฯ)"
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "ตรวจสอบ <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>ที่นี่</a> หากไซต์ของคุณได้รับการรองรับ"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "ตรวจสอบ <a href='https://github.com/farjadp/tg-ytdlp-bot'>ที่นี่</a> หากไซต์ของคุณได้รับการรองรับ"
     ERROR_COOKIE_NEEDED_MSG = "คุณอาจต้องใช้ <code>cookie</code> เพื่อดาวน์โหลดวิดีโอนี้ ขั้นแรก ทำความสะอาดพื้นที่ทำงานของคุณผ่านคำสั่ง <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "สำหรับ Youtube - รับ <code>cookie</code> ผ่านคำสั่ง <b>/cookie</b> สำหรับไซต์อื่นๆ ที่สนับสนุน - ส่งคุกกี้ของคุณเอง (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>) แล้วส่งลิงก์วิดีโอของคุณอีกครั้ง"
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "สำหรับ Youtube - รับ <code>cookie</code> ผ่านคำสั่ง <b>/cookie</b> สำหรับไซต์อื่นๆ ที่สนับสนุน - ส่งคุกกี้ของคุณเอง (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>) แล้วส่งลิงก์วิดีโอของคุณอีกครั้ง"
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "เลือกภาษาคำบรรยาย"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "ไม่มีภาษาอื่นทางเลือก"
     CHOOSE_AUDIO_LANGUAGE_MSG = "เลือกภาษาเสียง"

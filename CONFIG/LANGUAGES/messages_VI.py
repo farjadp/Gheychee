@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Được quản lý bởi</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Thay đổi ngôn ngữ: /lang</b>"
-    TO_USE_MSG = "<i>Để sử dụng bot này, bạn cần đăng ký kênh Telegram @tg_ytdlp.</i>\nSau khi bạn tham gia kênh, <b>gửi lại liên kết video của bạn và bot sẽ tải xuống cho bạn</b> ❤️\n\n<blockquote>P.S. Tải xuống nội dung 🔞NSFW và tệp từ ☁️Cloud Storage là có phí! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Đừng rời khỏi kênh - bạn sẽ bị cấm sử dụng bot ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Để sử dụng bot này, bạn cần đăng ký kênh Telegram @startupvisamentor.</i>\nSau khi bạn tham gia kênh, <b>gửi lại liên kết video của bạn và bot sẽ tải xuống cho bạn</b> ❤️\n\n<blockquote>P.S. Tải xuống nội dung 🔞NSFW và tệp từ ☁️Cloud Storage là có phí! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Đừng rời khỏi kênh - bạn sẽ bị cấm sử dụng bot ⛔️</blockquote>"
 
     ERROR1 = "Không tìm thấy liên kết url. Vui lòng nhập url có <b>https://</b> hoặc <b>http://</b>"
 
@@ -152,7 +152,7 @@ Sử dụng <code>/img URL</code> để tải xuống hình ảnh/ảnh/album t�
 • <code>/img 11-20 URL</code> → tải phạm vi cụ thể
 • <code>/img 11- URL</code> → tải từ thứ 11 đến cuối
 
-👨‍💻 <i>Nhà phát triển:</i> @upekshaip
+👨‍💻 <i>Nhà phát triển:</i> @farjadp
 🤝 <i>Người đóng góp:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Sử dụng <code>/img URL</code> để tải xuống hình ảnh/ảnh/album t�
         "</pre>\n"
         "<blockquote>"
         "<b><u>Instructions:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Use:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Phạm vi danh sách phát không được phép trong chế độ nhiều URL. Chỉ gửi URL đơn không có phạm vi (*1*5, /vid 1-10, v.v.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Kiểm tra <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>tại đây</a> nếu trang web của bạn được hỗ trợ"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Kiểm tra <a href='https://github.com/farjadp/tg-ytdlp-bot'>tại đây</a> nếu trang web của bạn được hỗ trợ"
     ERROR_COOKIE_NEEDED_MSG = "Bạn có thể cần <code>cookie</code> để tải video này. Trước tiên, dọn dẹp không gian làm việc của bạn qua lệnh <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Đối với Youtube - lấy <code>cookie</code> qua lệnh <b>/cookie</b>. Đối với bất kỳ trang web được hỗ trợ nào khác - gửi cookie của riêng bạn (<a href='https://t.me/tg_ytdlp/203'>hướng dẫn1</a>) (<a href='https://t.me/tg_ytdlp/214'>hướng dẫn2</a>) và sau đó gửi lại liên kết video của bạn."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Đối với Youtube - lấy <code>cookie</code> qua lệnh <b>/cookie</b>. Đối với bất kỳ trang web được hỗ trợ nào khác - gửi cookie của riêng bạn (<a href='https://t.me/startupvisamentor/203'>hướng dẫn1</a>) (<a href='https://t.me/startupvisamentor/214'>hướng dẫn2</a>) và sau đó gửi lại liên kết video của bạn."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Chọn ngôn ngữ phụ đề"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Không có ngôn ngữ âm thanh thay thế"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Chọn ngôn ngữ âm thanh"

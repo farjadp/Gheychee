@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Ana gudanar da shi ta</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Canza harshe: /lang</b>"
-    TO_USE_MSG = "<i>Don amfani da wannan bot kuna buƙatar yin rajista zuwa tashar Telegram @tg_ytdlp.</i>\nBayan kun shiga tashar, <b>sake aika hanyar bidiyon ku kuma bot zai sauke shi gare ku</b> ❤️\n\n<blockquote>P.S. Saukewa 🔞NSFW abun ciki da fayiloli daga ☁️Cloud Storage ana biya! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kada ku bar tashar - za a hana ku amfani da bot ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Don amfani da wannan bot kuna buƙatar yin rajista zuwa tashar Telegram @startupvisamentor.</i>\nBayan kun shiga tashar, <b>sake aika hanyar bidiyon ku kuma bot zai sauke shi gare ku</b> ❤️\n\n<blockquote>P.S. Saukewa 🔞NSFW abun ciki da fayiloli daga ☁️Cloud Storage ana biya! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kada ku bar tashar - za a hana ku amfani da bot ⛔️</blockquote>"
 
     ERROR1 = "Ba a sami hanyar url ba. Da fatan za a shigar da url tare da <b>https://</b> ko <b>http://</b>"
 
@@ -152,7 +152,7 @@ Yi amfani da <code>/img URL</code> don sauke hotuna/hoto/kundin hotuna daga dand
 • <code>/img 11-20 URL</code> → sauke kewayon na musamman
 • <code>/img 11- URL</code> → sauke daga na 11 zuwa ƙarshe
 
-👨‍💻 <i>Mai Haɓakawa:</i> @upekshaip
+👨‍💻 <i>Mai Haɓakawa:</i> @farjadp
 🤝 <i>Mai Ba da Gudummawa:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Yi amfani da <code>/img URL</code> don sauke hotuna/hoto/kundin hotuna daga dand
         "</pre>\n"
         "<blockquote>"
         "<b><u>Umarni:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Yi amfani da:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Ba a ba da izinin jeri na waƙa a yanayin URL da yawa. Aika URL guda ɗaya kawai ba tare da jeri ba (*1*5, /vid 1-10, da sauransu)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Duba <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>nan</a> idan rukunin yanar gizon ku yana goyan bayan"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Duba <a href='https://github.com/farjadp/tg-ytdlp-bot'>nan</a> idan rukunin yanar gizon ku yana goyan bayan"
     ERROR_COOKIE_NEEDED_MSG = "Kuna iya buƙatar <code>kuki</code> don zazzage wannan bidiyon. Da farko, tsaftace filin aikinku ta hanyar <b>/mai tsabta</b> umarni"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Don Youtube - sami <code>kuki</code> ta hanyar <b>/kuki</b> umarni. Don kowane rukunin yanar gizon da ake goyan baya - aika kuki ɗin ku (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>) sannan bayan haka sake aika hanyar haɗin bidiyo."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Don Youtube - sami <code>kuki</code> ta hanyar <b>/kuki</b> umarni. Don kowane rukunin yanar gizon da ake goyan baya - aika kuki ɗin ku (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>) sannan bayan haka sake aika hanyar haɗin bidiyo."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Zaɓi harshe subtitle"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Babu madadin harsunan mai jiwuwa"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Zaɓi harshe mai jiwuwa"

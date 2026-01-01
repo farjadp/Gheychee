@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Verwaltet von</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Sprache ändern: /lang</b>"
-    TO_USE_MSG = "<i>Um diesen Bot zu verwenden, müssen Sie dem Telegram-Kanal @tg_ytdlp beitreten.</i>\nNachdem Sie dem Kanal beigetreten sind, <b>senden Sie Ihren Video-Link erneut und der Bot wird ihn für Sie herunterladen</b> ❤️\n\n<blockquote>P.S. Das Herunterladen von 🔞NSFW-Inhalten und Dateien von ☁️Cloud Storage ist kostenpflichtig! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Verlassen Sie den Kanal nicht - Sie werden vom Bot-Nutzung gesperrt ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Um diesen Bot zu verwenden, müssen Sie dem Telegram-Kanal @startupvisamentor beitreten.</i>\nNachdem Sie dem Kanal beigetreten sind, <b>senden Sie Ihren Video-Link erneut und der Bot wird ihn für Sie herunterladen</b> ❤️\n\n<blockquote>P.S. Das Herunterladen von 🔞NSFW-Inhalten und Dateien von ☁️Cloud Storage ist kostenpflichtig! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Verlassen Sie den Kanal nicht - Sie werden vom Bot-Nutzung gesperrt ⛔️</blockquote>"
 
     ERROR1 = "URL-Link nicht gefunden. Bitte geben Sie eine URL mit <b>https://</b> oder <b>http://</b> ein"
 
@@ -152,7 +152,7 @@ Verwenden Sie <code>/img URL</code>, um Bilder/Fotos/Alben von vielen Plattforme
 • <code>/img 11-20 URL</code> → spezifischen Bereich herunterladen
 • <code>/img 11- URL</code> → von 11. bis zum Ende herunterladen
 
-👨‍💻 <i>Developer:</i> @upekshaip
+👨‍💻 <i>Developer:</i> @farjadp
 🤝 <i>Contributor:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Verwenden Sie <code>/img URL</code>, um Bilder/Fotos/Alben von vielen Plattforme
         "</pre>\n"
         "<blockquote>"
         "<b><u>Anweisungen:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1426,9 +1426,9 @@ Verwenden Sie:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Wiedergabelisten-Bereiche sind im Mehrfach-URL-Modus nicht erlaubt. Senden Sie nur einzelne URLs ohne Bereiche (*1*5, /vid 1-10, etc.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Überprüfen Sie <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>hier</a>, ob Ihre Seite unterstützt wird"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Überprüfen Sie <a href='https://github.com/farjadp/tg-ytdlp-bot'>hier</a>, ob Ihre Seite unterstützt wird"
     ERROR_COOKIE_NEEDED_MSG = "Möglicherweise benötigen Sie <code>cookie</code> zum Herunterladen dieses Videos. Bereinigen Sie zuerst Ihren Arbeitsbereich über den Befehl <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Für YouTube - erhalten Sie <code>cookie</code> über den Befehl <b>/cookie</b>. Für jede andere unterstützte Seite - senden Sie Ihr eigenes Cookie (<a href='https://t.me/tg_ytdlp/203'>Anleitung1</a>) (<a href='https://t.me/tg_ytdlp/214'>Anleitung2</a>) und senden Sie danach Ihren Video-Link erneut."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Für YouTube - erhalten Sie <code>cookie</code> über den Befehl <b>/cookie</b>. Für jede andere unterstützte Seite - senden Sie Ihr eigenes Cookie (<a href='https://t.me/startupvisamentor/203'>Anleitung1</a>) (<a href='https://t.me/startupvisamentor/214'>Anleitung2</a>) und senden Sie danach Ihren Video-Link erneut."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Untertitel-Sprache auswählen"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Keine alternativen Audio-Sprachen"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Audio-Sprache auswählen"

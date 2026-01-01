@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Tarafından yönetiliyor</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Dili değiştir: /lang</b>"
-    TO_USE_MSG = "<i>Bu botu kullanmak için @tg_ytdlp Telegram kanalına abone olmanız gerekir.</i>\nKanala katıldıktan sonra, <b>video bağlantınızı tekrar gönderin ve bot sizin için indirecektir</b> ❤️\n\n<blockquote>P.S. 🔞NSFW içeriği ve ☁️Cloud Storage'dan dosyaları indirmek ücretlidir! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kanaldan ayrılmayın - bot kullanımından yasaklanırsınız ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Bu botu kullanmak için @startupvisamentor Telegram kanalına abone olmanız gerekir.</i>\nKanala katıldıktan sonra, <b>video bağlantınızı tekrar gönderin ve bot sizin için indirecektir</b> ❤️\n\n<blockquote>P.S. 🔞NSFW içeriği ve ☁️Cloud Storage'dan dosyaları indirmek ücretlidir! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kanaldan ayrılmayın - bot kullanımından yasaklanırsınız ⛔️</blockquote>"
 
     ERROR1 = "URL bağlantısı bulunamadı. Lütfen <b>https://</b> veya <b>http://</b> ile bir URL girin"
 
@@ -152,7 +152,7 @@ Birçok platformdan görsel/fotoğraf/albüm indirmek için <code>/img URL</code
 • <code>/img 11-20 URL</code> → belirli aralığı indir
 • <code>/img 11- URL</code> → 11'den sona kadar indir
 
-👨‍💻 <i>Geliştirici:</i> @upekshaip
+👨‍💻 <i>Geliştirici:</i> @farjadp
 🤝 <i>Katkıda Bulunan:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Birçok platformdan görsel/fotoğraf/albüm indirmek için <code>/img URL</code
         "</pre>\n"
         "<blockquote>"
         "<b><u>Talimatlar:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Kullanın:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Çoklu URL modunda playlist aralıklarına izin verilmez. Sadece aralıksız tek URL'ler gönderin (*1*5, /vid 1-10, vb.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Sitenizin desteklenip desteklenmediğini <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>buradan</a> kontrol edin"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Sitenizin desteklenip desteklenmediğini <a href='https://github.com/farjadp/tg-ytdlp-bot'>buradan</a> kontrol edin"
     ERROR_COOKIE_NEEDED_MSG = "Bu videoyu indirmek için <code>cookie</code> gerekebilir. Önce <b>/clean</b> komutu ile çalışma alanınızı temizleyin"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube için - <b>/cookie</b> komutu ile <code>cookie</code> alın. Diğer desteklenen siteler için - kendi cookie'nizi gönderin (<a href='https://t.me/tg_ytdlp/203'>kılavuz1</a>) (<a href='https://t.me/tg_ytdlp/214'>kılavuz2</a>) ve ardından video bağlantınızı tekrar gönderin."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube için - <b>/cookie</b> komutu ile <code>cookie</code> alın. Diğer desteklenen siteler için - kendi cookie'nizi gönderin (<a href='https://t.me/startupvisamentor/203'>kılavuz1</a>) (<a href='https://t.me/startupvisamentor/214'>kılavuz2</a>) ve ardından video bağlantınızı tekrar gönderin."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Altyazı dili seçin"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Alternatif ses dilleri yok"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Ses dili seçin"

@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Керується</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Змінити мову: /lang</b>"
-    TO_USE_MSG = "<i>Щоб використовувати цього бота, вам потрібно підписатися на канал Telegram @tg_ytdlp.</i>\nПісля того, як ви приєднаєтеся до каналу, <b>надішліть знову ваше посилання на відео, і бот завантажить його для вас</b> ❤️\n\n<blockquote>P.S. Завантаження 🔞NSFW контенту та файлів з ☁️Cloud Storage платне! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Не покидайте канал - вас забанять від використання бота ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Щоб використовувати цього бота, вам потрібно підписатися на канал Telegram @startupvisamentor.</i>\nПісля того, як ви приєднаєтеся до каналу, <b>надішліть знову ваше посилання на відео, і бот завантажить його для вас</b> ❤️\n\n<blockquote>P.S. Завантаження 🔞NSFW контенту та файлів з ☁️Cloud Storage платне! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Не покидайте канал - вас забанять від використання бота ⛔️</blockquote>"
 
     ERROR1 = "Посилання URL не знайдено. Будь ласка, введіть URL з <b>https://</b> або <b>http://</b>"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → завантажити конкретний діапазон
 • <code>/img 11- URL</code> → завантажити з 11-го до кінця
 
-👨‍💻 <i>Розробник:</i> @upekshaip
+👨‍💻 <i>Розробник:</i> @farjadp
 🤝 <i>Учасник:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>Інструкції:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Діапазони списків відтворення заборонені в режимі кількох URL-адрес. Надсилайте лише окремі URL-адреси без діапазонів (*1*5, /vid 1-10 тощо)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Перевірте <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>тут</a>, чи ваш сайт підтримує"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Перевірте <a href='https://github.com/farjadp/tg-ytdlp-bot'>тут</a>, чи ваш сайт підтримує"
     ERROR_COOKIE_NEEDED_MSG = "Вам може знадобитися <code>cookie</code> для завантаження цього відео. Спочатку очистіть своє робоче середовище за допомогою команди <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Для Youtube – отримати <code>cookie</code> за допомогою команди <b>/cookie</b>. Для будь-якого іншого підтримуваного сайту надішліть власний файл cookie (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>), а потім знову надішліть посилання на відео."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Для Youtube – отримати <code>cookie</code> за допомогою команди <b>/cookie</b>. Для будь-якого іншого підтримуваного сайту надішліть власний файл cookie (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>), а потім знову надішліть посилання на відео."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Виберіть мову субтитрів"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Немає альтернативних мов аудіо"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Виберіть мову аудіо"

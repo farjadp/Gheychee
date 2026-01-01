@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Gerenciado por</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Alterar idioma: /lang</b>"
-    TO_USE_MSG = "<i>Para usar este bot você precisa se inscrever no canal Telegram @tg_ytdlp.</i>\nDepois de ingressar no canal, <b>reenvie seu link de vídeo novamente e o bot fará o download para você</b> ❤️\n\n<blockquote>P.S. Baixar conteúdo 🔞NSFW e arquivos de ☁️Armazenamento em Nuvem é pago! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Não saia do canal - você será banido de usar o bot ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Para usar este bot você precisa se inscrever no canal Telegram @startupvisamentor.</i>\nDepois de ingressar no canal, <b>reenvie seu link de vídeo novamente e o bot fará o download para você</b> ❤️\n\n<blockquote>P.S. Baixar conteúdo 🔞NSFW e arquivos de ☁️Armazenamento em Nuvem é pago! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Não saia do canal - você será banido de usar o bot ⛔️</blockquote>"
 
     ERROR1 = "Link URL não encontrado. Por favor, insira uma URL com <b>https://</b> ou <b>http://</b>"
 
@@ -152,7 +152,7 @@ Use <code>/img URL</code> para baixar imagens/fotos/álbuns de muitas plataforma
 • <code>/img 11-20 URL</code> → baixar intervalo específico
 • <code>/img 11- URL</code> → baixar do 11º até o final
 
-👨‍💻 <i>Desenvolvedor:</i> @upekshaip
+👨‍💻 <i>Desenvolvedor:</i> @farjadp
 🤝 <i>Contribuidor:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Use <code>/img URL</code> para baixar imagens/fotos/álbuns de muitas plataforma
         "</pre>\n"
         "<blockquote>"
         "<b><u>Instruções:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Use:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Intervalos de playlist não são permitidos no modo de múltiplas URLs. Envie apenas URLs únicas sem intervalos (*1*5, /vid 1-10, etc.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Verifique <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>aqui</a> se seu site é suportado"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Verifique <a href='https://github.com/farjadp/tg-ytdlp-bot'>aqui</a> se seu site é suportado"
     ERROR_COOKIE_NEEDED_MSG = "Você pode precisar de <code>cookie</code> para baixar este vídeo. Primeiro, limpe seu workspace via comando <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Para Youtube - obtenha <code>cookie</code> via comando <b>/cookie</b>. Para qualquer outro site suportado - envie seu próprio cookie (<a href='https://t.me/tg_ytdlp/203'>guia1</a>) (<a href='https://t.me/tg_ytdlp/214'>guia2</a>) e depois envie seu link de vídeo novamente."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Para Youtube - obtenha <code>cookie</code> via comando <b>/cookie</b>. Para qualquer outro site suportado - envie seu próprio cookie (<a href='https://t.me/startupvisamentor/203'>guia1</a>) (<a href='https://t.me/startupvisamentor/214'>guia2</a>) e depois envie seu link de vídeo novamente."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Escolher idioma das legendas"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Nenhum idioma de áudio alternativo"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Escolher idioma do áudio"

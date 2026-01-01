@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>由</i> @iilililiiillliiliililliilliliiil <i>管理</i>\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 更改语言: /lang</b>"
-    TO_USE_MSG = "<i>要使用此机器人，您需要订阅 @tg_ytdlp Telegram 频道。</i>\n加入频道后，<b>重新发送您的视频链接，机器人将为您下载</b> ❤️\n\n<blockquote>P.S. 下载 🔞NSFW 内容和 ☁️云存储文件需要付费！1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ 不要离开频道 - 否则将被禁止使用机器人 ⛔️</blockquote>"
+    TO_USE_MSG = "<i>要使用此机器人，您需要订阅 @startupvisamentor Telegram 频道。</i>\n加入频道后，<b>重新发送您的视频链接，机器人将为您下载</b> ❤️\n\n<blockquote>P.S. 下载 🔞NSFW 内容和 ☁️云存储文件需要付费！1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ 不要离开频道 - 否则将被禁止使用机器人 ⛔️</blockquote>"
 
     ERROR1 = "未找到URL链接。请输入带有 <b>https://</b> 或 <b>http://</b> 的URL"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → 下载特定范围
 • <code>/img 11- URL</code> → 从第11个下载到末尾
 
-👨‍💻 <i>开发者：</i> @upekshaip
+👨‍💻 <i>开发者：</i> @farjadp
 🤝 <i>贡献者：</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>说明：</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ 多URL模式下不允许播放列表范围。仅发送不带范围的单个URL（*1*5, /vid 1-10 等）。"
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "如果您的网站受支持，请查看<a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>这里</a>"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "如果您的网站受支持，请查看<a href='https://github.com/farjadp/tg-ytdlp-bot'>这里</a>"
     ERROR_COOKIE_NEEDED_MSG = "您可能需要 <code>cookie</code> 来下载此视频。首先，通过 <b>/clean</b> 命令清理您的工作区"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "对于Youtube - 通过 <b>/cookie</b> 命令获取 <code>cookie</code>。对于任何其他支持的网站 - 发送您自己的cookie（<a href='https://t.me/tg_ytdlp/203'>指南1</a>）（<a href='https://t.me/tg_ytdlp/214'>指南2</a>），然后再次发送您的视频链接。"
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "对于Youtube - 通过 <b>/cookie</b> 命令获取 <code>cookie</code>。对于任何其他支持的网站 - 发送您自己的cookie（<a href='https://t.me/startupvisamentor/203'>指南1</a>）（<a href='https://t.me/startupvisamentor/214'>指南2</a>），然后再次发送您的视频链接。"
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "选择字幕语言"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "没有替代音频语言"
     CHOOSE_AUDIO_LANGUAGE_MSG = "选择音频语言"

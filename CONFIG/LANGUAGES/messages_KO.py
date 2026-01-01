@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>관리자</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 언어 변경: /lang</b>"
-    TO_USE_MSG = "<i>이 봇을 사용하려면 @tg_ytdlp Telegram 채널에 구독해야 합니다.</i>\n채널에 가입한 후, <b>비디오 링크를 다시 보내시면 봇이 다운로드해 드립니다</b> ❤️\n\n<blockquote>P.S. 🔞NSFW 콘텐츠 및 ☁️클라우드 스토리지에서 파일 다운로드는 유료입니다! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ 채널을 떠나지 마세요 - 봇 사용이 금지됩니다 ⛔️</blockquote>"
+    TO_USE_MSG = "<i>이 봇을 사용하려면 @startupvisamentor Telegram 채널에 구독해야 합니다.</i>\n채널에 가입한 후, <b>비디오 링크를 다시 보내시면 봇이 다운로드해 드립니다</b> ❤️\n\n<blockquote>P.S. 🔞NSFW 콘텐츠 및 ☁️클라우드 스토리지에서 파일 다운로드는 유료입니다! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ 채널을 떠나지 마세요 - 봇 사용이 금지됩니다 ⛔️</blockquote>"
 
     ERROR1 = "URL 링크를 찾을 수 없습니다. <b>https://</b> 또는 <b>http://</b>가 포함된 URL을 입력하세요"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → 특정 범위 다운로드
 • <code>/img 11- URL</code> → 11번째부터 끝까지 다운로드
 
-👨‍💻 <i>개발자:</i> @upekshaip
+👨‍💻 <i>개발자:</i> @farjadp
 🤝 <i>기여자:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>지침:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ 여러 URL 모드에서는 재생목록 범위가 허용되지 않습니다. 범위 없이 단일 URL만 보내세요 (*1*5, /vid 1-10 등)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "<a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>여기</a>에서 사이트가 지원되는지 확인하세요"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "<a href='https://github.com/farjadp/tg-ytdlp-bot'>여기</a>에서 사이트가 지원되는지 확인하세요"
     ERROR_COOKIE_NEEDED_MSG = "이 비디오를 다운로드하려면 <code>cookie</code>가 필요할 수 있습니다. 먼저 <b>/clean</b> 명령으로 작업 공간을 정리하세요"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube의 경우 - <b>/cookie</b> 명령으로 <code>cookie</code>를 받으세요. 기타 지원 사이트의 경우 - 자신의 쿠키를 보내세요 (<a href='https://t.me/tg_ytdlp/203'>가이드1</a>) (<a href='https://t.me/tg_ytdlp/214'>가이드2</a>) 그런 다음 비디오 링크를 다시 보내세요."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube의 경우 - <b>/cookie</b> 명령으로 <code>cookie</code>를 받으세요. 기타 지원 사이트의 경우 - 자신의 쿠키를 보내세요 (<a href='https://t.me/startupvisamentor/203'>가이드1</a>) (<a href='https://t.me/startupvisamentor/214'>가이드2</a>) 그런 다음 비디오 링크를 다시 보내세요."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "자막 언어 선택"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "대체 오디오 언어 없음"
     CHOOSE_AUDIO_LANGUAGE_MSG = "오디오 언어 선택"

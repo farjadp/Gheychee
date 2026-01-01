@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Басқарушы</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Тілді өзгерту: /lang</b>"
-    TO_USE_MSG = "<i>Бұл ботты пайдалану үшін @tg_ytdlp Telegram арнасына жазылуыңыз керек.</i>\nАрнаға қосылғаннан кейін, <b>бейне сілтемеңізді қайта жіберіңіз, бот оны сіз үшін жүктейді</b> ❤️\n\n<blockquote>P.S. 🔞NSFW контентін және ☁️Cloud Storage-дан файлдарды жүктеу ақылы! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Арнадан шықпаңыз - ботты пайдаланудан тыйым салынасыз ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Бұл ботты пайдалану үшін @startupvisamentor Telegram арнасына жазылуыңыз керек.</i>\nАрнаға қосылғаннан кейін, <b>бейне сілтемеңізді қайта жіберіңіз, бот оны сіз үшін жүктейді</b> ❤️\n\n<blockquote>P.S. 🔞NSFW контентін және ☁️Cloud Storage-дан файлдарды жүктеу ақылы! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Арнадан шықпаңыз - ботты пайдаланудан тыйым салынасыз ⛔️</blockquote>"
 
     ERROR1 = "URL сілтемесі табылмады. <b>https://</b> немесе <b>http://</b> бар URL енгізіңіз"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → нақты диапазонды жүктеу
 • <code>/img 11- URL</code> → 11-ден соңына дейін жүктеу
 
-👨‍💻 <i>Әзірлеуші:</i> @upekshaip
+👨‍💻 <i>Әзірлеуші:</i> @farjadp
 🤝 <i>Үлес қосушы:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>Нұсқаулар:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1443,9 +1443,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Бірнеше URL режимінде ойнату тізімінің ауқымдарына рұқсат етілмейді. Ауқымсыз жалғыз URL мекенжайларын жіберіңіз (*1*5, /видео 1-10, т.б.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Сайтыңызға қолдау көрсетілсе, <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>осы жерден</a> тексеріңіз."
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Сайтыңызға қолдау көрсетілсе, <a href='https://github.com/farjadp/tg-ytdlp-bot'>осы жерден</a> тексеріңіз."
     ERROR_COOKIE_NEEDED_MSG = "Бұл бейнені жүктеп алу үшін сізге <code>cookie</code> қажет болуы мүмкін. Алдымен <b>/clean</b> пәрмені арқылы жұмыс кеңістігін тазалаңыз"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube үшін - <b>cookie</b> пәрмені арқылы <code>cookie</code> алыңыз. Қолдау көрсетілетін кез келген басқа сайт үшін - жеке cookie файлыңызды (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>) жіберіңіз, содан кейін бейне сілтемесін қайта жіберіңіз."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube үшін - <b>cookie</b> пәрмені арқылы <code>cookie</code> алыңыз. Қолдау көрсетілетін кез келген басқа сайт үшін - жеке cookie файлыңызды (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>) жіберіңіз, содан кейін бейне сілтемесін қайта жіберіңіз."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Субтитр тілін таңдаңыз"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Балама аудио тілдері жоқ"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Аудио тілін таңдаңыз"

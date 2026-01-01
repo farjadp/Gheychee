@@ -54,11 +54,11 @@ Before you begin, ensure you have:
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/tg-ytdlp-bot.git
+git clone https://github.com/farjadp/Gheychee
 cd tg-ytdlp-bot
 
 # Add upstream remote
-git remote add upstream https://github.com/chelaxian/tg-ytdlp-bot.git
+git remote add upstream https://github.com/farjadp/Gheychee
 ```
 
 ### 2. Environment Setup
@@ -420,7 +420,7 @@ We follow [Semantic Versioning](https://semver.org/):
 
 - **GitHub Issues**: For bugs and feature requests
 - **GitHub Discussions**: For questions and general discussion
-- **Telegram**: [@tg_ytdlp](https://t.me/tg_ytdlp) for community support
+- **Telegram**: [@startupvisamentor](https://t.me/startupvisamentor) for community support
 
 ### Resources
 

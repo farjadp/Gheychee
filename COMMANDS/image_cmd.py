@@ -1333,7 +1333,7 @@ def image_command(app, message):
                     try:
                         # Get count via --get-urls
                         result = subprocess.run([
-                            '/mnt/c/Users/chelaxian/Desktop/tg-ytdlp-NEW/venv/bin/python', '-m', 'gallery_dl',
+                            '/mnt/c/Users/farjadp/Desktop/tg-ytdlp-NEW/venv/bin/python', '-m', 'gallery_dl',
                             '--config', config_path, '--get-urls', url
                         ], capture_output=True, text=True, timeout=30)
                         

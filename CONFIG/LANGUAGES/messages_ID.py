@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Dikelola oleh</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Ubah bahasa: /lang</b>"
-    TO_USE_MSG = "<i>Untuk menggunakan bot ini, Anda perlu berlangganan ke saluran Telegram @tg_ytdlp.</i>\nSetelah Anda bergabung dengan saluran, <b>kirim ulang tautan video Anda dan bot akan mengunduhnya untuk Anda</b> ❤️\n\n<blockquote>P.S. Mengunduh konten 🔞NSFW dan file dari ☁️Penyimpanan Cloud berbayar! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Jangan tinggalkan saluran - Anda akan dilarang menggunakan bot ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Untuk menggunakan bot ini, Anda perlu berlangganan ke saluran Telegram @startupvisamentor.</i>\nSetelah Anda bergabung dengan saluran, <b>kirim ulang tautan video Anda dan bot akan mengunduhnya untuk Anda</b> ❤️\n\n<blockquote>P.S. Mengunduh konten 🔞NSFW dan file dari ☁️Penyimpanan Cloud berbayar! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Jangan tinggalkan saluran - Anda akan dilarang menggunakan bot ⛔️</blockquote>"
 
     ERROR1 = "Tautan URL tidak ditemukan. Silakan masukkan URL dengan <b>https://</b> atau <b>http://</b>"
 
@@ -152,7 +152,7 @@ Gunakan <code>/img URL</code> untuk mengunduh gambar/foto/album dari banyak plat
 • <code>/img 11-20 URL</code> → unduh rentang spesifik
 • <code>/img 11- URL</code> → unduh dari ke-11 hingga akhir
 
-👨‍💻 <i>Pengembang:</i> @upekshaip
+👨‍💻 <i>Pengembang:</i> @farjadp
 🤝 <i>Kontributor:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Gunakan <code>/img URL</code> untuk mengunduh gambar/foto/album dari banyak plat
         "</pre>\n"
         "<blockquote>"
         "<b><u>Instructions:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Use:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Rentang daftar putar tidak diizinkan dalam mode URL ganda. Kirim hanya URL tunggal tanpa rentang (*1*5, /vid 1-10, dll.)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Periksa <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>di sini</a> jika situs Anda didukung"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Periksa <a href='https://github.com/farjadp/tg-ytdlp-bot'>di sini</a> jika situs Anda didukung"
     ERROR_COOKIE_NEEDED_MSG = "Anda mungkin memerlukan <code>cookie</code> untuk mengunduh video ini. Pertama, bersihkan ruang kerja Anda via perintah <b>/clean</b>"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Untuk Youtube - dapatkan <code>cookie</code> via perintah <b>/cookie</b>. Untuk situs yang didukung lainnya - kirim cookie Anda sendiri (<a href='https://t.me/tg_ytdlp/203'>panduan1</a>) (<a href='https://t.me/tg_ytdlp/214'>panduan2</a>) dan setelah itu kirim tautan video Anda lagi."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Untuk Youtube - dapatkan <code>cookie</code> via perintah <b>/cookie</b>. Untuk situs yang didukung lainnya - kirim cookie Anda sendiri (<a href='https://t.me/startupvisamentor/203'>panduan1</a>) (<a href='https://t.me/startupvisamentor/214'>panduan2</a>) dan setelah itu kirim tautan video Anda lagi."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Pilih bahasa subtitle"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Tidak ada bahasa audio alternatif"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Pilih bahasa audio"

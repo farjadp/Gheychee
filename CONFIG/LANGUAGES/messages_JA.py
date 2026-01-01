@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>管理：</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 言語を変更: /lang</b>"
-    TO_USE_MSG = "<i>このボットを使用するには、@tg_ytdlp Telegramチャンネルに登録する必要があります。</i>\nチャンネルに参加した後、<b>動画リンクを再度送信すると、ボットがダウンロードします</b> ❤️\n\n<blockquote>P.S. 🔞NSFWコンテンツと☁️クラウドストレージからのファイルのダウンロードは有料です！1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ チャンネルを離れないでください - ボットの使用が禁止されます ⛔️</blockquote>"
+    TO_USE_MSG = "<i>このボットを使用するには、@startupvisamentor Telegramチャンネルに登録する必要があります。</i>\nチャンネルに参加した後、<b>動画リンクを再度送信すると、ボットがダウンロードします</b> ❤️\n\n<blockquote>P.S. 🔞NSFWコンテンツと☁️クラウドストレージからのファイルのダウンロードは有料です！1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ チャンネルを離れないでください - ボットの使用が禁止されます ⛔️</blockquote>"
 
     ERROR1 = "URLリンクが見つかりませんでした。<b>https://</b>または<b>http://</b>を含むURLを入力してください"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → 特定の範囲をダウンロード
 • <code>/img 11- URL</code> → 11番目から最後までダウンロード
 
-👨‍💻 <i>開発者：</i> @upekshaip
+👨‍💻 <i>開発者：</i> @farjadp
 🤝 <i>貢献者：</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>説明：</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ class Messages(object):
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ マルチ URL モードでは、プレイリスト範囲は許可されません。範囲のない単一の URL のみを送信します (*1*5、/vid 1-10 など)。"
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "サイトがサポートされているかどうかは、<a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>ここ</a>で確認してください。"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "サイトがサポートされているかどうかは、<a href='https://github.com/farjadp/tg-ytdlp-bot'>ここ</a>で確認してください。"
     ERROR_COOKIE_NEEDED_MSG = "このビデオをダウンロードするには、<code>Cookie</code> が必要な場合があります。まず、<b>/clean</b> コマンドでワークスペースをクリーンアップします。"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube の場合 - <b>/cookie</b> コマンドで <code>cookie</code> を取得します。その他のサポートされているサイトの場合 - 独自の Cookie (<a href='https://t.me/tg_ytdlp/203'>guide1</a>) (<a href='https://t.me/tg_ytdlp/214'>guide2</a>) を送信し、その後ビデオ リンクを再度送信します。"
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube の場合 - <b>/cookie</b> コマンドで <code>cookie</code> を取得します。その他のサポートされているサイトの場合 - 独自の Cookie (<a href='https://t.me/startupvisamentor/203'>guide1</a>) (<a href='https://t.me/startupvisamentor/214'>guide2</a>) を送信し、その後ビデオ リンクを再度送信します。"
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "字幕言語を選択してください"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "代替の音声言語はありません"
     CHOOSE_AUDIO_LANGUAGE_MSG = "音声言語を選択してください"

@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>منتظم</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 زبان تبدیل کریں: /lang</b>"
-    TO_USE_MSG = "<i>اس بوٹ کو استعمال کرنے کے لیے آپ کو @tg_ytdlp Telegram چینل میں سبسکرائب کرنا ہوگا۔</i>\nچینل میں شامل ہونے کے بعد، <b>اپنا ویڈیو لنک دوبارہ بھیجیں اور بوٹ اسے آپ کے لیے ڈاؤن لوڈ کرے گا</b> ❤️\n\n<blockquote>P.S. 🔞NSFW مواد اور ☁️کلاؤڈ اسٹوریج سے فائلیں ڈاؤن لوڈ کرنا ادائیگی شدہ ہے! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ چینل نہ چھوڑیں - آپ کو بوٹ استعمال کرنے سے پابندی لگائی جائے گی ⛔️</blockquote>"
+    TO_USE_MSG = "<i>اس بوٹ کو استعمال کرنے کے لیے آپ کو @startupvisamentor Telegram چینل میں سبسکرائب کرنا ہوگا۔</i>\nچینل میں شامل ہونے کے بعد، <b>اپنا ویڈیو لنک دوبارہ بھیجیں اور بوٹ اسے آپ کے لیے ڈاؤن لوڈ کرے گا</b> ❤️\n\n<blockquote>P.S. 🔞NSFW مواد اور ☁️کلاؤڈ اسٹوریج سے فائلیں ڈاؤن لوڈ کرنا ادائیگی شدہ ہے! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ چینل نہ چھوڑیں - آپ کو بوٹ استعمال کرنے سے پابندی لگائی جائے گی ⛔️</blockquote>"
 
     ERROR1 = "URL لنک نہیں ملا۔ براہ کرم <b>https://</b> یا <b>http://</b> کے ساتھ ایک URL درج کریں"
 
@@ -152,7 +152,7 @@ class Messages(object):
 • <code>/img 11-20 URL</code> → مخصوص رینج ڈاؤن لوڈ کریں
 • <code>/img 11- URL</code> → 11ویں سے آخر تک ڈاؤن لوڈ کریں
 
-👨‍💻 <i>ڈویلپر:</i> @upekshaip
+👨‍💻 <i>ڈویلپر:</i> @farjadp
 🤝 <i>تعاون کنندہ:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>Instructions:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Use:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ متعدد URL موڈ میں پلے لسٹ رینجز کی اجازت نہیں ہے۔ صرف ایک URLs بھیجیں بغیر رینجز کے (*1*5, /vid 1-10, وغیرہ)۔"
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "اگر آپ کی سائٹ سپورٹ شدہ ہے تو <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>یہاں</a> چیک کریں"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "اگر آپ کی سائٹ سپورٹ شدہ ہے تو <a href='https://github.com/farjadp/tg-ytdlp-bot'>یہاں</a> چیک کریں"
     ERROR_COOKIE_NEEDED_MSG = "اس ویڈیو کو ڈاؤن لوڈ کرنے کے لیے آپ کو <code>cookie</code> کی ضرورت ہو سکتی ہے۔ پہلے، <b>/clean</b> کمانڈ کے ذریعے اپنا ورک اسپیس صاف کریں"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube کے لیے - <b>/cookie</b> کمانڈ کے ذریعے <code>cookie</code> حاصل کریں۔ کسی بھی دوسری سپورٹ شدہ سائٹ کے لیے - اپنی کوکی بھیجیں (<a href='https://t.me/tg_ytdlp/203'>گائیڈ1</a>) (<a href='https://t.me/tg_ytdlp/214'>گائیڈ2</a>) اور اس کے بعد اپنا ویڈیو لنک دوبارہ بھیجیں۔"
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "YouTube کے لیے - <b>/cookie</b> کمانڈ کے ذریعے <code>cookie</code> حاصل کریں۔ کسی بھی دوسری سپورٹ شدہ سائٹ کے لیے - اپنی کوکی بھیجیں (<a href='https://t.me/startupvisamentor/203'>گائیڈ1</a>) (<a href='https://t.me/startupvisamentor/214'>گائیڈ2</a>) اور اس کے بعد اپنا ویڈیو لنک دوبارہ بھیجیں۔"
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "سب ٹائٹل زبان منتخب کریں"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "کوئی متبادل آڈیو زبانیں نہیں"
     CHOOSE_AUDIO_LANGUAGE_MSG = "آڈیو زبان منتخب کریں"

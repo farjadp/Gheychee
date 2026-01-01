@@ -10,7 +10,7 @@ class Messages(object):
     # Messages and errors
     #######################################################
     CREDITS_MSG = "<blockquote><i>Boshqaruvchi</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Tilni o'zgartirish: /lang</b>"
-    TO_USE_MSG = "<i>Ushbu botdan foydalanish uchun @tg_ytdlp Telegram kanaliga obuna bo'lishingiz kerak.</i>\nKanalga qo'shilgandan so'ng, <b>video havolangizni qayta yuboring va bot uni siz uchun yuklab oladi</b> ❤️\n\n<blockquote>P.S. 🔞NSFW kontentini va ☁️Cloud Storage'dan fayllarni yuklab olish pullik! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kanaldan chiqmang - botdan foydalanishdan chetlashtirilasiz ⛔️</blockquote>"
+    TO_USE_MSG = "<i>Ushbu botdan foydalanish uchun @startupvisamentor Telegram kanaliga obuna bo'lishingiz kerak.</i>\nKanalga qo'shilgandan so'ng, <b>video havolangizni qayta yuboring va bot uni siz uchun yuklab oladi</b> ❤️\n\n<blockquote>P.S. 🔞NSFW kontentini va ☁️Cloud Storage'dan fayllarni yuklab olish pullik! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Kanaldan chiqmang - botdan foydalanishdan chetlashtirilasiz ⛔️</blockquote>"
 
     ERROR1 = "URL havolasi topilmadi. Iltimos, <b>https://</b> yoki <b>http://</b> bilan URL kiriting"
 
@@ -152,7 +152,7 @@ Ko'plab platformalardan rasmlar/fotolar/albomlarni yuklab olish uchun <code>/img
 • <code>/img 11-20 URL</code> → ma'lum diapazonni yuklab olish
 • <code>/img 11- URL</code> → 11-dan oxirigacha yuklab olish
 
-👨‍💻 <i>Dasturchi:</i> @upekshaip
+👨‍💻 <i>Dasturchi:</i> @farjadp
 🤝 <i>Hissa qo'shuvchi:</i> @IIlIlIlIIIlllIIlIIlIllIIllIlIIIl
 </blockquote>
     """
@@ -173,8 +173,8 @@ Ko'plab platformalardan rasmlar/fotolar/albomlarni yuklab olish uchun <code>/img
         "</pre>\n"
         "<blockquote>"
         "<b><u>Ko'rsatmalar:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/startupvisamentor/203 \n"
+        "https://t.me/startupvisamentor/214 "
         "</blockquote>"
     )
     
@@ -1425,9 +1425,9 @@ Ishlating:
     MULTI_URL_RANGE_NOT_ALLOWED_MSG = "❌ Ko'p URL rejimida ro'yxat diapazonlari ruxsat etilmaydi. Faqat diapazonsiz bitta URL'larni yuboring (*1*5, /vid 1-10 va hokazo)."
     
     # Error messages
-    ERROR_CHECK_SUPPORTED_SITES_MSG = "Sizning saytingiz qo'llab-quvvatlanganligini <a href='https://github.com/chelaxian/tg-ytdlp-bot/wiki/YT_DLP#supported-sites'>bu yerda</a> tekshiring"
+    ERROR_CHECK_SUPPORTED_SITES_MSG = "Sizning saytingiz qo'llab-quvvatlanganligini <a href='https://github.com/farjadp/tg-ytdlp-bot'>bu yerda</a> tekshiring"
     ERROR_COOKIE_NEEDED_MSG = "Bu videoni yuklab olish uchun <code>cookie</code> kerak bo'lishi mumkin. Avval ish maydoningizni <b>/clean</b> buyrug'i orqali tozalang"
-    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube uchun - <b>/cookie</b> buyrug'i orqali <code>cookie</code> oling. Boshqa qo'llab-quvvatlanadigan sayt uchun - o'z cookie'ingizni yuboring (<a href='https://t.me/tg_ytdlp/203'>qo'llanma1</a>) (<a href='https://t.me/tg_ytdlp/214'>qo'llanma2</a>) va shundan keyin video havolangizni qayta yuboring."
+    ERROR_COOKIE_INSTRUCTIONS_MSG = "Youtube uchun - <b>/cookie</b> buyrug'i orqali <code>cookie</code> oling. Boshqa qo'llab-quvvatlanadigan sayt uchun - o'z cookie'ingizni yuboring (<a href='https://t.me/startupvisamentor/203'>qo'llanma1</a>) (<a href='https://t.me/startupvisamentor/214'>qo'llanma2</a>) va shundan keyin video havolangizni qayta yuboring."
     CHOOSE_SUBTITLE_LANGUAGE_MSG = "Subtitr tilini tanlang"
     NO_ALTERNATIVE_AUDIO_LANGUAGES_MSG = "Muqobil audio tillar yo'q"
     CHOOSE_AUDIO_LANGUAGE_MSG = "Audio tilini tanlang"
