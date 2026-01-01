@@ -1,3 +1,10 @@
+"""
+PATH: services/stats_service.py
+TIMESTAMP: 2026-01-01 12:50 EST
+VERSION: v2.0.0
+DESIGN: Service for calculating and retrieving bot usage statistics.
+CONCEPT: "Data Analysis and Reporting."
+"""
 from __future__ import annotations
 
 import time
@@ -108,7 +115,7 @@ def block_user(user_id: int, reason: str = "manual") -> None:
     ts = str(int(time.time()))
     payload = {"ID": str(user_id), "timestamp": ts, "blocked_reason": reason}
     _blocked_users_node().child(str(user_id)).set(payload)
-    # Удаляем пользователя из списка разблокированных при блокировке
+    # Remove user from unblocked list when blocking
     _unblocked_users_node().child(str(user_id)).remove()
     collector = get_stats_collector()
     collector.block_user_local(user_id, reason=reason)

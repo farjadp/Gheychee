@@ -1,3 +1,10 @@
+"""
+PATH: web/dashboard_app.py
+TIMESTAMP: 2026-01-01 12:45 EST
+VERSION: v2.0.0
+DESIGN: FastAPI-based dashboard for bot management and statistics.
+CONCEPT: "Web Admin Interface."
+"""
 from __future__ import annotations
 
 import pathlib
@@ -16,12 +23,12 @@ from services import stats_service
 from services import system_service, lists_service
 from services.auth_service import get_auth_service
 
-# Настройка логирования
+# Logging configuration
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Порт дашборда берется из Config.DASHBOARD_PORT (по умолчанию 5555)
-# Для запуска: uvicorn web.dashboard_app:app --host 0.0.0.0 --port {Config.DASHBOARD_PORT}
+# Dashboard port is taken from Config.DASHBOARD_PORT (default 5555)
+# To run: uvicorn web.dashboard_app:app --host 0.0.0.0 --port {Config.DASHBOARD_PORT}
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
@@ -29,7 +36,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 app = FastAPI(title="Gheychee Dashboard", version="1.0.0")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
-# CORS для API запросов
+# CORS for API requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -39,15 +46,15 @@ app.add_middleware(
 )
 
 
-# Middleware для проверки авторизации
+# Middleware for checking authorization
 class AuthMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
-        # Публичные пути
+        # Public paths
         public_paths = ["/login", "/api/login", "/api/reset-lockdown", "/static", "/health"]
         if any(request.url.path.startswith(path) for path in public_paths):
             return await call_next(request)
         
-        # Проверяем токен из cookie
+        # Check token from cookie
         token = request.cookies.get("auth_token")
         auth_service = get_auth_service()
         
@@ -85,7 +92,7 @@ class LoginRequest(BaseModel):
 @app.post("/api/login")
 async def api_login(payload: LoginRequest, request: Request):
     auth_service = get_auth_service()
-    # Перезагружаем конфиг перед каждой попыткой входа
+    # Reload config before each login attempt
     auth_service.reload_config()
     client_ip = request.client.host if request.client else "unknown"
     
@@ -96,7 +103,7 @@ async def api_login(payload: LoginRequest, request: Request):
             key="auth_token",
             value=token,
             httponly=True,
-            secure=False,  # В production установить True для HTTPS
+            secure=False,  # Set True for HTTPS in production
             samesite="lax",
             max_age=auth_service.session_ttl,
         )
@@ -107,7 +114,7 @@ async def api_login(payload: LoginRequest, request: Request):
 
 @app.post("/api/reset-lockdown")
 async def api_reset_lockdown(request: Request):
-    """Сбрасывает блокировку для текущего IP (для отладки)."""
+    """Resets lockdown for current IP (for debugging)."""
     auth_service = get_auth_service()
     client_ip = request.client.host if request.client else "unknown"
     auth_service.reset_lockdown(client_ip)
@@ -131,7 +138,7 @@ async def dashboard(request: Request):
         "dashboard.html",
         {
             "request": request,
-            "title": "Статистика бота",
+            "title": "Bot Statistics",
             "config": {
                 "STATS_ACTIVE_TIMEOUT": getattr(Config, "STATS_ACTIVE_TIMEOUT", 900),
             },

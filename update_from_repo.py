@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 # Version 1.0.2 (with NEED_BACKUP toggle)
 """
+PATH: update_from_repo.py
+TIMESTAMP: 2026-01-01 12:40 EST
+VERSION: v2.0.0
+DESIGN: Automated update mechanism pulling from the verified Gheychee repository.
+CONCEPT: "Secure Git-based Self-Updater."
+"""
+"""
 Script to automatically update code from a GitHub repository.
 Clones the repository into a temporary folder and replaces required files.
 """
@@ -287,12 +294,12 @@ def move_backups_to_backup_dir():
 
 def set_executable_flag_for_shell_scripts(base_dir: Path) -> None:
     """
-    Гарантирует, что все *.sh скрипты имеют бит выполнения после обновления.
-    Это полезно, когда код редактируется под Windows и права исполняемых файлов теряются.
+    Ensures that all *.sh scripts have the execution bit set after update.
+    This is useful when code is edited on Windows and executable permissions are lost.
     """
     try:
         for root, dirs, files in os.walk(base_dir):
-            # Пропускаем служебные директории
+            # Skip utility directories
             rel_root = os.path.relpath(root, base_dir)
             if rel_root == ".":
                 rel_root = ""
@@ -308,13 +315,13 @@ def set_executable_flag_for_shell_scripts(base_dir: Path) -> None:
                 if not filename.endswith(".sh"):
                     continue
                 rel_path = os.path.join(rel_root, filename) if rel_root else filename
-                # Не трогаем явно исключённые скрипты (например, script.sh)
+                # Do not touch explicitly excluded scripts (e.g. script.sh)
                 if rel_path in EXCLUDED_FILES:
                     continue
                 full_path = base_dir / rel_path
                 try:
                     mode = full_path.stat().st_mode
-                    # Добавляем execute-бит для owner/group/others
+                    # Add execute bit for owner/group/others
                     full_path.chmod(mode | 0o111)
                 except Exception as chmod_err:
                     log(f"⚠️ Failed to set executable flag on {full_path}: {chmod_err}", "WARNING")
@@ -394,8 +401,8 @@ def main():
         log("📦 Syncing include directories (web/, etc.)...")
         sync_include_directories(temp_dir)
 
-        # После обновления файлов и синхронизации директорий восстанавливаем
-        # права исполнения для всех shell-скриптов в рабочем каталоге.
+        # After updating files and syncing directories, restore
+        # execution rights for all shell scripts in the working directory.
         set_executable_flag_for_shell_scripts(Path('.'))
 
         # ============================

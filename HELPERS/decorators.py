@@ -1,3 +1,10 @@
+"""
+PATH: HELPERS/decorators.py
+TIMESTAMP: 2026-01-01 14:10 EST
+VERSION: v2.0.0
+DESIGN: Decorators for bot command handlers.
+CONCEPT: "Aspect-Oriented Programming (AOP)."
+"""
 # Decorators for automatic app usage
 from functools import wraps
 import os
@@ -88,8 +95,8 @@ def send_reply_keyboard_always(user_id, mode="2x3"):
     except Exception as e:
         logger.warning(f"Failed to send persistent reply keyboard: {e}")
 
-# Удаляем конфликтующую функцию on_message из decorators.py
-# Она должна быть только в handler_registry.py 
+# Removing conflicting on_message function from decorators.py
+# It should only be in handler_registry.py 
 
 def reply_with_keyboard(func):
     """Wrapper for any custom action that adds reply keyboard"""

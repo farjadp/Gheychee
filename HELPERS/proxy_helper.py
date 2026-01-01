@@ -1,3 +1,10 @@
+"""
+PATH: HELPERS/proxy_helper.py
+TIMESTAMP: 2026-01-01 14:05 EST
+VERSION: v2.0.0
+DESIGN: Proxy configuration helper.
+CONCEPT: "Network Configuration."
+"""
 import yt_dlp
 import logging
 import os
@@ -155,7 +162,7 @@ def add_proxy_to_ytdl_opts(ytdl_opts: dict, url: str, user_id: int = None) -> di
     """Add proxy to yt-dlp options if proxy is enabled for user or domain requires it"""
     logger.info(f"add_proxy_to_ytdl_opts called: user_id={user_id}, url={url}")
     
-    # ГЛОБАЛЬНАЯ ЗАЩИТА: Инициализируем messages
+    # GLOBAL PROTECTION: Initialize messages
     messages = safe_get_messages(user_id)
     
     # Priority 1: Check if user has proxy enabled (/proxy on)

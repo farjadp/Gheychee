@@ -1,14 +1,21 @@
-#!/usr/bin/env python3
+"""
+PATH: HELPERS/fallback_helper.py
+TIMESTAMP: 2026-01-01 13:55 EST
+VERSION: v2.0.0
+DESIGN: Logic for switching between downloaders (yt-dlp, gallery-dl).
+CONCEPT: "Smart Fallback."
+"""
+
 """
 Helper functions for fallback mechanisms
 """
 
 def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
     """
-    Определяет, нужно ли переключаться на gallery-dl при ошибке yt-dlp.
-    Возвращает True если ошибка указывает на то, что yt-dlp не может обработать URL.
+    Determines if we should switch to gallery-dl on yt-dlp error.
+    Returns True if error indicates yt-dlp cannot process URL.
     """
-    # Проверяем, не является ли URL доменом только для yt-dlp
+    # Check if URL is yt-dlp only domain
     from CONFIG.domains import DomainsConfig
     from urllib.parse import urlparse
     
@@ -16,23 +23,23 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         parsed_url = urlparse(url)
         domain = parsed_url.netloc.lower()
         
-        # Убираем www. префикс для сравнения
+        # Remove www. prefix for comparison
         if domain.startswith('www.'):
             domain = domain[4:]
             
-        # Проверяем, не входит ли домен в YTDLP_ONLY_DOMAINS
+        # Check if domain is in YTDLP_ONLY_DOMAINS
         for ytdlp_domain in DomainsConfig.YTDLP_ONLY_DOMAINS:
             if domain == ytdlp_domain or domain.endswith('.' + ytdlp_domain):
-                return False  # Не переключаемся на gallery-dl для yt-dlp только доменов
+                return False  # Do not switch to gallery-dl for yt-dlp only domains
     except Exception:
-        # Если не удалось распарсить URL, продолжаем обычную проверку
+        # If failed to parse URL, continue normal check
         pass
     
     error_lower = error_message.lower()
     
-    # Ошибки, которые указывают на то, что yt-dlp не может обработать контент
+    # Errors indicating yt-dlp cannot process content
     fallback_indicators = [
-        # Ошибки доступа и авторизации
+        # Access and authorization errors
         "http error 429: too many requests",
         "http error 403: forbidden", 
         "http error 401: unauthorized",
@@ -41,7 +48,7 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         "rate limit exceeded",
         "quota exceeded",
         
-        # Ошибки формата контента
+        # Content format errors
         "no videos found in playlist",
         "unsupported url",
         "no video could be found", 
@@ -51,13 +58,13 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         "no video formats found",
         "no video available",
         
-        # Ошибки извлечения
+        # Extraction errors
         "unable to extract",
         "extraction failed",
         "no suitable formats",
         "requested format is not available",
         
-        # Ошибки платформ
+        # Platform errors
         "instagram:user",
         "twitter:user", 
         "tiktok:user",
@@ -72,13 +79,13 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         "fanbox:user",
         "fantia:user",
         
-        # Ошибки сети
+        # Network errors
         "connection refused",
         "connection timeout", 
         "network unreachable",
         "dns resolution failed",
         
-        # Ошибки блокировки
+        # Block/ban errors
         "blocked by robots.txt",
         "geoblocked",
         "region blocked",
@@ -90,7 +97,7 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         "age verification required",
         "nsfw verification required",
         
-        # Ошибки контента
+        # Content errors
         "content not available",
         "post deleted",
         "account deleted", 
@@ -105,21 +112,21 @@ def should_fallback_to_gallery_dl(error_message: str, url: str) -> bool:
         "content removed"
     ]
     
-    # Проверяем наличие индикаторов fallback
+    # Check for fallback indicators
     for indicator in fallback_indicators:
         if indicator in error_lower:
             return True
     
-    # Дополнительная проверка для Instagram ошибок
+    # Additional check for Instagram errors
     if "instagram" in error_lower and any(err in error_lower for err in ["429", "403", "401", "unable to download"]):
         return True
     
-    # Дополнительная проверка для Twitter/X ошибок  
+    # Additional check for Twitter/X errors  
     if any(domain in url.lower() for domain in ["twitter.com", "x.com"]) and any(err in error_lower for err in ["429", "403", "401", "unable to download"]):
         return True
         
-    # Дополнительная проверка для TikTok ошибок
-    # Безопасная проверка домена через urlparse
+    # Additional check for TikTok errors
+    # Safe domain check via urlparse
     is_tiktok = False
     try:
         from urllib.parse import urlparse

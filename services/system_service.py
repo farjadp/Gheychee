@@ -1,3 +1,10 @@
+"""
+PATH: services/system_service.py
+TIMESTAMP: 2026-01-01 12:35 EST
+VERSION: v2.0.0
+DESIGN: System metrics and Docker container management service.
+CONCEPT: "BGUtil Provider and System Monitor."
+"""
 from __future__ import annotations
 
 import psutil
@@ -19,21 +26,21 @@ from DATABASE.cache_db import get_next_reload_time
 logger = logging.getLogger(__name__)
 BOT_CONTAINER_NAME = os.environ.get("BOT_CONTAINER_NAME", "gheychee-bot")
 WARP_CONTAINER_NAME = os.environ.get("WARP_CONTAINER_NAME", "gheychee-warp")
-# Имя контейнера bgutil-provider должно совпадать с тем, что используется в скриптах / docker-compose.
-# По умолчанию это "bgutil-provider" (см. update_bgutil_provider.sh) 
+# The bgutil-provider container name must match what is used in scripts / docker-compose.
+# Default is "bgutil-provider" (see update_bgutil_provider.sh) 
 BGUTIL_CONTAINER_NAME = os.environ.get("BGUTIL_CONTAINER_NAME", "bgutil-provider")
-# Имена контейнера и systemd-сервиса панели управления (можно переопределить через переменные окружения)
+# Dashboard container and systemd service names (can be overridden via env vars)
 DASHBOARD_CONTAINER_NAME = os.environ.get("DASHBOARD_CONTAINER_NAME", "gheychee-dashboard")
 DASHBOARD_SERVICE_NAME = os.environ.get("DASHBOARD_SERVICE_NAME", "gheychee-dashboard")
 
 
 def _has_docker() -> bool:
-    """Проверяет наличие docker CLI и сокета."""
+    """Checks for docker CLI and socket presence."""
     docker_path = shutil.which("docker")
     return bool(docker_path) and Path("/var/run/docker.sock").exists()
 
 def _container_exists(name: str) -> bool:
-    """Проверяет, что контейнер с именем name существует (docker ps -a)."""
+    """Checks if container with name exists (docker ps -a)."""
     if not _has_docker():
         return False
     try:
@@ -55,7 +62,7 @@ def _container_exists(name: str) -> bool:
 
 
 def _container_is_running(name: str) -> bool:
-    """Проверяет, что контейнер с именем name запущен (docker ps)."""
+    """Checks if container with name is running (docker ps)."""
     if not _has_docker():
         return False
     try:
@@ -73,15 +80,15 @@ def _container_is_running(name: str) -> bool:
 
 
 def _is_running_in_docker() -> bool:
-    """Проверяет, запущен ли текущий процесс внутри Docker контейнера."""
-    # Проверяем наличие .dockerenv файла
+    """Checks if the current process is running inside a Docker container."""
+    # Check for .dockerenv file
     if Path("/.dockerenv").exists():
         return True
-    # Проверяем cgroup (более надежный способ)
+    # Check cgroup (more reliable method)
     try:
         with open("/proc/self/cgroup", "r") as f:
             content = f.read()
-            # Если находимся в Docker, в cgroup будет упоминание docker
+            # If we are in Docker, cgroup will mention docker
             if "docker" in content or "/docker/" in content:
                 return True
     except Exception:
@@ -94,7 +101,7 @@ def _systemctl_available() -> bool:
 
 
 def _run_docker_cmd(cmd: list[str], timeout: int = 60, cwd: str | None = None):
-    """Запускает docker-cli команду и возвращает CompletedProcess."""
+    """Executes docker-cli command and returns CompletedProcess."""
     return subprocess.run(
         cmd,
         capture_output=True,
@@ -106,32 +113,32 @@ def _run_docker_cmd(cmd: list[str], timeout: int = 60, cwd: str | None = None):
 
 
 def _run_in_bot(command: list[str], timeout: int = 300):
-    """Выполняет команду внутри контейнера с ботом через docker exec."""
+    """Executes command inside the bot container via docker exec."""
     docker_path = shutil.which("docker")
     if not docker_path:
-        raise RuntimeError("docker CLI не найден внутри панели")
+        raise RuntimeError("docker CLI not found inside panel")
     cmd = [docker_path, "exec", BOT_CONTAINER_NAME] + command
     return _run_docker_cmd(cmd, timeout=timeout)
 
-# Кеш для скорости сети
+# Network speed cache
 _network_speed_cache = {"last_check": 0, "last_sent": 0, "last_recv": 0, "speed_sent": 0, "speed_recv": 0}
 
 
 def get_network_speed() -> Dict[str, Any]:
-    """Вычисляет текущую скорость сети на основе активных потоков."""
+    """Calculates current network speed based on active flows."""
     global _network_speed_cache
     try:
         now = time.time()
         net_io = psutil.net_io_counters()
         
-        # Если прошло меньше секунды с последней проверки, возвращаем кеш
+        # If less than a second since last check, return cache
         if now - _network_speed_cache["last_check"] < 1:
             return {
                 "speed_sent_mbps": round(_network_speed_cache["speed_sent"] / (1024**2) * 8, 2),
                 "speed_recv_mbps": round(_network_speed_cache["speed_recv"] / (1024**2) * 8, 2),
             }
         
-        # Вычисляем скорость
+        # Calculate speed
         if _network_speed_cache["last_check"] > 0:
             time_diff = now - _network_speed_cache["last_check"]
             sent_diff = net_io.bytes_sent - _network_speed_cache["last_sent"]
@@ -156,11 +163,11 @@ def get_network_speed() -> Dict[str, Any]:
 
 
 def get_external_ip() -> Dict[str, str]:
-    """Получает внешний IPv4 и IPv6 адреса через warp контейнер (если доступен) или напрямую."""
+    """Gets external IPv4 and IPv6 addresses via warp container (if available) or directly."""
     ipv4 = "unknown"
     ipv6 = "unknown"
     
-    # Если есть Docker и контейнер warp запущен, получаем IP через него
+    # If Docker exists and warp container is running, get IP through it
     has_docker = _has_docker()
     warp_running = _container_is_running(WARP_CONTAINER_NAME) if has_docker else False
     
@@ -168,7 +175,7 @@ def get_external_ip() -> Dict[str, str]:
         docker_path = shutil.which("docker")
         if docker_path:
             try:
-                # Получаем IPv4 через warp контейнер
+                # Get IPv4 through warp container
                 ipv4_result = _run_docker_cmd(
                     [docker_path, "exec", WARP_CONTAINER_NAME, "curl", "-s", "-4", "https://ifconfig.io"],
                     timeout=10,
@@ -176,7 +183,7 @@ def get_external_ip() -> Dict[str, str]:
                 if ipv4_result.returncode == 0 and ipv4_result.stdout.strip():
                     ipv4 = ipv4_result.stdout.strip()
                 
-                # Получаем IPv6 через warp контейнер
+                # Get IPv6 through warp container
                 ipv6_result = _run_docker_cmd(
                     [docker_path, "exec", WARP_CONTAINER_NAME, "curl", "-s", "-6", "https://ifconfig.io"],
                     timeout=10,
@@ -184,16 +191,16 @@ def get_external_ip() -> Dict[str, str]:
                 if ipv6_result.returncode == 0 and ipv6_result.stdout.strip():
                     ipv6 = ipv6_result.stdout.strip()
                 
-                # Если получили IP через warp, возвращаем
+                # If IP received via warp, return it
                 if ipv4 != "unknown" or ipv6 != "unknown":
                     return {"ipv4": ipv4, "ipv6": ipv6}
             except Exception as e:
                 logger.warning(f"Failed to get IP from warp container: {e}")
                 pass
     
-    # Fallback: получаем IP напрямую (локальный режим или если warp недоступен)
+    # Fallback: get IP directly (local mode or if warp unavailable)
     try:
-        # Получаем IPv4
+        # Get IPv4
         ipv4_services = [
             "https://api.ipify.org",
             "https://ifconfig.me/ip",
@@ -208,7 +215,7 @@ def get_external_ip() -> Dict[str, str]:
             except Exception:
                 continue
         
-        # Получаем IPv6 через curl -6 ifconfig.io
+        # Get IPv6 via curl -6 ifconfig.io
         try:
             result = subprocess.run(
                 ["curl", "-6", "ifconfig.io"],
@@ -222,16 +229,16 @@ def get_external_ip() -> Dict[str, str]:
         except Exception:
             pass
         
-        # Если IPv6 не получен через curl, пробуем через requests с IPv6
+        # If IPv6 not received via curl, try via requests with IPv6
         if ipv6 == "unknown":
             try:
-                # Попытка получить IPv6 через специальный сервис
+                # Attempt to get IPv6 via special service
                 response = requests.get("https://api64.ipify.org?format=json", timeout=3)
                 if response.status_code == 200:
                     data = response.json()
                     if "ip" in data:
                         ipv6_candidate = data["ip"]
-                        # Проверяем, что это IPv6 (содержит :)
+                        # Check if it is IPv6 (contains :)
                         if ":" in ipv6_candidate:
                             ipv6 = ipv6_candidate
             except Exception:
@@ -244,7 +251,7 @@ def get_external_ip() -> Dict[str, str]:
 
 
 def get_system_metrics() -> Dict[str, Any]:
-    """Возвращает метрики системы."""
+    """Returns system metrics."""
     try:
         cpu_percent = psutil.cpu_percent(interval=0.1)
         memory = psutil.virtual_memory()
@@ -256,17 +263,17 @@ def get_system_metrics() -> Dict[str, Any]:
         uptime_hours = int((uptime_seconds % 86400) // 3600)
         uptime_minutes = int((uptime_seconds % 3600) // 60)
         
-        # Время до следующего reload_cache
+        # Time until next reload_cache
         interval_hours = getattr(Config, "RELOAD_CACHE_EVERY", 4)
         next_reload = get_next_reload_time(interval_hours)
         now = datetime.now()
         delta = next_reload - now
         reload_seconds = int(delta.total_seconds())
         
-        # Скорость сети
+        # Network speed
         network_speed = get_network_speed()
         
-        # Внешний IP
+        # External IP
         external_ip = get_external_ip()
         
         return {
@@ -309,7 +316,7 @@ def _read_package_version(
     module_name: str | None = None,
     cli_command: list[str] | None = None,
 ) -> str:
-    """Пытается определить версию пакета несколькими способами."""
+    """Attempts to determine package version in multiple ways."""
     try:
         return metadata.version(package_name)
     except metadata.PackageNotFoundError:
@@ -344,19 +351,19 @@ def _read_package_version(
 
 
 def _get_bgutil_provider_info() -> str:
-    """Возвращает информацию о docker-контейнере bgutil-provider."""
-    # Проверяем Docker режим
+    """Returns info about bgutil-provider docker container."""
+    # Check Docker mode
     if not _has_docker():
         return "docker missing"
     
-    # Пытаемся определить контейнер с именем из настроек (по умолчанию "bgutil-provider")
+    # Try to identify container with name from settings (default "bgutil-provider")
     bgutil_container = BGUTIL_CONTAINER_NAME
     try:
-        # Проверяем существование контейнера (строгое совпадение имени)
+        # Check container existence (strict name match)
         if not _container_exists(bgutil_container):
             return "not running"
         
-        # Получаем информацию о контейнере
+        # Get container info
         result = _run_docker_cmd(
             [
                 "docker",
@@ -385,7 +392,7 @@ def _get_bgutil_provider_info() -> str:
 
 
 def get_package_versions() -> Dict[str, str]:
-    """Возвращает версии установленных пакетов."""
+    """Returns versions of installed packages."""
     return {
         "yt-dlp": _read_package_version("yt-dlp", module_name="yt_dlp", cli_command=["yt-dlp", "--version"]),
         "gallery-dl": _read_package_version("gallery-dl", module_name="gallery_dl", cli_command=["gallery-dl", "--version"]),
@@ -395,12 +402,12 @@ def get_package_versions() -> Dict[str, str]:
 
 
 def rotate_ip() -> Dict[str, Any]:
-    """Ротирует IP: если есть warp-контейнер, рестартуем его; иначе systemctl wgcf."""
-    # Проверяем Docker режим: контейнер должен быть запущен, а не просто существовать
+    """Rotates IP: if warp container exists, restart it; else systemctl wgcf."""
+    # Check Docker mode: container must be running, not just existing
     has_docker = _has_docker()
     warp_running = _container_is_running(WARP_CONTAINER_NAME) if has_docker else False
     
-    # Docker режим: рестартуем warp контейнер (только если он запущен)
+    # Docker mode: restart warp container (only if running)
     if has_docker and warp_running:
         docker_path = shutil.which("docker")
         if not docker_path:
@@ -408,10 +415,10 @@ def rotate_ip() -> Dict[str, Any]:
         try:
             restart = _run_docker_cmd([docker_path, "restart", WARP_CONTAINER_NAME], timeout=40)
             if restart.returncode != 0:
-                return {"status": "error", "message": restart.stderr or "Не удалось перезапустить warp"}
-            time.sleep(5)  # Даем время на переподключение
+                return {"status": "error", "message": restart.stderr or "Failed to restart warp"}
+            time.sleep(5)  # Give time for reconnection
             
-            # Получаем новый IP через warp контейнер
+            # Get new IP via warp container
             ipv4_result = _run_docker_cmd(
                 [docker_path, "exec", WARP_CONTAINER_NAME, "curl", "-s", "-4", "https://ifconfig.io"],
                 timeout=10,
@@ -434,7 +441,7 @@ def rotate_ip() -> Dict[str, Any]:
             logger.error(f"Error rotating IP in Docker mode: {e}")
             return {"status": "error", "message": str(e)}
     
-    # Локальный режим - только если Docker точно недоступен
+    # Local mode - only if Docker is definitely unavailable
     if not _systemctl_available():
         return {"status": "error", "message": "systemctl is not available (likely running inside Docker)"}
     try:
@@ -463,12 +470,12 @@ def rotate_ip() -> Dict[str, Any]:
 
 
 def restart_service() -> Dict[str, Any]:
-    """Перезапускает сервис: если есть контейнер бота — docker restart, иначе systemctl tg-ytdlp-bot."""
-    # Проверяем Docker режим: контейнер должен быть запущен, а не просто существовать
+    """Restarts service: if bot container exists — docker restart, else systemctl tg-ytdlp-bot."""
+    # Check Docker mode: container must be running, not just existing
     has_docker = _has_docker()
     bot_running = _container_is_running(BOT_CONTAINER_NAME) if has_docker else False
     
-    # Docker режим: перезапускаем контейнер бота (только если он запущен)
+    # Docker mode: restart bot container (only if running)
     if has_docker and bot_running:
         docker_path = shutil.which("docker")
         if not docker_path:
@@ -482,7 +489,7 @@ def restart_service() -> Dict[str, Any]:
             logger.error(f"Error restarting bot container: {e}")
             return {"status": "error", "message": str(e)}
     
-    # Локальный режим - только если Docker точно недоступен
+    # Local mode - only if Docker is definitely unavailable
     if not _systemctl_available():
         return {"status": "error", "message": "systemctl is not available (likely running inside Docker)"}
     try:
@@ -505,9 +512,9 @@ def restart_service() -> Dict[str, Any]:
 
 def restart_panel() -> Dict[str, Any]:
     """
-    Перезапускает панель управления.
-    - В Docker-режиме: docker restart DASHBOARD_CONTAINER_NAME.
-    - В локальном режиме: systemctl restart gheychee-dashboard (или имя из DASHBOARD_SERVICE_NAME).
+    Restarts the control panel.
+    - In Docker mode: docker restart DASHBOARD_CONTAINER_NAME.
+    - In local mode: systemctl restart gheychee-dashboard (or name from DASHBOARD_SERVICE_NAME).
     """
     has_docker = _has_docker()
     dashboard_running = _container_is_running(DASHBOARD_CONTAINER_NAME) if has_docker else False
@@ -545,9 +552,9 @@ def restart_panel() -> Dict[str, Any]:
         return {"status": "error", "message": str(e)}
 
 def update_engines() -> Dict[str, Any]:
-    """Обновляет движки: если есть контейнер бота — docker exec; иначе локальные скрипты."""
-    # Docker режим: обновляем через docker exec и docker pull
-    # Проверяем наличие Docker и что контейнер бота запущен
+    """Updates engines: if bot container exists — docker exec; else local scripts."""
+    # Docker mode: update via docker exec and docker pull
+    # Check for Docker and that bot container is running
     has_docker = _has_docker()
     bot_running = _container_is_running(BOT_CONTAINER_NAME) if has_docker else False
     
@@ -558,7 +565,7 @@ def update_engines() -> Dict[str, Any]:
         
         outputs = []
         try:
-            # Обновляем yt-dlp и gallery-dl в контейнере бота
+            # Update yt-dlp and gallery-dl in bot container
             result = _run_in_bot(["bash", "/app/engines_updater.sh"], timeout=300)
             if result.returncode != 0:
                 return {
@@ -567,21 +574,21 @@ def update_engines() -> Dict[str, Any]:
                 }
             outputs.append(f"yt-dlp/gallery-dl:\n{result.stdout.strip()}")
             
-            # Обновляем bgutil-provider контейнер (он находится вне контейнера dashboard)
+            # Update bgutil-provider container (it is outside dashboard container)
             bgutil_container = BGUTIL_CONTAINER_NAME
             if _container_exists(bgutil_container):
                 try:
-                    # Останавливаем старый контейнер
+                    # Stop old container
                     stop_result = _run_docker_cmd([docker_path, "stop", bgutil_container], timeout=30)
                     if stop_result.returncode != 0:
                         logger.warning(f"Failed to stop bgutil-provider: {stop_result.stderr}")
                     
-                    # Удаляем старый контейнер
+                    # Remove old container
                     rm_result = _run_docker_cmd([docker_path, "rm", bgutil_container], timeout=30)
                     if rm_result.returncode != 0:
                         logger.warning(f"Failed to remove bgutil-provider: {rm_result.stderr}")
                     
-                    # Обновляем образ
+                    # Update image
                     pull_result = _run_docker_cmd(
                         [docker_path, "pull", "brainicism/bgutil-ytdlp-pot-provider:latest"],
                         timeout=120,
@@ -589,8 +596,8 @@ def update_engines() -> Dict[str, Any]:
                     if pull_result.returncode != 0:
                         outputs.append(f"bgutil-provider: Failed to pull image: {pull_result.stderr}")
                     else:
-                        # Запускаем новый контейнер через docker-compose
-                        # Нужно перейти в директорию с docker-compose.yml
+                        # Start new container via docker-compose
+                        # Need to navigate to docker-compose.yml directory
                         compose_dir = Path(__file__).resolve().parent.parent
                         compose_result = _run_docker_cmd(
                             [docker_path, "compose", "-f", str(compose_dir / "docker-compose.yml"), "up", "-d", "bgutil-provider"],
@@ -616,7 +623,7 @@ def update_engines() -> Dict[str, Any]:
             logger.error(f"Error in update_engines (Docker mode): {e}")
             return {"status": "error", "message": str(e)}
     
-    # Локальный режим — старое поведение, проверяем наличие скриптов
+    # Local mode — old behavior, check for scripts
     try:
         base_dir = Path(__file__).resolve().parent.parent
         updater = base_dir / "engines_updater.sh"
@@ -652,7 +659,7 @@ def update_engines() -> Dict[str, Any]:
 
 
 def cleanup_user_files() -> Dict[str, Any]:
-    """Удаляет файлы из папок пользователей (кроме системных)."""
+    """Deletes files from user directories (except system ones)."""
     try:
         base_dir = Path(__file__).resolve().parent.parent
         users_dir = getattr(Config, "USERS_DIR", "users")
@@ -691,14 +698,14 @@ def cleanup_user_files() -> Dict[str, Any]:
 
 
 def update_lists() -> Dict[str, Any]:
-    """Обновляет списки через script.sh."""
+    """Updates lists via script.sh."""
     try:
         script_path = "/root/Telegram/Gheychee/script.sh"
         result = subprocess.run(
             ["bash", script_path],
             capture_output=True,
             text=True,
-            timeout=300,  # 5 минут
+            timeout=300,  # 5 minutes
             check=False,
         )
         if result.returncode == 0:
@@ -710,18 +717,18 @@ def update_lists() -> Dict[str, Any]:
 
 
 def get_config_settings() -> Dict[str, Any]:
-    """Возвращает редактируемые настройки из конфига."""
-    # Собираем все YouTube cookie URLs, включая пустые значения
-    # Используем getattr с дефолтом "" для безопасной обработки отсутствующих атрибутов
+    """Returns editable settings from config."""
+    # Collect all YouTube cookie URLs, including empty values
+    # Use getattr with default "" for safe attribute handling
     youtube_cookie_urls = []
     try:
-        # Основной URL
+        # Main URL
         main_url = getattr(Config, "YOUTUBE_COOKIE_URL", "")
         youtube_cookie_urls.append(str(main_url) if main_url else "")
     except (AttributeError, TypeError):
         youtube_cookie_urls.append("")
     
-    # Дополнительные URL (1-10)
+    # Additional URLs (1-10)
     for idx in range(1, 11):
         try:
             url = getattr(Config, f"YOUTUBE_COOKIE_URL_{idx}", "")
@@ -773,19 +780,19 @@ def get_config_settings() -> Dict[str, Any]:
         "subscribe_channel_url": getattr(Config, "SUBSCRIBE_CHANNEL_URL", ""),
         "dashboard": {
             "username": getattr(Config, "DASHBOARD_USERNAME", "admin"),
-            "password": getattr(Config, "DASHBOARD_PASSWORD", ""),  # Не показываем пароль в API
+            "password": getattr(Config, "DASHBOARD_PASSWORD", ""),  # Do not show password in API
         },
     }
 
 
 def update_config_setting(key: str, value: Any) -> bool:
-    """Обновляет настройку в CONFIG/config.py."""
+    """Updates setting in CONFIG/config.py."""
     config_path = Path(__file__).parent.parent / "CONFIG" / "config.py"
     try:
         with open(config_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
         
-        # Простое обновление через поиск строки
+        # Simple update via string search
         patterns = {
             "PROXY_TYPE": r'^\s*PROXY_TYPE\s*=',
             "PROXY_IP": r'^\s*PROXY_IP\s*=',
@@ -839,14 +846,14 @@ def update_config_setting(key: str, value: Any) -> bool:
                         coerced = int(value)
                         lines[i] = f"    {key} = {coerced}\n"
                     except (ValueError, TypeError):
-                        # Если не удалось преобразовать в int, сохраняем как строку
+                        # If unable to convert to int, save as string
                         lines[i] = f"    {key} = \"{value}\"\n"
                 elif isinstance(value, (int, float)) and key not in integer_keys:
                     lines[i] = f"    {key} = {value}\n"
                 elif isinstance(value, bool):
                     lines[i] = f"    {key} = {str(value)}\n"
                 else:
-                    # Экранируем кавычки в строке
+                    # Escape quotes in string
                     escaped_value = str(value).replace('"', '\\"')
                     lines[i] = f"    {key} = \"{escaped_value}\"\n"
                 updated = True
@@ -864,25 +871,25 @@ def update_config_setting(key: str, value: Any) -> bool:
                     updated = True
                     break
             elif key.startswith("YOUTUBE_COOKIE_URL"):
-                # Проверяем активную строку (приоритет)
+                # Check active line (priority)
                 active_match = re.match(rf'^\s*{re.escape(key)}\s*=', line)
                 if active_match:
-                    # Обрабатываем пустые значения корректно
+                    # Handle empty values correctly
                     escaped_value = str(value).replace('"', '\\"') if value else ""
                     lines[i] = f"    {key} = \"{escaped_value}\"\n"
                     updated = True
                     break
-                # Проверяем закомментированную строку (если активной не нашли)
+                # Check commented line (if no active found)
                 commented_match = re.match(rf'^\s*#\s*{re.escape(key)}\s*=', line)
                 if commented_match and not updated:
-                    # Обрабатываем пустые значения корректно
+                    # Handle empty values correctly
                     escaped_value = str(value).replace('"', '\\"') if value else ""
-                    # Раскомментируем строку и обновляем значение
+                    # Uncomment line and update value
                     lines[i] = f"    {key} = \"{escaped_value}\"\n"
                     updated = True
                     break
             elif key == "DASHBOARD_PASSWORD" and re.match(r'^\s*DASHBOARD_PASSWORD\s*=', line):
-                # Для пароля обновляем только если передано непустое значение
+                # Update password only if non-empty value provided
                 if value and str(value).strip():
                     escaped_value = str(value).replace('"', '\\"')
                     lines[i] = f"    DASHBOARD_PASSWORD = \"{escaped_value}\"\n"
@@ -890,26 +897,26 @@ def update_config_setting(key: str, value: Any) -> bool:
                 break
         
         if not updated and key.startswith("YOUTUBE_COOKIE_URL"):
-            # Ищем место после последнего YOUTUBE_COOKIE_URL (активного или закомментированного) или перед INSTAGRAM_COOKIE_URL
+            # Look for place after last YOUTUBE_COOKIE_URL (active or commented) or before INSTAGRAM_COOKIE_URL
             insert_at = len(lines)
-            # Сначала ищем последний YOUTUBE_COOKIE_URL (активный или закомментированный)
+            # First look for last YOUTUBE_COOKIE_URL (active or commented)
             for idx in range(len(lines) - 1, -1, -1):
-                # Проверяем как активную, так и закомментированную строку
+                # Check both active and commented lines
                 if re.match(r'^\s*#?\s*YOUTUBE_COOKIE_URL', lines[idx]):
                     insert_at = idx + 1
                     break
-            # Если не нашли, ищем перед INSTAGRAM_COOKIE_URL
+            # If not found, look before INSTAGRAM_COOKIE_URL
             if insert_at == len(lines):
                 insert_at = next(
                     (idx for idx, line in enumerate(lines) if "INSTAGRAM_COOKIE_URL" in line),
                     len(lines),
                 )
-            # Обрабатываем пустые значения корректно
+            # Handle empty values correctly
             escaped_value = str(value).replace('"', '\\"') if value else ""
             lines.insert(insert_at, f"    {key} = \"{escaped_value}\"\n")
             updated = True
         elif not updated and key == "DASHBOARD_PASSWORD":
-            # Ищем место после DASHBOARD_USERNAME
+            # Look for place after DASHBOARD_USERNAME
             insert_at = next(
                 (idx for idx, line in enumerate(lines) if "DASHBOARD_USERNAME" in line),
                 len(lines),
@@ -934,7 +941,7 @@ def update_config_setting(key: str, value: Any) -> bool:
             with open(config_path, "w", encoding="utf-8") as f:
                 f.writelines(lines)
             
-            # Если обновили логин или пароль дашборда, перезагружаем конфиг в auth_service
+            # If dashboard login or password updated, reload config in auth_service
             if key in ("DASHBOARD_USERNAME", "DASHBOARD_PASSWORD"):
                 try:
                     from services.auth_service import get_auth_service

@@ -1,5 +1,13 @@
+"""
+PATH: magic.py
+TIMESTAMP: 2026-01-01 12:45 EST
+VERSION: v2.0.0
+DESIGN: Main entry point for the Gheychee Telegram Bot.
+CONCEPT: "Core Event Loop and Initialization."
+"""
 # Version 4.0.0 # split monolith code into multiple modules
 ###########################################################
+
 #        GLOBAL IMPORTS
 ###########################################################
 
@@ -60,7 +68,7 @@ from CONFIG.config import Config
 from CONFIG.messages import Messages, safe_get_messages
 # from test_config import Config
 
-# HELPERS (только те, что не содержат обработчики)
+# HELPERS (only those that do not contain handlers)
 from HELPERS.app_instance import set_app
 from HELPERS.download_status import *
 from HELPERS.channel_guard import start_channel_guard, stop_channel_guard
@@ -86,71 +94,71 @@ app = Client(
 # Set global app instance BEFORE importing handlers
 set_app(app)
 
-# Кэш для username бота (будет заполнен после старта)
+# Cache for bot username (will be filled after start)
 _bot_username_cache = None
 
 def _get_bot_username():
-    """Получить username текущего бота (с кэшированием)"""
+    """Get current bot username (cached)"""
     global _bot_username_cache
     if _bot_username_cache is None:
         try:
             bot_info = app.get_me()
             _bot_username_cache = bot_info.username.lower() if bot_info.username else None
         except Exception:
-            # Fallback на Config.BOT_NAME если не удалось получить через API
+            # Fallback to Config.BOT_NAME if unable to get via API
             bot_name = getattr(Config, 'BOT_NAME', '').strip()
             _bot_username_cache = bot_name.lower().replace('@', '') if bot_name else None
     return _bot_username_cache
 
 def _should_handle_group_command(app, message):
     """
-    Проверяет, должен ли бот обрабатывать команду в группе.
+    Checks if the bot should handle the command in a group.
     
-    Правила:
-    - В личных чатах: всегда обрабатывать
-    - В группах:
-      - Если команда содержит @mention СЛИТНО с командой (например /vid@bot_name) и это не имя текущего бота - НЕ обрабатывать
-      - Если команда содержит @mention СЛИТНО с командой и это имя текущего бота - обрабатывать
-      - Если команда НЕ содержит @mention СЛИТНО с командой - обрабатывать (любой бот может ответить)
+    Rules:
+    - In private chats: always handle
+    - In groups:
+      - If command contains @mention MERGED with command (e.g. /vid@bot_name) and it is NOT this bot's name - DO NOT handle
+      - If command contains @mention MERGED with command and it IS this bot's name - handle
+      - If command DOES NOT contain @mention MERGED with command - handle (any bot can reply)
     
     Returns:
-        bool: True если команда должна быть обработана, False иначе
+        bool: True if command should be handled, False otherwise
     """
-    # В личных чатах всегда обрабатываем
+    # Always handle in private chats
     if message.chat.type in (enums.ChatType.PRIVATE, enums.ChatType.BOT):
         return True
     
-    # В группах проверяем @mention только для формата /команда@bot_name (слитно)
+    # In groups, check @mention only for /command@bot_name format (merged)
     if message.chat.type in (enums.ChatType.GROUP, enums.ChatType.SUPERGROUP, enums.ChatType.CHANNEL):
         text = (message.text or "").strip()
         
-        # Проверяем наличие @mention СЛИТНО с командой (формат: /vid@bot_name)
-        # Используем паттерн, который ищет @mention сразу после команды без пробела
-        # Это исключает упоминания в URL (например, https://www.tiktok.com/@user)
+        # Check for @mention MERGED with command (format: /vid@bot_name)
+        # Use pattern matching @mention immediately after command without space
+        # This excludes mentions in URL (e.g., https://www.tiktok.com/@user)
         command_mention_pattern = r'^/(\w+)@(\w+)'
         match = re.match(command_mention_pattern, text)
         
         if match:
-            # Найдено упоминание слитно с командой
+            # Merged mention found
             mentioned_bot = match.group(2).lower()
             bot_username = _get_bot_username()
             
             if bot_username:
-                # Проверяем, соответствует ли упоминание текущему боту
+                # Check if mention matches current bot
                 if mentioned_bot == bot_username.lower():
-                    # Упоминание текущего бота - обрабатываем
+                    # Mention matches current bot - handle
                     return True
                 else:
-                    # Упоминание другого бота - не обрабатываем
+                    # Mention matches another bot - do not handle
                     return False
             else:
-                # Не удалось получить username бота - обрабатываем для совместимости
+                # Could not get bot username - handle for compatibility
                 return True
         
-        # Нет упоминания слитно с командой - любой бот может обработать
+        # No merged mention - any bot can handle
         return True
     
-    # Для других типов чатов обрабатываем
+    # Handle for other chat types
     return True
 
 # DATABASE (без обработчиков)
@@ -175,10 +183,10 @@ from DOWN_AND_UP.ffmpeg import *
 from DOWN_AND_UP.sender import *
 from DOWN_AND_UP.yt_dlp_hook import *
 
-# HELPERS (с обработчиками - импортируем после установки app)
+# HELPERS (with handlers - import after app setup)
 from HELPERS.caption import *
 
-# COMMANDS (импортируем после установки app)
+# COMMANDS (import after app setup)
 from COMMANDS.admin_cmd import *
 from COMMANDS.clean_cmd import *
 from COMMANDS.cookies_cmd import *
@@ -195,10 +203,10 @@ from COMMANDS.tag_cmd import *
 from COMMANDS.proxy_cmd import proxy_command
 from COMMANDS.cookies_cmd import download_cookie
 
-# DOWN_AND_UP (с обработчиками - импортируем после установки app)
+# DOWN_AND_UP (with handlers - import after app setup)
 from DOWN_AND_UP.always_ask_menu import *
 
-# Инициализируем глобальную переменную messages
+# Initialize global messages variable
 messages = safe_get_messages(None)
 
 print(messages.MAGIC_ALL_MODULES_LOADED_MSG)
@@ -275,14 +283,14 @@ if _allowed_groups:
         if not _is_allowed_group(m):
             return None
         
-        # Проверяем, является ли сообщение командой
+        # Check if message is a command
         text = (m.text or "").strip()
         is_command = text.startswith('/') or text in [
             "🧹", "🍪", "⚙️", "🔍", "🌐", "🔗", "📼", "📊", "✂️", "🎧", "💬", 
             "#️⃣", "🆘", "📃", "⏯️", "🎹", "🌎", "✅", "🖼", "🧰", "🔞", "🧾"
         ]
         
-        # Для команд проверяем @mention, для обычных текстов - всегда обрабатываем
+        # For commands check @mention, for regular text - always handle
         if is_command:
             if not _should_handle_group_command(a, m):
                 return None
@@ -304,15 +312,15 @@ def _vid_handler(app, message):
         txt = (message.text or "").strip()
         parts = txt.split()
         url = ""
-        # Support syntax: /vid 1-10 https://...  -> append *1*10 to URL (поддерживаем отрицательные числа)
-        # Если первое число с минусом, то добавляем минус и ко второму числу: /vid -1-7 URL -> URL*-1*-7
+        # Support syntax: /vid 1-10 https://...  -> append *1*10 to URL (support negative numbers)
+        # If first number is negative, add minus to second number too: /vid -1-7 URL -> URL*-1*-7
         if len(parts) >= 3 and re.match(r"^-?\d+-\d*$", parts[1]):
             rng = parts[1]
             url = " ".join(parts[2:])
-            # Парсим диапазон: если начинается с минуса, оба числа отрицательные
+            # Parse range: if starts with minus, both numbers are negative
             if rng.startswith("-"):
-                # Формат: -1-7 -> *-1*-7
-                # Находим второе число после первого минуса
+                # Format: -1-7 -> *-1*-7
+                # Find second number after first minus
                 match = re.match(r"^-(\d+)-(\d*)$", rng)
                 if match:
                     first_num = f"-{match.group(1)}"
@@ -323,20 +331,20 @@ def _vid_handler(app, message):
                         else:
                             url = f"{url}*{first_num}*"
                 else:
-                    # Fallback: обычный парсинг
+                    # Fallback: normal parsing
                     a, b = rng.split("-", 1)
                     if b != "":
                         b = f"-{b}"
                     if url:
                         url = f"{url}*{a}*{b}" if b else f"{url}*{a}*"
             else:
-                # Обычный формат: 1-7 -> *1*7
+                # Normal format: 1-7 -> *1*7
                 a, b = rng.split("-", 1)
                 b = b if b != "" else None
                 if url:
                     url = f"{url}*{a}*{b}" if b is not None else f"{url}*{a}*"
             if url:
-                logger.info(f"🔍 [DEBUG] Преобразовано /vid команда: '{message.text}' -> '{url}'")
+                logger.info(f"🔍 [DEBUG] Converted /vid command: '{message.text}' -> '{url}'")
         else:
             # Fallback: /vid URL
             url = parts[1] if len(parts) > 1 else ""
@@ -416,7 +424,7 @@ use_firebase = getattr(Config, 'USE_FIREBASE', True)
 if use_firebase:
     start_auto_cache_reloader()
 else:
-    print("ℹ️ Автоматическая перезагрузка кэша отключена (локальный режим)")
+    print("ℹ️ Automatic cache reload disabled (local mode)")
 
 def cleanup_on_exit():
     messages = safe_get_messages(None)

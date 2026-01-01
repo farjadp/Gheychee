@@ -1,3 +1,10 @@
+"""
+PATH: HELPERS/pot_helper.py
+TIMESTAMP: 2026-01-01 13:45 EST
+VERSION: v2.0.0
+DESIGN: YouTube PO token management utility.
+CONCEPT: "Proof-of-Origin."
+"""
 # PO Token Helper for YouTube
 # Adds PO token provider support for YouTube domains
 
@@ -9,37 +16,37 @@ from CONFIG.messages import Messages, safe_get_messages
 from URL_PARSERS.youtube import is_youtube_url
 from HELPERS.logger import logger
 
-# Кэш для проверки доступности PO token провайдера
+# Cache for PO token provider availability
 _pot_provider_cache = {
     'available': None,
     'last_check': 0,
-    'check_interval': 30  # Проверяем каждые 30 секунд
+    'check_interval': 30  # Check every 30 seconds
 }
 
 def check_pot_provider_availability(base_url: str) -> bool:
     """
-    Проверяет доступность PO token провайдера
+    Checks PO token provider availability
     
     Args:
-        base_url (str): URL провайдера
+        base_url (str): Provider URL
         
     Returns:
-        bool: True если провайдер доступен, False иначе
+        bool: True if provider available, False otherwise
     """
     current_time = time.time()
     
-    # Проверяем кэш
+    # Check cache
     if (_pot_provider_cache['available'] is not None and 
         current_time - _pot_provider_cache['last_check'] < _pot_provider_cache['check_interval']):
         return _pot_provider_cache['available']
     
     try:
-        # Валидация URL для предотвращения SSRF (но разрешаем localhost для локального сервиса)
+        # URL validation to prevent SSRF (but allow localhost for local service)
         from urllib.parse import urlparse
         import ipaddress
         parsed_url = urlparse(base_url)
         url_host = (parsed_url.hostname or '').lower()
-        # Разрешаем localhost для локального PO token провайдера, но блокируем другие внутренние ресурсы
+        # Allow localhost for local PO token provider, but block other internal resources
         if url_host not in ('localhost', '127.0.0.1') and \
            (url_host.endswith('.local') or url_host.endswith('.internal') or 'localhost' in url_host):
             try:
@@ -53,12 +60,12 @@ def check_pot_provider_availability(base_url: str) -> bool:
             except ValueError:
                 pass
         
-        # Быстрая проверка доступности провайдера
-        # PO token провайдер может возвращать 404 для корневого пути, но это означает что сервис работает
+        # Quick check of provider availability
+        # PO token provider might return 404 for root path, but it means service is working
         response = requests.get(base_url, timeout=5)
-        is_available = response.status_code in [200, 404]  # 404 означает что сервис работает, но эндпоинт не найден
+        is_available = response.status_code in [200, 404]  # 404 means service is working but endpoint not found
         
-        # Обновляем кэш
+        # Update cache
         _pot_provider_cache['available'] = is_available
         _pot_provider_cache['last_check'] = current_time
         
@@ -72,7 +79,7 @@ def check_pot_provider_availability(base_url: str) -> bool:
     except requests.exceptions.RequestException as e:
         logger.warning(f"PO token provider is not available at {base_url}: {e}")
         
-        # Обновляем кэш
+        # Update cache
         _pot_provider_cache['available'] = False
         _pot_provider_cache['last_check'] = current_time
         
@@ -80,48 +87,48 @@ def check_pot_provider_availability(base_url: str) -> bool:
 
 def add_pot_to_ytdl_opts(ytdl_opts: dict, url: str) -> dict:
     """
-    Добавляет PO token аргументы к yt-dlp опциям для YouTube доменов
+    Adds PO token arguments to yt-dlp options for YouTube domains
     
     Args:
-        ytdl_opts (dict): Словарь опций yt-dlp
-        url (str): URL для проверки
+        ytdl_opts (dict): yt-dlp options dictionary
+        url (str): URL to check
         
     Returns:
-        dict: Обновленный словарь опций yt-dlp
+        dict: Updated yt-dlp options dictionary
     """
-    # Проверяем, включен ли PO token провайдер
+    # Check if PO token provider is enabled
     if not getattr(Config, 'YOUTUBE_POT_ENABLED', False):
         messages = safe_get_messages()
         logger.info(messages.HELPER_POT_PROVIDER_DISABLED_MSG)
         return ytdl_opts
     
-    # Проверяем, является ли URL YouTube доменом
+    # Check if URL is a YouTube domain
     if not is_youtube_url(url):
         messages = safe_get_messages()
         logger.info(messages.HELPER_POT_URL_NOT_YOUTUBE_MSG.format(url=url))
         return ytdl_opts
     
-    # Получаем базовый URL провайдера
+    # Get provider base URL
     base_url = getattr(Config, 'YOUTUBE_POT_BASE_URL', 'http://127.0.0.1:4416')
     disable_innertube = getattr(Config, 'YOUTUBE_POT_DISABLE_INNERTUBE', False)
     
-    # Проверяем доступность PO token провайдера
+    # Check PO token provider availability
     if not check_pot_provider_availability(base_url):
         messages = safe_get_messages()
         logger.warning(messages.HELPER_POT_PROVIDER_NOT_AVAILABLE_MSG.format(base_url=base_url))
         return ytdl_opts
 
-    # Добавляем extractor_args к опциям yt-dlp
+    # Add extractor_args to yt-dlp options
     if 'extractor_args' not in ytdl_opts:
         ytdl_opts['extractor_args'] = {}
     
-    # Добавляем аргументы для YouTube PO token провайдера в правильном формате (nightly ≥ 2025-09-13)
-    # Структура:
+    # Add arguments for YouTube PO token provider in correct format (nightly ≥ 2025-09-13)
+    # Structure:
     # extractor_args: {
     #   'youtubepot': {
     #       'providers': ['bgutilhttp'],
     #       'bgutilhttp': { 'base_url': ['http://...'] },
-    #       'disable_innertube': ['1']  # опционально
+    #       'disable_innertube': ['1']  # optional
     #   }
     # }
     pot_args = ytdl_opts['extractor_args'].get('youtubepot', {})
@@ -133,13 +140,13 @@ def add_pot_to_ytdl_opts(ytdl_opts: dict, url: str) -> dict:
         pot_args['disable_innertube'] = ["1"]
     ytdl_opts['extractor_args']['youtubepot'] = pot_args
     
-    # Добавляем verbose режим для детального логирования PO токенов
+    # Add verbose mode for detailed PO token logging
     ytdl_opts['verbose'] = True
     
-    # Добавляем хук для отладки PO токенов
+    # Add hook for PO token debugging
     ytdl_opts = add_pot_debug_hook(ytdl_opts)
     
-    # Явные логи, чтобы видно было активные провайдеры
+    # Explicit logs to show active providers
     active_providers = ytdl_opts['extractor_args'].get('youtubepot', {}).get('providers', [])
     logger.info(f"🔑 PO TOKEN PROVIDER ENABLED for YouTube URL: {url}")
     logger.info(f"🔗 PO Token Base URL: {base_url}")
@@ -151,27 +158,27 @@ def add_pot_to_ytdl_opts(ytdl_opts: dict, url: str) -> dict:
 
 def is_pot_enabled() -> bool:
     """
-    Проверяет, включен ли PO token провайдер в конфигурации
+    Checks if PO token provider is enabled in configuration
     
     Returns:
-        bool: True если включен, False иначе
+        bool: True if enabled, False otherwise
     """
     return getattr(Config, 'YOUTUBE_POT_ENABLED', False)
 
 def get_pot_base_url() -> str:
     """
-    Возвращает базовый URL PO token провайдера
+    Returns PO token provider base URL
     
     Returns:
-        str: Базовый URL провайдера
+        str: Provider base URL
     """
     return getattr(Config, 'YOUTUBE_POT_BASE_URL', 'http://127.0.0.1:4416')
 
 def clear_pot_provider_cache():
     messages = safe_get_messages(None)
     """
-    Сбрасывает кэш проверки доступности PO token провайдера
-    Полезно для принудительной повторной проверки после восстановления провайдера
+    Resets PO token provider availability cache
+    Useful for forced re-check after provider recovery
     """
     global _pot_provider_cache
     _pot_provider_cache['available'] = None
@@ -181,10 +188,10 @@ def clear_pot_provider_cache():
 
 def is_pot_provider_available() -> bool:
     """
-    Проверяет, доступен ли PO token провайдер (с учетом кэша)
+    Checks if PO token provider is available (considering cache)
     
     Returns:
-        bool: True если провайдер доступен, False иначе
+        bool: True if provider available, False otherwise
     """
     base_url = getattr(Config, 'YOUTUBE_POT_BASE_URL', 'http://127.0.0.1:4416')
     return check_pot_provider_availability(base_url)
@@ -192,24 +199,24 @@ def is_pot_provider_available() -> bool:
 def create_pot_debug_hook():
     messages = safe_get_messages(None)
     """
-    Создает хук для yt-dlp, который перехватывает и логирует PO токены
+    Creates hook for yt-dlp that intercepts and logs PO tokens
     
     Returns:
-        function: Хук функция для yt-dlp
+        function: Hook function for yt-dlp
     """
     def pot_debug_hook(d):
         messages = safe_get_messages(None)
         """
-        Хук для перехватывания PO токенов в yt-dlp
+        Hook for intercepting PO tokens in yt-dlp
         
         Args:
-            d (dict): Словарь с информацией о загрузке
+            d (dict): Dictionary with download info
         """
         if d['status'] == 'downloading':
-            # Ищем PO токены в URL или заголовках
+            # Look for PO tokens in URL or headers
             if 'url' in d:
                 url = d['url']
-                # Проверяем наличие PO токенов в URL
+                # Check for PO tokens in URL
                 pot_patterns = [
                     r'po_token=([^&]+)',
                     r'popt=([^&]+)',
@@ -225,7 +232,7 @@ def create_pot_debug_hook():
                         logger.info(f"🔗 Full URL with PO token: {url}")
                         break
                 
-                # Проверяем заголовки на наличие PO токенов
+                # Check headers for PO tokens
                 if 'http_headers' in d:
                     headers = d['http_headers']
                     for header_name, header_value in headers.items():
@@ -233,7 +240,7 @@ def create_pot_debug_hook():
                             logger.info(f"🎯 PO TOKEN in header {header_name}: {header_value}")
         
         elif d['status'] == 'finished':
-            # Логируем успешное завершение с PO токенами
+            # Log successful completion with PO tokens
             messages = safe_get_messages()
             logger.info(messages.HELPER_DOWNLOAD_FINISHED_PO_MSG)
             
@@ -241,29 +248,29 @@ def create_pot_debug_hook():
 
 def add_pot_debug_hook(ytdl_opts: dict) -> dict:
     """
-    Добавляет хук для отладки PO токенов к опциям yt-dlp
+    Adds hook for PO token debugging to yt-dlp options
     
     Args:
-        ytdl_opts (dict): Словарь опций yt-dlp
+        ytdl_opts (dict): yt-dlp options dictionary
         
     Returns:
-        dict: Обновленный словарь опций yt-dlp
+        dict: Updated yt-dlp options dictionary
     """
     if 'progress_hooks' not in ytdl_opts:
         ytdl_opts['progress_hooks'] = []
     
-    # Добавляем наш хук для отладки PO токенов
+    # Add our hook for PO token debugging
     ytdl_opts['progress_hooks'].append(create_pot_debug_hook())
     
     return ytdl_opts
 
 def build_cli_extractor_args(url: str) -> list[str]:
     """
-    Формирует аргументы CLI для yt-dlp (--extractor-args) с поддержкой PO token.
-    Возвращает список вида ["--extractor-args", VALUE], либо пустой список если не нужно добавлять.
+    Forms CLI arguments for yt-dlp (--extractor-args) with PO token support.
+    Returns list like ["--extractor-args", VALUE], or empty list if not needed.
     """
     try:
-        # Проверяем включение и домен
+        # Check enabling and domain
         if not getattr(Config, 'YOUTUBE_POT_ENABLED', False):
             return []
         if not is_youtube_url(url):
@@ -271,12 +278,12 @@ def build_cli_extractor_args(url: str) -> list[str]:
         base_url = getattr(Config, 'YOUTUBE_POT_BASE_URL', 'http://127.0.0.1:4416')
         disable_innertube = getattr(Config, 'YOUTUBE_POT_DISABLE_INNERTUBE', False)
 
-        # CLI синтаксис для подпровайдера: youtubepot-bgutilhttp:base_url=...;disable_innertube=1
+        # CLI syntax for sub-provider: youtubepot-bgutilhttp:base_url=...;disable_innertube=1
         pot_segment = f"youtubepot-bgutilhttp:base_url={base_url}"
         if disable_innertube:
             pot_segment += ";disable_innertube=1"
 
-        # Дополнительные extractor-args (через запятую между неймспейсами)
+        # Additional extractor-args (comma separated between namespaces)
         messages = safe_get_messages()
         generic_args = messages.HELPER_POT_GENERIC_ARGS_MSG
         value = ",".join([pot_segment, generic_args])

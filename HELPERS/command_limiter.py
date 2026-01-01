@@ -1,4 +1,11 @@
 """
+PATH: HELPERS/command_limiter.py
+TIMESTAMP: 2026-01-01 14:00 EST
+VERSION: v2.0.0
+DESIGN: Command rate limiting for Telegram bot users.
+CONCEPT: "Access Control."
+"""
+"""
 Command rate limiter with exponential backoff for spam protection.
 Tracks commands per minute and applies increasing cooldowns for repeated violations.
 """
@@ -138,10 +145,10 @@ def check_command_limit(user_id: int, is_admin: bool = False) -> Tuple[bool, Opt
     Returns (allowed: bool, message: Optional[str])
     If not allowed, message contains cooldown info.
     """
-    # Проверяем, должны ли применяться ограничения к админу
+    # Check if limits should apply to admin
     if is_admin:
         if LimitsConfig.TURN_OFF_LIMITS_FOR_ADMINS:
-            return (True, None)  # Админы с отключенными ограничениями обходят command limits
+            return (True, None)  # Admins with disabled limits bypass command limits
     
     current_time = time.time()
     
