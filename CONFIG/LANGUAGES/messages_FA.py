@@ -9,8 +9,8 @@ class Messages(object):
     #######################################################
     # Messages and errors
     #######################################################
-    CREDITS_MSG = "<blockquote><i>مدیریت شده توسط</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 تغییر زبان: /lang</b>"
-    TO_USE_MSG = "<i>برای استفاده از این ربات باید به کانال تلگرام @tg_ytdlp مشترک شوید.</i>\nپس از پیوستن به کانال، <b>لینک ویدیوی خود را دوباره ارسال کنید و ربات آن را برای شما دانلود می‌کند</b> ❤️\n\n<blockquote>P.S. دانلود محتوای 🔞NSFW و فایل‌ها از ☁️Cloud Storage پولی است! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ کانال را ترک نکنید - از استفاده از ربات محروم خواهید شد ⛔️</blockquote>"
+    CREDITS_MSG = "<blockquote><i>مدیریت شده توسط</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @gheychee_it_bot\n🇦🇪 @gheychee_uae_bot\n🇬🇧 @gheychee_uk_bot\n🇫🇷 @gheychee_fr_bot</blockquote>\n<b>🌍 تغییر زبان: /lang</b>"
+    TO_USE_MSG = "<i>برای استفاده از این ربات باید به کانال تلگرام @gheychee مشترک شوید.</i>\nپس از پیوستن به کانال، <b>لینک ویدیوی خود را دوباره ارسال کنید و ربات آن را برای شما دانلود می‌کند</b> ❤️\n\n<blockquote>P.S. دانلود محتوای 🔞NSFW و فایل‌ها از ☁️Cloud Storage پولی است! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ کانال را ترک نکنید - از استفاده از ربات محروم خواهید شد ⛔️</blockquote>"
 
     ERROR1 = "لینک URL یافت نشد. لطفاً یک URL با <b>https://</b> یا <b>http://</b> وارد کنید"
 
@@ -173,8 +173,8 @@ class Messages(object):
         "</pre>\n"
         "<blockquote>"
         "<b><u>دستورالعمل‌ها:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/gheychee/203 \n"
+        "https://t.me/gheychee/214 "
         "</blockquote>"
     )
     

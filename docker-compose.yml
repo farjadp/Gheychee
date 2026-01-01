@@ -10,7 +10,7 @@ x-default-logging: &default-logging
 
 services:
   bot:
-    container_name: tg-ytdlp-bot
+    container_name: gheychee-bot
     build:
       context: .
       dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
     network_mode: "service:warp"
 
   dashboard:
-    container_name: tg-ytdlp-dashboard
+    container_name: gheychee-dashboard
     build:
       context: .
       dockerfile: Dockerfile
@@ -49,21 +49,21 @@ services:
     ports:
       - "5555:5555"
     environment:
-      - BOT_CONTAINER_NAME=tg-ytdlp-bot
-      - WARP_CONTAINER_NAME=tg-ytdlp-warp
+      - BOT_CONTAINER_NAME=gheychee-bot
+      - WARP_CONTAINER_NAME=gheychee-warp
 
   bgutil-provider:
     image: brainicism/bgutil-ytdlp-pot-provider:latest
-    container_name: tg-ytdlp-bgutil-provider
+    container_name: gheychee-bgutil-provider
     restart: unless-stopped
     logging: *default-logging
-    network_mode: "container:tg-ytdlp-warp"
+    network_mode: "container:gheychee-warp"
     ports: []
     expose: []
 
   warp:
     build: ./warp
-    container_name: tg-ytdlp-warp
+    container_name: gheychee-warp
     restart: unless-stopped
     logging: *default-logging
     privileged: true

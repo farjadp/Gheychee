@@ -11,7 +11,7 @@ from services.stats_collector import get_stats_collector
 
 
 def _db_node(suffix: str):
-    base = getattr(Config, "BOT_DB_PATH", f"bot/{getattr(Config, 'BOT_NAME_FOR_USERS', 'tgytdlp_bot')}")
+    base = getattr(Config, "BOT_DB_PATH", f"bot/{getattr(Config, 'BOT_NAME_FOR_USERS', 'gheychee_bot')}")
     base = base.rstrip("/")
     suffix = suffix.lstrip("/")
     path = f"{base}/{suffix}" if suffix else base

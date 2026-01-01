@@ -1,11 +1,11 @@
-# 🤖 tg-ytdlp-bot
+# 🤖 Gheychee
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![PyroTGFork](https://img.shields.io/badge/PyroTGFork-Latest-green.svg)](https://github.com/pyrogram/pyrogram)
 [![yt-dlp](https://img.shields.io/badge/yt--dlp-Latest-red.svg)](https://github.com/yt-dlp/yt-dlp)
 [![gallery-dl](https://img.shields.io/badge/gallery--dl-Latest-orange.svg)](https://github.com/mikf/gallery-dl)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/tgytdlp)
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/gheychee)
 
 > 🎥 **Advanced Telegram bot for downloading videos and media from 1500+ platforms**
 
@@ -38,14 +38,14 @@ A powerful Telegram bot that downloads videos, audio, and images from YouTube, T
 ### Try the Bot
 
 **Live Demo Bots:**
-- 🇮🇹 [@tgytdlp_it_bot](https://t.me/tgytdlp_it_bot) - Main IT bot
-- 🇦🇪 [@tgytdlp_uae_bot](https://t.me/tgytdlp_uae_bot) - UAE server
-- 🇬🇧 [@tgytdlp_uk_bot](https://t.me/tgytdlp_uk_bot) - UK server
-- 🇫🇷 [@tgytdlp_fr_bot](https://t.me/tgytdlp_fr_bot) - FR server
+- 🇮🇹 [@gheychee_it_bot](https://t.me/gheychee_it_bot) - Main IT bot
+- 🇦🇪 [@gheychee_uae_bot](https://t.me/gheychee_uae_bot) - UAE server
+- 🇬🇧 [@gheychee_uk_bot](https://t.me/gheychee_uk_bot) - UK server
+- 🇫🇷 [@gheychee_fr_bot](https://t.me/gheychee_fr_bot) - FR server
 
-**Community Channel:** [@tg_ytdlp](https://t.me/tg_ytdlp)
+**Community Channel:** [@gheychee](https://t.me/gheychee)
 
-**Backup mirror (Redirector):** [@tgytdlp](https://t.me/tgytdlp)
+**Backup mirror (Redirector):** [@gheychee](https://t.me/gheychee)
 
 ### Basic Usage
 

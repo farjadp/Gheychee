@@ -9,8 +9,8 @@ class Messages(object):
     #######################################################
     # Messages and errors
     #######################################################
-    CREDITS_MSG = "<blockquote><i>Managed by</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @tgytdlp_it_bot\n🇦🇪 @tgytdlp_uae_bot\n🇬🇧 @tgytdlp_uk_bot\n🇫🇷 @tgytdlp_fr_bot</blockquote>\n<b>🌍 Change language: /lang</b>"
-    TO_USE_MSG = "<i>To use this bot you need to subscribe to @tg_ytdlp Telegram channel.</i>\nAfter you join the channel, <b>resend your video link again and bot will download it for you</b> ❤️\n\n<blockquote>P.S. Downloading 🔞NSFW content and files from ☁️Cloud Storage is paid! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Do not leave the channel - you will be banned from using the bot ⛔️</blockquote>"
+    CREDITS_MSG = "<blockquote><i>Managed by</i> @iilililiiillliiliililliilliliiil\n🇮🇹 @gheychee_it_bot\n🇦🇪 @gheychee_uae_bot\n🇬🇧 @gheychee_uk_bot\n🇫🇷 @gheychee_fr_bot</blockquote>\n<b>🌍 Change language: /lang</b>"
+    TO_USE_MSG = "<i>To use this bot you need to subscribe to @gheychee Telegram channel.</i>\nAfter you join the channel, <b>resend your video link again and bot will download it for you</b> ❤️\n\n<blockquote>P.S. Downloading 🔞NSFW content and files from ☁️Cloud Storage is paid! 1⭐️ = $0.02</blockquote>\n<blockquote>P.P.S. ‼️ Do not leave the channel - you will be banned from using the bot ⛔️</blockquote>"
 
     ERROR1 = "Did not found a url link. Please enter a url with <b>https://</b> or <b>http://</b>"
 
@@ -173,8 +173,8 @@ Use <code>/img URL</code> to download images/photos/albums from many platforms.
         "</pre>\n"
         "<blockquote>"
         "<b><u>Instructions:</u></b>\n"
-        "https://t.me/tg_ytdlp/203 \n"
-        "https://t.me/tg_ytdlp/214 "
+        "https://t.me/gheychee/203 \n"
+        "https://t.me/gheychee/214 "
         "</blockquote>"
     )
     

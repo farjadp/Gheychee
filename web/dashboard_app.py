@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 BASE_DIR = pathlib.Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
-app = FastAPI(title="TG YTDLP Dashboard", version="1.0.0")
+app = FastAPI(title="Gheychee Dashboard", version="1.0.0")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
 # CORS для API запросов

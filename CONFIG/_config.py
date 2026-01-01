@@ -14,9 +14,9 @@ class Config(object):
     # IMPORTANT (REQUIRED) SETTINGS - start filling settings here 
     #######################################################        
     # Your bot name - Required (str)
-    BOT_NAME = "tgytdlp_test_bot"
+    BOT_NAME = "gheychee_bot"
     # A name for users - Required (str)
-    BOT_NAME_FOR_USERS = "tgytdlp_bot" #name in database
+    BOT_NAME_FOR_USERS = "gheychee_bot" #name in database
     # List of administrator IDs
     ADMIN = [00000000, 111111111111]
     ADMIN_USERNAME = "@"
@@ -30,7 +30,7 @@ class Config(object):
     # Bot token
     BOT_TOKEN = "00000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     # Mini-app URL
-    MINIAPP_URL = "https://t.me/tgytdlp_test_bot/?startapp"
+    MINIAPP_URL = "https://t.me/gheychee/?startapp"
     # Channel ID for logs (you can use the same 1 channel ID for all LOGS)
     LOGS_ID = -100111111111111  # Channel ID for logs
     LOGS_VIDEO_ID = -100111111111111  # Channel ID for video logs
