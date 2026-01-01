@@ -266,7 +266,7 @@ def _main_logic(output_file: Path):
             print(f"\n  📌 {prefix}_* ({len(vars_list)} переменных):")
             # Выводим переменные с номерами строк
             for var_name, line_num in vars_list:
-                line_info = f"строка {line_num}" if line_num > 0 else "строка не найдена"
+                line_info = f"строка {line_num}" if line_num and line_num > 0 else "строка не найдена"
                 print(f"     {var_name:<50} ({line_info})")
     
     # Итоговая статистика
@@ -286,7 +286,7 @@ def _main_logic(output_file: Path):
     # Находим языки с наибольшим количеством непереведенных переменных
     if total_untranslated:
         max_untranslated = max(total_untranslated.values())
-        if max_untranslated > 0:
+        if max_untranslated and max_untranslated > 0:
             worst_languages = [lang for lang, count in total_untranslated.items() if count == max_untranslated]
             print(f"\n⚠️  Наибольшее количество непереведенных переменных ({max_untranslated}): {', '.join(worst_languages)}")
     

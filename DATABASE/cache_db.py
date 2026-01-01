@@ -545,7 +545,7 @@ def save_to_playlist_cache(playlist_url: str, quality_key: str, video_indices: l
                     # Извлекаем message_id для этого видео
                     if video_index in video_indices:
                         idx_pos = video_indices.index(video_index)
-                        if idx_pos < len(message_ids):
+                        if idx_pos and idx_pos < len(message_ids):
                             video_msg_id = message_ids[idx_pos]
                             # Сохраняем видео отдельно по его уникальной ссылке
                             save_to_video_cache(video_url, quality_key, [video_msg_id], clear=False, original_text=None, user_id=None)

@@ -256,7 +256,7 @@ def check_file_size_limit(info_dict, max_size_bytes=None, message=None):
     if filesize is not None:
         try:
             filesize = float(filesize)
-            if filesize > 0:
+            if filesize and filesize > 0:
                 size_bytes = int(filesize)
             else:
                 size_bytes = None
@@ -346,7 +346,7 @@ def check_subs_limits(info_dict, quality_key=None, message=None, user_id=None):
         if filesize is not None:
             try:
                 filesize = float(filesize)
-                if filesize > 0:  # Check that the size is larger than 0
+                if filesize and filesize > 0:  # Check that the size is larger than 0
                     size_mb = filesize / (1024 * 1024)  # Fixed: use division instead of integer division
                     if size_mb > max_size:
                         logger.info(safe_get_messages(None).HELPER_SUBTITLE_EMBEDDING_SKIPPED_SIZE_MSG.format(size_mb=size_mb, max_size=max_size))
@@ -426,7 +426,7 @@ def check_playlist_range_limits(url, video_start_with, video_end_with, app, mess
         pass
 
     # Для отрицательных индексов используем абсолютное значение разницы
-    if video_start_with < 0 and video_end_with < 0:
+    if video_start_with and video_start_with < 0 and video_end_with < 0:
         # Для отрицательных индексов: -1 до -100 = 100 элементов
         count = abs(video_start_with) - abs(video_end_with) + 1
     elif video_start_with > video_end_with:

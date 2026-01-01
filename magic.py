@@ -3,27 +3,7 @@
 #        GLOBAL IMPORTS
 ###########################################################
 
-# ГЛОБАЛЬНЫЙ ПАТЧ ДЛЯ ПРЕДОТВРАЩЕНИЯ ОШИБКИ 'name messages is not defined'
-try:
-    from PATCH.GLOBAL_MESSAGES_PATCH import apply_global_messages_patch
-    apply_global_messages_patch()
-except Exception as e:
-    print(f"⚠️  Global messages patch failed: {e}")
-    # Минимальная защита уже встроена в safe_get_messages функции
 
-# ПАТЧ NONE ОТКЛЮЧЕН - ОШИБКА УЖЕ ИСПРАВЛЕНА В КОДЕ
-# try:
-#     from PATCH.FIX_NONE_COMPARISONS_PATCH import apply_patch
-#     apply_patch()
-# except Exception as e:
-#     print(f"⚠️  None comparisons patch failed: {e}")
-
-# DEBUG ПАТЧИ ОТКЛЮЧЕНЫ - ОШИБКА NONE ИСПРАВЛЕНА
-# try:
-#     from PATCH.DEBUG_NONE_COMPARISON import apply_debug_none_comparison
-#     apply_debug_none_comparison()
-# except Exception as e:
-#     print(f"⚠️  Debug None comparison failed: {e}")
 import glob
 try:
     from sdnotify import SystemdNotifier  # optional, used for watchdog

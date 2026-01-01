@@ -112,7 +112,7 @@ def download_firebase_dump():
         id_token = None
         for attempt in range(1, MAX_AUTH_RETRIES + 1):
             try:
-                if attempt > 1:
+                if attempt and attempt > 1:
                     print(f"🔐 Authentication retry {attempt}/{MAX_AUTH_RETRIES}...")
                 resp = session.post(auth_url, json=auth_payload, timeout=auth_timeout)
                 resp.raise_for_status()
@@ -168,7 +168,7 @@ def download_firebase_dump():
         response = None
         for attempt in range(1, MAX_DOWNLOAD_RETRIES + 1):
             try:
-                if attempt > 1:
+                if attempt and attempt > 1:
                     print(f"🔄 Download retry {attempt}/{MAX_DOWNLOAD_RETRIES}...")
                 response = session.get(url, timeout=download_timeout, stream=True)
                 response.raise_for_status()

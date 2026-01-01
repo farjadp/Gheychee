@@ -236,7 +236,7 @@ def translate_string(text: str, target_lang: str, max_retries: int = 3) -> str:
             
             return translated
         except Exception as e:
-            if attempt < max_retries - 1:
+            if attempt and attempt < max_retries - 1:
                 import time
                 time.sleep(1)  # Пауза перед повтором
                 continue
@@ -437,7 +437,7 @@ def main():
         
         count = auto_translate_file(lang_file, lang_code, args.dry_run, args.batch, args.start_line, args.end_line)
         print(f"\n✅ Переведено строк: {count}")
-        if count > 0:
+        if count and count > 0:
             print(f"💡 Запустите снова для перевода следующих {args.batch} строк")
     else:
         parser.print_help()

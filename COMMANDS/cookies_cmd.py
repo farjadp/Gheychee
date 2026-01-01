@@ -1307,7 +1307,7 @@ def test_youtube_cookies(cookie_file_path: str, user_id: int | None = None) -> b
         # Проверяем количество форматов (должно быть достаточно для выбора)
         # Only check if formats exist - if they don't, we already handled that above
         formats_count = len(formats) if formats else 0
-        if formats_count > 0 and formats_count < 3:  # Минимум 3 формата для выбора (только если форматы есть)
+        if formats_count and formats_count > 0 and formats_count < 3:  # Минимум 3 формата для выбора (только если форматы есть)
             logger.warning(LoggerMsg.COOKIES_YOUTUBE_TEST_FAILED_TOO_FEW_FORMATS_LOG_MSG.format(formats_count=formats_count, cookie_file_path=cookie_file_path))
             logger.warning(LoggerMsg.COOKIES_YOUTUBE_TEST_FAILED_AVAILABLE_FORMATS_LOG_MSG.format(available_formats=[f.get('format_id', 'unknown') for f in formats[:5]]))
             logger.warning(LoggerMsg.COOKIES_YOUTUBE_TEST_FAILED_ALL_FORMAT_IDS_LOG_MSG.format(all_format_ids=[f.get('format_id', 'unknown') for f in formats]))

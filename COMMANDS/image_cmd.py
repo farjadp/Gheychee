@@ -993,7 +993,7 @@ def image_command(app, message):
                 start_i, end_i = manual_range
                 if end_i is not None:
                     # Обработка отрицательных индексов и обратного порядка
-                    if start_i < 0 or end_i < 0:
+                    if start_i and start_i < 0 or end_i < 0:
                         # Для отрицательных индексов нужно получить общее количество постов
                         # Пока используем прямую логику, преобразование будет в функции скачивания
                         if start_i < end_i:
@@ -1009,7 +1009,7 @@ def image_command(app, message):
                         requested_indices = list(range(int(start_i), int(end_i) + 1))
                 else:
                     cached_all = sorted(list(get_cached_image_post_indices(url)))
-                    if start_i < 0:
+                    if start_i and start_i < 0:
                         # Для отрицательных индексов берем последние |start_i| постов
                         requested_indices = cached_all[start_i:] if abs(start_i) <= len(cached_all) else []
                     else:
@@ -1054,7 +1054,7 @@ def image_command(app, message):
                 start_i, end_i = manual_range
                 if end_i is not None:
                     # Правильный расчет количества для отрицательных индексов и обратного порядка
-                    if start_i < 0 and end_i < 0:
+                    if start_i and start_i < 0 and end_i < 0:
                         requested_count = abs(end_i) - abs(start_i) + 1
                     elif start_i > end_i:
                         requested_count = abs(start_i - end_i) + 1
@@ -1063,7 +1063,7 @@ def image_command(app, message):
                     # Check if we have all requested indices in cache
                     cached_indices = set(cached_map.keys())
                     # Формируем правильный список запрошенных индексов
-                    if start_i < 0 or end_i < 0:
+                    if start_i and start_i < 0 or end_i < 0:
                         # Для отрицательных индексов пока используем прямую логику
                         # Преобразование будет в функции скачивания
                         if start_i < end_i:
@@ -1622,7 +1622,7 @@ def image_command(app, message):
                         manual_end_cap = original_manual_end_cap
                 
                 # Для отрицательных индексов нужно получить общее количество постов и преобразовать их
-                if current_start < 0 or manual_end_cap < 0:
+                if current_start and current_start < 0 or manual_end_cap < 0:
                     is_reverse_order_img = True
                     # Получаем общее количество постов для преобразования отрицательных индексов
                     total_media_count = detected_total
@@ -1637,9 +1637,9 @@ def image_command(app, message):
                         # Преобразуем отрицательные индексы в положительные
                         # -1 = последний пост (total_media_count), -2 = предпоследний (total_media_count - 1), и т.д.
                         # Формула: positive_index = total_media_count + negative_index + 1
-                        if current_start < 0:
+                        if current_start and current_start < 0:
                             current_start = total_media_count + current_start + 1
-                        if manual_end_cap < 0:
+                        if manual_end_cap and manual_end_cap < 0:
                             manual_end_cap = total_media_count + manual_end_cap + 1
                         logger.info(f"[IMG] Converted negative indices: {original_current_start}->{current_start}, {original_manual_end_cap}->{manual_end_cap} (total={total_media_count})")
                         # После преобразования отрицательных индексов current_start > manual_end_cap - это нормально для обратного порядка
@@ -1657,7 +1657,7 @@ def image_command(app, message):
                     total_expected = manual_end_cap - current_start + 1
             else:
                 # Open-ended range
-                if current_start < 0:
+                if current_start and current_start < 0:
                     # Для отрицательных индексов без конца используем разумное значение
                     total_expected = abs(current_start) if is_admin else min(abs(current_start), total_limit)
                 else:

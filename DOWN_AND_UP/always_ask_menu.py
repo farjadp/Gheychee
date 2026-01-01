@@ -2018,7 +2018,7 @@ def askq_callback(app, callback_query):
             logger.info("Detected playlist, using down_and_up")
             _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(original_text)
             # Правильное вычисление video_count для отрицательных индексов
-            if video_start_with < 0 and video_end_with < 0:
+            if video_start_with and video_start_with < 0 and video_end_with < 0:
                 video_count = abs(video_end_with) - abs(video_start_with) + 1
             elif video_start_with > video_end_with:
                 video_count = abs(video_start_with - video_end_with) + 1
@@ -2108,7 +2108,7 @@ def askq_callback(app, callback_query):
         if is_playlist_with_range(original_text):
             _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(original_text)
             # Правильное вычисление video_count для отрицательных индексов
-            if video_start_with < 0 and video_end_with < 0:
+            if video_start_with and video_start_with < 0 and video_end_with < 0:
                 video_count = abs(video_end_with) - abs(video_start_with) + 1
             elif video_start_with > video_end_with:
                 video_count = abs(video_start_with - video_end_with) + 1
@@ -2155,7 +2155,7 @@ def askq_callback(app, callback_query):
         logger.info(f"{LoggerMsg.ALWAYS_ASK_PLAYLIST_WITH_RANGE_DETECTED_LOG_MSG}: {url}")
         _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(original_text)
         # Правильное вычисление video_count для отрицательных индексов
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             video_count = abs(video_end_with) - abs(video_start_with) + 1
         elif video_start_with > video_end_with:
             video_count = abs(video_start_with - video_end_with) + 1
@@ -2199,7 +2199,7 @@ def askq_callback(app, callback_query):
                         # Преобразуем отрицательные индексы в положительные
                         converted_indices = []
                         for neg_idx in requested_indices:
-                            if neg_idx < 0:
+                            if neg_idx and neg_idx < 0:
                                 pos_idx = total_playlist_count + neg_idx + 1
                                 converted_indices.append(pos_idx)
                             else:
@@ -2737,7 +2737,7 @@ def show_manual_quality_menu(app, callback_query):
         if is_playlist and playlist_range:
             # Правильное формирование indices для отрицательных индексов
             start, end = playlist_range
-            if start < 0 and end < 0:
+            if start and start < 0 and end < 0:
                 # Для отрицательных индексов в обратном порядке
                 if abs(start) < abs(end):
                     indices = list(range(start, end - 1, -1))
@@ -2767,7 +2767,7 @@ def show_manual_quality_menu(app, callback_query):
     if is_playlist and playlist_range:
         # Правильное формирование indices для отрицательных индексов
         start, end = playlist_range
-        if start < 0 and end < 0:
+        if start and start < 0 and end < 0:
             if abs(start) < abs(end):
                 indices = list(range(start, end - 1, -1))
             else:
@@ -2800,7 +2800,7 @@ def show_manual_quality_menu(app, callback_query):
     if is_playlist and playlist_range:
         # Правильное формирование indices для отрицательных индексов
         start, end = playlist_range
-        if start < 0 and end < 0:
+        if start and start < 0 and end < 0:
             if abs(start) < abs(end):
                 indices = list(range(start, end - 1, -1))
             else:
@@ -3274,9 +3274,9 @@ def show_other_qualities_menu(app, callback_query, page=0):
         
         # Add navigation buttons
         nav_row = []
-        if page > 0:
+        if page and page > 0:
             nav_row.append(InlineKeyboardButton(safe_get_messages(user_id).ALWAYS_ASK_PREV_BUTTON_MSG, callback_data=f"askq|other_page_{page-1}"))
-        if page < total_pages - 1:
+        if page and page < total_pages - 1:
             nav_row.append(InlineKeyboardButton(safe_get_messages(user_id).ALWAYS_ASK_NEXT_BUTTON_MSG, callback_data=f"askq|other_page_{page+1}"))
         if nav_row:
             keyboard_rows.append(nav_row)
@@ -3422,9 +3422,9 @@ def show_formats_from_cache(app, callback_query, format_lines, page, url):
     
     # Add navigation buttons
     nav_row = []
-    if page > 0:
+    if page and page > 0:
         nav_row.append(InlineKeyboardButton(safe_get_messages(user_id).ALWAYS_ASK_PREV_BUTTON_MSG, callback_data=f"askq|other_page_{page-1}"))
-    if page < total_pages - 1:
+    if page and page < total_pages - 1:
         nav_row.append(InlineKeyboardButton(safe_get_messages(user_id).ALWAYS_ASK_NEXT_BUTTON_MSG, callback_data=f"askq|other_page_{page+1}"))
     if nav_row:
         keyboard_rows.append(nav_row)
@@ -3572,7 +3572,7 @@ def create_cached_qualities_menu(app, message, url, tags, proc_msg, user_id, ori
                 if is_playlist and playlist_range:
                     # Правильное формирование indices для отрицательных индексов
                     start, end = playlist_range
-                    if start < 0 and end < 0:
+                    if start and start < 0 and end < 0:
                         if abs(start) < abs(end):
                             indices = list(range(start, end - 1, -1))
                         else:
@@ -3618,7 +3618,7 @@ def create_cached_qualities_menu(app, message, url, tags, proc_msg, user_id, ori
         if is_playlist and playlist_range:
             # Правильное формирование indices для отрицательных индексов
             start, end = playlist_range
-            if start < 0 and end < 0:
+            if start and start < 0 and end < 0:
                 if abs(start) < abs(end):
                     indices = list(range(start, end - 1, -1))
                 else:
@@ -4386,7 +4386,7 @@ def ask_quality_menu(app, message, url, tags, playlist_start_index=1, cb=None, d
                                     # Преобразуем отрицательные индексы в положительные
                                     converted_indices = []
                                     for neg_idx in indices:
-                                        if neg_idx < 0:
+                                        if neg_idx and neg_idx < 0:
                                             pos_idx = total_playlist_count + neg_idx + 1
                                             converted_indices.append(pos_idx)
                                         else:
@@ -5158,7 +5158,7 @@ def ask_quality_menu(app, message, url, tags, playlist_start_index=1, cb=None, d
                 elif is_playlist and playlist_range:
                     # Правильное формирование indices для отрицательных индексов
                     start, end = playlist_range
-                    if start < 0 and end < 0:
+                    if start and start < 0 and end < 0:
                         if abs(start) < abs(end):
                             indices = list(range(start, end - 1, -1))
                         else:
@@ -5226,7 +5226,7 @@ def ask_quality_menu(app, message, url, tags, playlist_start_index=1, cb=None, d
                 if is_playlist and playlist_range:
                     # Правильное формирование indices для отрицательных индексов
                     start, end = playlist_range
-                    if start < 0 and end < 0:
+                    if start and start < 0 and end < 0:
                         if abs(start) < abs(end):
                             indices = list(range(start, end - 1, -1))
                         else:
@@ -5276,7 +5276,7 @@ def ask_quality_menu(app, message, url, tags, playlist_start_index=1, cb=None, d
         if is_playlist and playlist_range:
             # Правильное формирование indices для отрицательных индексов
             start, end = playlist_range
-            if start < 0 and end < 0:
+            if start and start < 0 and end < 0:
                 if abs(start) < abs(end):
                     indices = list(range(start, end - 1, -1))
                 else:
@@ -5903,7 +5903,7 @@ def askq_callback_logic(app, callback_query, data, original_message, url, tags_t
         full_string = original_message.text or original_message.caption or ""
         _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(full_string)
         # Правильное вычисление video_count для отрицательных индексов
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             video_count = abs(video_end_with) - abs(video_start_with) + 1
         elif video_start_with > video_end_with:
             video_count = abs(video_start_with - video_end_with) + 1
@@ -5923,7 +5923,7 @@ def askq_callback_logic(app, callback_query, data, original_message, url, tags_t
         full_string = original_message.text or original_message.caption or ""
         _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(full_string)
         # Правильное вычисление video_count для отрицательных индексов
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             video_count = abs(video_end_with) - abs(video_start_with) + 1
         elif video_start_with > video_end_with:
             video_count = abs(video_start_with - video_end_with) + 1
@@ -6130,7 +6130,7 @@ def down_and_up_with_format(app, message, url, fmt, tags_text, quality_key=None,
         return
 
     # Правильное вычисление video_count для отрицательных индексов
-    if video_start_with < 0 and video_end_with < 0:
+    if video_start_with and video_start_with < 0 and video_end_with < 0:
         video_count = abs(video_end_with) - abs(video_start_with) + 1
     elif video_start_with > video_end_with:
         video_count = abs(video_start_with - video_end_with) + 1

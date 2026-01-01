@@ -152,7 +152,7 @@ def check_command_limit(user_id: int, is_admin: bool = False) -> Tuple[bool, Opt
         minutes = int(remaining // 60)
         seconds = int(remaining % 60)
         
-        if minutes > 0:
+        if minutes and minutes > 0:
             msg = f"Too many commands. Cooldown: {minutes}m {seconds}s remaining"
         else:
             msg = f"Too many commands. Cooldown: {seconds}s remaining"
@@ -182,7 +182,7 @@ def check_command_limit(user_id: int, is_admin: bool = False) -> Tuple[bool, Opt
             minutes = int(duration // 60)
             seconds = int(duration % 60)
             
-            if minutes > 0:
+            if minutes and minutes > 0:
                 msg = f"Too many commands (max {LimitsConfig.COMMAND_LIMIT_PER_MINUTE}/minute). Cooldown: {minutes}m {seconds}s"
             else:
                 msg = f"Too many commands (max {LimitsConfig.COMMAND_LIMIT_PER_MINUTE}/minute). Cooldown: {seconds}s"
@@ -192,7 +192,7 @@ def check_command_limit(user_id: int, is_admin: bool = False) -> Tuple[bool, Opt
         # All checks passed, record the command
         user_data['commands'].append(current_time)
         # Reset violations if user behaved well (no violations for a while)
-        if violations > 0 and len(user_data['commands']) == 0:
+        if violations and violations > 0 and len(user_data['commands']) == 0:
             user_data['violations'] = 0
     
     _save_to_disk()

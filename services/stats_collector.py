@@ -558,7 +558,7 @@ class StatsCollector:
             if urls_list:
                 url = urls_list[0]
             multi_total = max(1, len(urls_list))
-            if multi_total > 1:
+            if multi_total and multi_total > 1:
                 self._register_multi_event(user_id, multi_total, timestamp)
         else:
             url = str(urls_field or "")

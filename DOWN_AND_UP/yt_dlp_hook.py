@@ -34,7 +34,7 @@ def get_video_formats(url, user_id=None, playlist_start_index=1, cookies_already
     # Формируем playlist_items с учетом диапазона
     if playlist_end_index is not None and playlist_end_index != playlist_start_index:
         # Для диапазона используем формат START:END или START:END:-1 для обратного порядка
-        if playlist_start_index < 0 or playlist_end_index < 0:
+        if playlist_start_index and playlist_start_index < 0 or playlist_end_index < 0:
             # Для отрицательных индексов определяем обратный порядок
             is_reverse = (playlist_start_index < 0 and playlist_end_index < 0 and abs(playlist_start_index) < abs(playlist_end_index)) or (playlist_start_index > playlist_end_index)
             if is_reverse:

@@ -69,7 +69,7 @@ def is_command_separated(text: str, command: str) -> bool:
         return False
     
     # Проверяем, что перед командой есть разделитель (пробел, начало строки, новая строка)
-    if idx > 0:
+    if idx and idx > 0:
         char_before = text[idx - 1]
         # Если перед командой нет пробела/новой строки - это часть URL/текста
         if not (char_before.isspace() or char_before in '\n\r\t'):
@@ -77,7 +77,7 @@ def is_command_separated(text: str, command: str) -> bool:
     
     # Проверяем, что после команды есть разделитель (пробел, конец строки, или начало аргументов)
     end_idx = idx + len(command)
-    if end_idx < len(text):
+    if end_idx and end_idx < len(text):
         char_after = text[end_idx]
         # Если после команды есть буква, цифра, слэш, точка, дефис, подчеркивание без пробела - это часть URL/текста
         if char_after.isalnum() or char_after in '/.-_@':

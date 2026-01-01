@@ -113,7 +113,7 @@ def audio_command_handler(app, message):
     full_string = text or message.caption or ""
     _, video_start_with, video_end_with, playlist_name, _, _, tag_error = extract_url_range_tags(full_string)
     # Правильное вычисление video_count для отрицательных индексов
-    if video_start_with < 0 and video_end_with < 0:
+    if video_start_with and video_start_with < 0 and video_end_with < 0:
         video_count = abs(video_end_with) - abs(video_start_with) + 1
     elif video_start_with > video_end_with:
         video_count = abs(video_start_with - video_end_with) + 1

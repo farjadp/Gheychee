@@ -137,8 +137,8 @@ def get_network_speed() -> Dict[str, Any]:
             sent_diff = net_io.bytes_sent - _network_speed_cache["last_sent"]
             recv_diff = net_io.bytes_recv - _network_speed_cache["last_recv"]
             
-            _network_speed_cache["speed_sent"] = sent_diff / time_diff if time_diff > 0 else 0
-            _network_speed_cache["speed_recv"] = recv_diff / time_diff if time_diff > 0 else 0
+            _network_speed_cache["speed_sent"] = sent_diff / time_diff if time_diff and time_diff > 0 else 0
+            _network_speed_cache["speed_recv"] = recv_diff / time_diff if time_diff and time_diff > 0 else 0
         else:
             _network_speed_cache["speed_sent"] = 0
             _network_speed_cache["speed_recv"] = 0
@@ -914,7 +914,7 @@ def update_config_setting(key: str, value: Any) -> bool:
                 (idx for idx, line in enumerate(lines) if "DASHBOARD_USERNAME" in line),
                 len(lines),
             )
-            if insert_at < len(lines):
+            if insert_at and insert_at < len(lines):
                 lines.insert(insert_at + 1, f"    DASHBOARD_PASSWORD = \"{value}\"\n")
             else:
                 lines.append(f"    DASHBOARD_PASSWORD = \"{value}\"\n")

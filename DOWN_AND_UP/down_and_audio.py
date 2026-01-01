@@ -330,7 +330,7 @@ def down_and_audio(app, message, url, tags, quality_key=None, playlist_name=None
     has_negative_indices = False
     if is_playlist and video_start_with is not None and video_end_with is not None:
         # Если оба отрицательные, всегда используем обратный порядок
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             is_reverse_order = True
             has_negative_indices = True
         # Если start > end, это обратный порядок
@@ -1586,7 +1586,7 @@ def down_and_audio(app, message, url, tags, quality_key=None, playlist_name=None
                     # Формула: positive_index = total_playlist_count + negative_index + 1
                     converted_indices = []
                     for neg_idx in playlist_indices_all:
-                        if neg_idx < 0:
+                        if neg_idx and neg_idx < 0:
                             pos_idx = total_playlist_count + neg_idx + 1
                             converted_indices.append(pos_idx)
                         else:
@@ -1639,7 +1639,7 @@ def down_and_audio(app, message, url, tags, quality_key=None, playlist_name=None
             # Для отрицательных индексов не используем reuse_range_download, скачиваем каждый индекс отдельно
             reuse_range_download = use_range_download and range_entries_metadata is not None and not has_negative_indices_for_download
             if reuse_range_download:
-                if idx < len(range_entries_metadata):
+                if idx and idx < len(range_entries_metadata):
                     info_dict = range_entries_metadata[idx]
                     logger.info(f"[AUDIO RANGE] Reusing cached entry #{idx + 1} for playlist index {original_playlist_index}")
                     result = info_dict
@@ -1660,7 +1660,7 @@ def down_and_audio(app, message, url, tags, quality_key=None, playlist_name=None
                         range_entries_metadata = result.get("entries") or []
                     else:
                         range_entries_metadata = [result]
-                    if idx < len(range_entries_metadata):
+                    if idx and idx < len(range_entries_metadata):
                         info_dict = range_entries_metadata[idx]
                     else:
                         logger.warning(f"[AUDIO RANGE] Download returned {len(range_entries_metadata)} entries but missing entry #{idx + 1}")

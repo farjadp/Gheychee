@@ -299,7 +299,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
                 response += safe_get_messages(user_id).TITLE_FIELD_MSG.format(title=title)
                 try:
                     duration_val = float(duration) if duration is not None else 0
-                    if duration_val > 0:
+                    if duration_val and duration_val > 0:
                         response += safe_get_messages(user_id).DURATION_FIELD_MSG.format(duration=duration_val)
                 except (TypeError, ValueError):
                     pass
@@ -380,7 +380,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
     use_range_download = False  # Объявляем переменную заранее
     if is_playlist and video_start_with is not None and video_end_with is not None:
         # Если оба отрицательные, всегда используем обратный порядок
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             is_reverse_order = True
             has_negative_indices = True
         # Если start > end, это обратный порядок
@@ -880,7 +880,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
         # Secure file size logging
         try:
             filesize_val = float(filesize) if filesize is not None else 0
-            if filesize_val > 0:
+            if filesize_val and filesize_val > 0:
                 size_gb = filesize_val/(1024**3)
                 logger.info(f"[SIZE CHECK] safe_quality_key={safe_quality_key}, determined size={size_gb:.2f} GB, limit={max_size_gb} GB, allowed={allowed}")
             else:
@@ -2046,7 +2046,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
         playlist_range_str = None  # Строка диапазона для плейлиста (например, "1:7" или "1:7:-1")
         has_negative_indices_for_download = False  # Флаг для отрицательных индексов (не используем range_entries_metadata)
         if is_playlist and video_start_with is not None and video_end_with is not None:
-            if video_start_with < 0 or video_end_with < 0:
+            if video_start_with and video_start_with < 0 or video_end_with < 0:
                 use_range_download = True
                 has_negative_indices_for_download = True  # Для отрицательных индексов скачиваем каждый отдельно
                 # Для отрицательных индексов playlist_range_str не используется, так как обрабатываем каждый индекс отдельно
@@ -2068,7 +2068,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
                         # Формула: positive_index = total_playlist_count + negative_index + 1
                         converted_indices = []
                         for neg_idx in playlist_indices_all:
-                            if neg_idx < 0:
+                            if neg_idx and neg_idx < 0:
                                 pos_idx = total_playlist_count + neg_idx + 1
                                 converted_indices.append(pos_idx)
                             else:
@@ -2137,7 +2137,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
             # Для отрицательных индексов не используем reuse_range_download, скачиваем каждый индекс отдельно
             reuse_range_download = use_range_download and range_entries_metadata is not None and not has_negative_indices_for_download
             if reuse_range_download:
-                if idx < len(range_entries_metadata):
+                if idx and idx < len(range_entries_metadata):
                     info_dict = range_entries_metadata[idx]
                     logger.info(f"Reusing cached range download entry #{idx + 1} for playlist index {current_index}")
                 else:
@@ -2227,7 +2227,7 @@ def down_and_up(app, message, url, playlist_name, video_count, video_start_with,
                         info_dict = None
                     else:
                         range_entries_metadata = entries_list
-                        if idx < len(range_entries_metadata):
+                        if idx and idx < len(range_entries_metadata):
                             info_dict = range_entries_metadata[idx]
                         else:
                             logger.warning(f"Range download returned {len(range_entries_metadata)} entries, but requested entry #{idx + 1} is missing.")

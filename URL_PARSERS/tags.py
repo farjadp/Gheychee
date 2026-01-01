@@ -267,8 +267,8 @@ def extract_url_range_tags(text: str):
             is_separated = True
         else:
             # Check characters before and after tag
-            char_before = text[tag_start - 1] if tag_start > 0 else ' '
-            char_after = text[tag_end] if tag_end < len(text) else ' '
+            char_before = text[tag_start - 1] if tag_start and tag_start > 0 else ' '
+            char_after = text[tag_end] if tag_end and tag_end < len(text) else ' '
             # Tag is separated if surrounded by whitespace or at boundaries
             if char_before.isspace() or char_before in '\n\r\t':
                 is_separated = True
@@ -276,7 +276,7 @@ def extract_url_range_tags(text: str):
                 is_separated = True
             # Also check if before tag is end of URL (space, newline, or end of text)
             # and after tag is not part of URL continuation
-            elif tag_start > 0:
+            elif tag_start and tag_start > 0:
                 # Check if we're right after URL (after space/newline after URL)
                 if url_end != -1 and tag_start > url_end:
                     # Check if there's whitespace between URL end and tag

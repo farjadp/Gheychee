@@ -338,7 +338,7 @@ def download_live_stream_chunked(
                 
                 # Verify timing continuity: check that this chunk doesn't start from the beginning
                 # For chunks after the first, we expect them to continue from where previous ended
-                if chunk_idx > 1 and duration > 0:
+                if chunk_idx and chunk_idx > 1 and duration > 0:
                     # Check if chunk file size matches expected (should be close to max_chunk_size)
                     chunk_size = os.path.getsize(chunk_file)
                     if chunk_size < max_chunk_size * 0.1:  # If chunk is less than 10% of expected size
@@ -346,7 +346,7 @@ def download_live_stream_chunked(
                         # This might indicate the chunk started from beginning, but we continue anyway
                 
                 # Update accumulated duration
-                if duration > 0:
+                if duration and duration > 0:
                     accumulated_duration += duration
                     logger.info(f"Chunk {chunk_idx} duration: {duration}s, total accumulated: {accumulated_duration}s")
                 
@@ -627,7 +627,7 @@ def download_live_stream_chunked(
                             logger.error(f"Error saving live stream cache on early end (single chunk): {e2}")
                         return successful_chunks > 0
                     # If this is the second consecutive small chunk, assume stream ended
-                    if chunk_idx > 1:
+                    if chunk_idx and chunk_idx > 1:
                         logger.info(f"Two consecutive small chunks detected, assuming stream has ended")
                         try:
                             from HELPERS.safe_messeger import safe_edit_message_text
@@ -784,7 +784,7 @@ def download_live_stream_chunked(
                             duration = 0
                         
                         # Update accumulated duration
-                        if duration > 0:
+                        if duration and duration > 0:
                             accumulated_duration += duration
                             logger.info(f"Chunk {chunk_idx} duration after retry: {duration}s, total accumulated: {accumulated_duration}s")
                         

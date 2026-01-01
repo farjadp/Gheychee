@@ -98,7 +98,7 @@ def process_multiple_urls_queue(app, message, urls, saved_format, is_admin, is_g
         url_limit = LimitsConfig.MAX_MULTI_URL_LIMIT
     
     # Check limit
-    if url_limit > 0 and len(urls) > url_limit:
+    if url_limit and url_limit > 0 and len(urls) > url_limit:
         error_msg = messages.MULTI_URL_LIMIT_EXCEEDED_MSG.format(
             count=len(urls),
             limit=url_limit
@@ -177,7 +177,7 @@ def process_multiple_urls_queue(app, message, urls, saved_format, is_admin, is_g
             tags_text_full = ' '.join(all_tags)
             
             # Calculate video_count
-            if video_start_with < 0 and video_end_with < 0:
+            if video_start_with and video_start_with < 0 and video_end_with < 0:
                 video_count = abs(video_end_with) - abs(video_start_with) + 1
             elif video_start_with > video_end_with:
                 video_count = abs(video_start_with - video_end_with) + 1
@@ -387,7 +387,7 @@ def video_url_extractor(app, message):
         all_tags = tags + auto_tags
         tags_text_full = ' '.join(all_tags)
         # Правильное вычисление video_count для отрицательных индексов
-        if video_start_with < 0 and video_end_with < 0:
+        if video_start_with and video_start_with < 0 and video_end_with < 0:
             # Для отрицательных индексов: -1 до -7 = 7 элементов (от последнего к 7-му с конца)
             video_count = abs(video_end_with) - abs(video_start_with) + 1
         elif video_start_with > video_end_with:
