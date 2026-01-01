@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 # Removed circular import
-from CONFIG.config import Config
+from CONFIG.constants import ADMIN_USERNAME
 
 class Messages(object):
     #######################################################
@@ -1939,7 +1939,7 @@ class Messages(object):
     DB_FAILED_RELOAD_FIREBASE_CACHE_MSG = "❌ 重新加载firebase缓存失败：{error}"
     
     # Database user ban messages
-    DB_USER_BANNED_MSG = f"🚫 您已被机器人封禁！要解除封禁，请联系 {Config.ADMIN_USERNAME}\n<blockquote>P.S. 不要离开频道 - 您将被自动封禁 ⛔️</blockquote>\n🌍更改语言 /lang"
+    DB_USER_BANNED_MSG = f"🚫 您已被机器人封禁！要解除封禁，请联系 {ADMIN_USERNAME}\n<blockquote>P.S. 不要离开频道 - 您将被自动封禁 ⛔️</blockquote>\n🌍更改语言 /lang"
     
     # Always Ask Menu messages
     AA_NO_VIDEO_FORMATS_FOUND_MSG = "❔ 未找到视频格式。尝试图像下载器…"

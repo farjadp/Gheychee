@@ -92,7 +92,7 @@ class _SnapshotCompat:
     def val(self) -> Any:
         return self._value
 
-    def each(self) -> List[_SnapshotChild] | None:
+    def each(self) -> Optional[List[_SnapshotChild]]:
         if isinstance(self._value, dict):
             return [_SnapshotChild(k, v) for k, v in self._value.items()]
         return None

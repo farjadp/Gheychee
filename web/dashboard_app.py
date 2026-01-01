@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pathlib
 import logging
-from typing import Any, List
+from typing import Any, List, Optional, Union
 from fastapi import FastAPI, HTTPException, Query, Request, Cookie, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -149,7 +149,7 @@ async def dashboard(request: Request):
 @app.get("/api/active-users")
 async def api_active_users(
     limit: int = 10,
-    minutes: int | None = Query(default=None, ge=1, le=3600),
+    minutes: Optional[int] = Query(default=None, ge=1, le=3600),
 ):
     return stats_service.fetch_active_users(limit=limit, minutes=minutes)
 
@@ -244,7 +244,7 @@ async def api_user_history(
 
 class BlockRequest(BaseModel):
     user_id: int = Field(..., gt=0)
-    reason: str | None = Field(default=None, max_length=120)
+    reason: Optional[str] = Field(default=None, max_length=120)
 
 
 @app.post("/api/block-user")

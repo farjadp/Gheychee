@@ -1,6 +1,8 @@
 # Subtitles command
 import yt_dlp
+import yt_dlp
 import requests
+from typing import Optional, List, Dict, Union, Any
 import time
 import re
 import random
@@ -961,7 +963,7 @@ def get_available_subs_languages(url, user_id=None, auto_only=False):
     return []
 
 
-def force_fix_arabic_encoding(srt_path: str, lang: str | None = None):
+def force_fix_arabic_encoding(srt_path: str, lang: Optional[str] = None):
     """Forced transcoding Arab/Pers/Urdu/Hebrew Sabov in UTF-8."""
     target_langs = {'ar', 'fa', 'ur', 'ps', 'iw', 'he'}
     if lang is not None and lang not in target_langs:

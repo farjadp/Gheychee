@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 # Removed circular import
-from CONFIG.config import Config
+from CONFIG.constants import ADMIN_USERNAME
 
 class Messages(object):
     #######################################################
@@ -1939,7 +1939,7 @@ Ishlating:
     DB_FAILED_RELOAD_FIREBASE_CACHE_MSG = "❌ Firebase kesh qayta yuklashda muvaffaqiyatsizlik: {error}"
     
     # Database user ban messages
-    DB_USER_BANNED_MSG = f"🚫 Siz botdan bloklangansiz! Blokdan chiqish uchun {Config.ADMIN_USERNAME} bilan bog'laning\n<blockquote>P.S. Kanalni tark etmang - siz avtomatik ravishda bloklanasiz ⛔️</blockquote>\n🌍Tilni o'zgartirish /lang"
+    DB_USER_BANNED_MSG = f"🚫 Siz botdan bloklangansiz! Blokdan chiqish uchun {ADMIN_USERNAME} bilan bog'laning\n<blockquote>P.S. Kanalni tark etmang - siz avtomatik ravishda bloklanasiz ⛔️</blockquote>\n🌍Tilni o'zgartirish /lang"
     
     # Always Ask Menu messages
     AA_NO_VIDEO_FORMATS_FOUND_MSG = "❔ Video formatlari topilmadi. Rasm yuklovchisini sinab ko'rilmoqda…"

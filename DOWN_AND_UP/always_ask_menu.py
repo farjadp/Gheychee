@@ -8,6 +8,7 @@ from pyrogram import filters, enums
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyParameters, WebAppInfo
 import requests
+from typing import Optional, List, Dict, Union, Any
 
 def safe_callback_answer(callback_query, text, show_alert=False):
     """Safely answer callback query, handling QueryIdInvalid errors"""
@@ -4517,7 +4518,7 @@ def ask_quality_menu(app, message, url, tags, playlist_start_index=1, cb=None, d
 
             _audio_kbps = best_audio_kbps()
 
-            def default_video_kbps_for_height(height: int, fps: int | None, vcodec: str | None) -> int:
+            def default_video_kbps_for_height(height: int, fps: Optional[int], vcodec: Optional[str]) -> int:
                 # Baseline by height (rough real-world averages for SDR 16:9)
                 baseline = {
                     144: 250,

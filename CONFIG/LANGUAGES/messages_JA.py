@@ -3,7 +3,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 # Removed circular import
-from CONFIG.config import Config
+from CONFIG.constants import ADMIN_USERNAME
 
 class Messages(object):
     #######################################################
@@ -1939,7 +1939,7 @@ class Messages(object):
     DB_FAILED_RELOAD_FIREBASE_CACHE_MSG = "❌ Firebase キャッシュのリロードに失敗しました: {error}"
     
     # Database user ban messages
-    DB_USER_BANNED_MSG = f"🚫 あなたはボットへのアクセスを禁止されています! 解除するには {Config.ADMIN_USERNAME} に連絡してください\n<blockquote>P.S. チャンネルを離れないでください - 自動的に禁止されます ⛔️</blockquote>\n🌍言語を変更 /lang"
+    DB_USER_BANNED_MSG = f"🚫 あなたはボットへのアクセスを禁止されています! 解除するには {ADMIN_USERNAME} に連絡してください\n<blockquote>P.S. チャンネルを離れないでください - 自動的に禁止されます ⛔️</blockquote>\n🌍言語を変更 /lang"
     
     # Always Ask Menu messages
     AA_NO_VIDEO_FORMATS_FOUND_MSG = "❔ ビデオ形式が見つかりません。画像ダウンローダーを試しています…"

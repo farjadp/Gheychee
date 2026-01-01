@@ -2,7 +2,7 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from CONFIG.config import Config
+from CONFIG.constants import ADMIN_USERNAME
 
 class Messages(object):
     #######################################################
@@ -1938,7 +1938,7 @@ class Messages(object):
     DB_FAILED_RELOAD_FIREBASE_CACHE_MSG = "❌ Не удалось перезагрузить кэш Firebase: {error}"
     
     # Database user ban messages 
-    DB_USER_BANNED_MSG = f"🚫 Вы заблокированы в боте! Для разблокировки обратитесь к {Config.ADMIN_USERNAME}\n<blockquote>P.S. Не покидайте канал - вы будете автоматически заблокированы ⛔️</blockquote>\n🌍Изменить язык /lang"
+    DB_USER_BANNED_MSG = f"🚫 Вы заблокированы в боте! Для разблокировки обратитесь к {ADMIN_USERNAME}\n<blockquote>P.S. Не покидайте канал - вы будете автоматически заблокированы ⛔️</blockquote>\n🌍Изменить язык /lang"
     
     # Always Ask Menu messages
     AA_NO_VIDEO_FORMATS_FOUND_MSG = "❔ Видео форматы не найдены. Пробуем загрузчик изображений…"

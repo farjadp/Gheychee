@@ -49,6 +49,26 @@
           ]
         }
       }
+    },
+    "gheychee_bot": {
+      "users": {
+        "0": {
+          "ID": "0",
+          "timestamp": 1767293464
+        }
+      },
+      "blocked_users": {
+        "0": {
+          "ID": "0",
+          "timestamp": 1767293464
+        }
+      },
+      "unblocked_users": {
+        "0": {
+          "ID": "0",
+          "timestamp": 1767293464
+        }
+      }
     }
   }
 }

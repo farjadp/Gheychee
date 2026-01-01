@@ -8,7 +8,7 @@ CONCEPT: "Data Analysis and Reporting."
 from __future__ import annotations
 
 import time
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 from CONFIG.config import Config
 from DATABASE.firebase_init import db
@@ -25,7 +25,7 @@ def _db_node(suffix: str):
     return db.child(path)
 
 
-def fetch_active_users(limit: int = 10, minutes: int | None = None) -> Dict[str, Any]:
+def fetch_active_users(limit: int = 10, minutes: Optional[int] = None) -> Dict[str, Any]:
     return get_stats_collector().get_active_users(limit=limit, minutes=minutes)
 
 

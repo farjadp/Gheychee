@@ -1,4 +1,5 @@
 # @reply_with_keyboard
+from typing import Optional, List, Dict, Union, Any
 from pyrogram import enums
 from pyrogram.types import ReplyParameters, InputPaidMediaVideo
 from HELPERS.app_instance import get_app
@@ -136,7 +137,7 @@ def send_videos(
             # Generate unless both duration<60 and size<10
             return (dur >= 60.0) or (size_mb >= 10.0)
 
-        def _gen_thumb(video_path: str) -> str | None:
+        def _gen_thumb(video_path: str) -> Optional[str]:
             try:
                 if not _should_generate_cover(video_path, duration):
                     return None
@@ -165,7 +166,7 @@ def send_videos(
             except Exception:
                 return False
 
-        def _gen_paid_cover(video_path: str) -> str | None:
+        def _gen_paid_cover(video_path: str) -> Optional[str]:
             try:
                 if not _should_generate_cover(video_path, duration):
                     return None
@@ -232,7 +233,7 @@ def send_videos(
             except Exception:
                 return False
 
-        def _gen_free_cover(video_path: str) -> str | None:
+        def _gen_free_cover(video_path: str) -> Optional[str]:
             try:
                 # Встраиваем миниатюру только если файл >10MB или длительность >=60 сек
                 if not _should_generate_cover(video_path, duration):

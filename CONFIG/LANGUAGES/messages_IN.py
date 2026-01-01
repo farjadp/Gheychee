@@ -2,7 +2,7 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from CONFIG.config import Config
+from CONFIG.constants import ADMIN_USERNAME
 
 class Messages(object):
     #######################################################
@@ -1938,7 +1938,7 @@ class Messages(object):
     DB_FAILED_RELOAD_FIREBASE_CACHE_MSG = "❌ Firebase कैश रीलोड करने में विफल: {error}"
     
     # Database user ban messages
-    DB_USER_BANNED_MSG = f"🚫 आपको बॉट से बैन कर दिया गया है! अनबैन के लिए {Config.ADMIN_USERNAME} से संपर्क करें\n<blockquote>P.S. चैनल न छोड़ें - आपको स्वचालित रूप से बैन कर दिया जाएगा ⛔️</blockquote>\n🌍भाषा बदलें /lang"
+    DB_USER_BANNED_MSG = f"🚫 आपको बॉट से बैन कर दिया गया है! अनबैन के लिए {ADMIN_USERNAME} से संपर्क करें\n<blockquote>P.S. चैनल न छोड़ें - आपको स्वचालित रूप से बैन कर दिया जाएगा ⛔️</blockquote>\n🌍भाषा बदलें /lang"
     
     # Always Ask Menu messages
     AA_NO_VIDEO_FORMATS_FOUND_MSG = "❔ कोई वीडियो प्रारूप नहीं मिले। छवि डाउनलोडर का प्रयास किया जा रहा है…"

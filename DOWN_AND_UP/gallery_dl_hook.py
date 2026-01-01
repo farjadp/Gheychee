@@ -21,6 +21,7 @@ from URL_PARSERS.youtube import is_youtube_url
 import subprocess
 import sys
 import tempfile
+from typing import Optional, List, Dict, Union, Any
 
 
 # ---------- Low-level helpers ----------
@@ -619,7 +620,7 @@ def gallery_dl_hook(extractor, url, info):
 
 # ---------- New utilities for batching ----------
 
-def get_total_media_count(url: str, user_id=None, use_proxy: bool = False) -> int | None:
+def get_total_media_count(url: str, user_id=None, use_proxy: bool = False) -> Optional[int]:
     """
     Estimate total media count using gallery-dl extractor to get all media (images + videos).
     Returns integer or None if failed.
@@ -707,7 +708,7 @@ def get_total_media_count(url: str, user_id=None, use_proxy: bool = False) -> in
         logger.error(f"get_total_media_count error: {e}")
         return None
 
-def _get_total_media_count_fallback(url: str, user_id, use_proxy: bool, cfg_path: str) -> int | None:
+def _get_total_media_count_fallback(url: str, user_id, use_proxy: bool, cfg_path: str) -> Optional[int]:
     """Fallback method using --get-urls for sites that don't work with --simulate"""
     try:
         # Special handling for Instagram - use different approach
@@ -779,7 +780,7 @@ def _get_total_media_count_fallback(url: str, user_id, use_proxy: bool, cfg_path
         logger.error(f"Fallback get_total_media_count error: {e}")
         return None
 
-def _get_instagram_media_count(url: str, user_id, use_proxy: bool, cfg_path: str) -> int | None:
+def _get_instagram_media_count(url: str, user_id, use_proxy: bool, cfg_path: str) -> Optional[int]:
     """Special method for Instagram media count using --simulate with Instagram-specific config"""
     try:
         # Create Instagram-specific config with higher limits
@@ -856,7 +857,7 @@ def _get_instagram_media_count(url: str, user_id, use_proxy: bool, cfg_path: str
         logger.error(f"Instagram media count error: {e}")
         return None
 
-def _try_without_cookies(url: str, cfg_path: str, user_id: int = None) -> int | None:
+def _try_without_cookies(url: str, cfg_path: str, user_id: int = None) -> Optional[int]:
     """Try without cookies as fallback for problematic sites"""
     try:
         # Create config without cookies
@@ -893,7 +894,7 @@ def _try_without_cookies(url: str, cfg_path: str, user_id: int = None) -> int | 
         return None
 
 
-def download_image_range(url: str, range_expr: str, user_id=None, use_proxy: bool = False, output_dir: str = None) -> bool | str:
+def download_image_range(url: str, range_expr: str, user_id=None, use_proxy: bool = False, output_dir: str = None) -> Union[bool, str]:
     """
     Download only a range of items using extractor.range option.
     Returns True on success (status 0), False otherwise, or error message string for 401 Unauthorized.
@@ -1183,7 +1184,7 @@ def _get_error_type(stderr_text: str, user_id=None) -> str:
     return safe_get_messages(user_id).GALLERY_DL_UNKNOWN_ERROR_MSG
 
 
-def download_image_range_cli(url: str, range_expr: str, user_id=None, use_proxy: bool = False, output_dir: str | None = None) -> bool | str:
+def download_image_range_cli(url: str, range_expr: str, user_id=None, use_proxy: bool = False, output_dir: Optional[str] = None) -> Union[bool, str]:
     """
     Strict range download using gallery-dl CLI with --range to avoid Python API variances.
     Returns True if exit code 0, False for other errors, or error message string for 401 Unauthorized.

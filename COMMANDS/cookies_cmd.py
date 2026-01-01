@@ -1,4 +1,6 @@
 # Command to Set Browser Cookies and Auto-Update YouTube Cookies
+from typing import Optional, List, Dict, Union, Set
+
 from pyrogram import filters, enums
 from CONFIG.config import Config
 from CONFIG.messages import Messages, safe_get_messages
@@ -961,7 +963,7 @@ def _sanitize_error_detail(detail: str, url: str) -> str:
     except Exception:
         return "<hidden>"
 
-def _download_content(url: str, timeout: int = 30, user_id: int | None = None, allow_domain_fallback: bool = True):
+def _download_content(url: str, timeout: int = 30, user_id: Optional[int] = None, allow_domain_fallback: bool = True):
     """Скачивает бинарный контент, при необходимости используя пользовательский прокси."""
     if not url:
         return False, None, None, "empty-url"
@@ -1122,7 +1124,7 @@ def save_as_cookie_file(app, message):
         send_to_user(message, safe_get_messages(user_id).COOKIES_NOT_VALID_MSG)
         send_to_logger(message, safe_get_messages(user_id).COOKIES_INVALID_CONTENT_LOG_MSG.format(user_id=user_id))
 
-def test_youtube_cookies_on_url(cookie_file_path: str, url: str, user_id: int | None = None) -> bool:
+def test_youtube_cookies_on_url(cookie_file_path: str, url: str, user_id: Optional[int] = None) -> bool:
     """
     Проверяет работоспособность YouTube куки на конкретном URL пользователя.
     
@@ -1201,7 +1203,7 @@ def test_youtube_cookies_on_url(cookie_file_path: str, url: str, user_id: int | 
         logger.warning(LoggerMsg.COOKIES_YOUTUBE_TEST_FAILED_USER_URL_LOG_MSG.format(cookie_file_path=cookie_file_path, e=e))
         return False
 
-def test_youtube_cookies(cookie_file_path: str, user_id: int | None = None) -> bool:
+def test_youtube_cookies(cookie_file_path: str, user_id: Optional[int] = None) -> bool:
     """
     Тщательно проверяет работоспособность YouTube куки.
     
@@ -1416,7 +1418,7 @@ def get_youtube_cookie_urls() -> list:
     
     return urls
 
-def download_and_validate_youtube_cookies(app, message, selected_index: int | None = None, user_id: int = None) -> bool:
+def download_and_validate_youtube_cookies(app, message, selected_index: Optional[int] = None, user_id: int = None) -> bool:
     """
     Скачивает и проверяет YouTube куки из всех доступных источников.
     
@@ -2200,7 +2202,7 @@ def clear_youtube_cookie_cache(user_id: int = None):
 # Format: {cache_key: {'result': bool, 'timestamp': float, 'cookie_path': str, 'task_id': str, 'active': bool}}
 _non_youtube_cookie_cache = {}
 
-def get_service_cookie_url(service_name: str) -> str | None:
+def get_service_cookie_url(service_name: str) -> Optional[str]:
     """
     Получает URL куки для указанного сервиса из конфига.
     
@@ -2208,7 +2210,7 @@ def get_service_cookie_url(service_name: str) -> str | None:
         service_name (str): Название сервиса (instagram, twitter, tiktok, vk, facebook)
         
     Returns:
-        str | None: URL куки или None если не настроен
+        str: URL куки или None если не настроен
     """
     service_upper = service_name.upper()
     cookie_url_attr = f"{service_upper}_COOKIE_URL"
@@ -2424,7 +2426,7 @@ def set_cookie_cache_result(user_id: int, url: str, result: bool, cookie_path: s
     
     logger.info(f"Cached cookie result for {cache_key}: {result}")
 
-def get_cookie_cache_result(user_id: int, url: str, service: str = None) -> dict | None:
+def get_cookie_cache_result(user_id: int, url: str, service: str = None) -> Optional[dict]:
     """
     Получает результат проверки куки из кеша.
     
@@ -2434,7 +2436,7 @@ def get_cookie_cache_result(user_id: int, url: str, service: str = None) -> dict
         service (str, optional): Название сервиса
         
     Returns:
-        dict | None: Результат из кеша или None
+        dict: Результат из кеша или None
     """
     global _non_youtube_cookie_cache
     
@@ -2602,7 +2604,7 @@ def try_non_youtube_cookie_fallback(user_id: int, url: str, download_func, *args
     finally:
         _non_youtube_fallback_active.discard(fallback_key)
 
-def get_service_name_from_url(url: str) -> str | None:
+def get_service_name_from_url(url: str) -> Optional[str]:
     """
     Определяет название сервиса по URL.
     
@@ -2610,7 +2612,7 @@ def get_service_name_from_url(url: str) -> str | None:
         url (str): URL для анализа
         
     Returns:
-        str | None: Название сервиса или None
+        str: Название сервиса или None
     """
     # Безопасная проверка доменов через urlparse
     try:

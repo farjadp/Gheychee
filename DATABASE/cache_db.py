@@ -2,6 +2,7 @@ import os
 import json
 import time
 import threading
+from typing import Optional, List, Dict, Any, Set
 
 def encode_playlist_cache_index(index: int) -> str:
     """Encode playlist index for cache storage (uses real positive indices)."""
@@ -907,7 +908,7 @@ def save_to_image_cache(url: str, post_index: int, message_ids: list):
     except Exception as e:
         logger.error(f"[IMG CACHE] Failed to save image cache: {e}")
 
-def get_cached_image_posts(url: str, requested_indices: list | None = None) -> dict:
+def get_cached_image_posts(url: str, requested_indices: Optional[list] = None) -> dict:
     """Return dict {post_index: [msg_ids]} for cached image posts for URL.
     If requested_indices is provided, only return intersection.
     """

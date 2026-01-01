@@ -17,7 +17,7 @@ import shutil
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List, Optional
 from importlib import import_module, metadata
 
 from CONFIG.config import Config
@@ -100,7 +100,7 @@ def _systemctl_available() -> bool:
     return bool(shutil.which("systemctl"))
 
 
-def _run_docker_cmd(cmd: list[str], timeout: int = 60, cwd: str | None = None):
+def _run_docker_cmd(cmd: List[str], timeout: int = 60, cwd: Optional[str] = None):
     """Executes docker-cli command and returns CompletedProcess."""
     return subprocess.run(
         cmd,
@@ -313,8 +313,8 @@ def get_system_metrics() -> Dict[str, Any]:
 
 def _read_package_version(
     package_name: str,
-    module_name: str | None = None,
-    cli_command: list[str] | None = None,
+    module_name: Optional[str] = None,
+    cli_command: Optional[List[str]] = None,
 ) -> str:
     """Attempts to determine package version in multiple ways."""
     try:
