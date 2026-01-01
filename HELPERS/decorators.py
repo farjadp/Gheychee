@@ -81,19 +81,20 @@ def send_reply_keyboard_always(user_id, mode="2x3"):
                 # If it didn't work, we delete the id to avoid getting stuck
                 reply_keyboard_msg_ids.pop(user_id, None)
         # Always after failure or if there is no id - send a new one
-        msg = safe_send_message(user_id, "\u2063", reply_markup=get_main_reply_keyboard(mode))
-        # If sending failed (e.g., FloodWait), don't try to access msg.id
-        if not msg or not hasattr(msg, "id"):
-            return
-        # If there was another service msg_id (and it is not equal to the new one), we try to delete the old message
-        if msg_id and msg_id != msg.id:
-            try:
-                app.delete_messages(user_id, [msg_id])
-            except Exception as e:
-                logger.warning(f"Failed to delete old reply keyboard message: {e}")
-        reply_keyboard_msg_ids[user_id] = msg.id
+        # msg = safe_send_message(user_id, "\u2063", reply_markup=get_main_reply_keyboard(mode))
+        # # If sending failed (e.g., FloodWait), don't try to access msg.id
+        # if not msg or not hasattr(msg, "id"):
+        #     return
+        # # If there was another service msg_id (and it is not equal to the new one), we try to delete the old message
+        # if msg_id and msg and msg_id != msg.id:
+        #     try:
+        #         app.delete_messages(user_id, [msg_id])
+        #     except Exception as e:
+        #         logger.warning(f"Failed to delete old reply keyboard message: {e}")
+        # if msg:
+        #     reply_keyboard_msg_ids[user_id] = msg.id
     except Exception as e:
-        logger.warning(f"Failed to send persistent reply keyboard: {e}")
+        logger.warning(f"Failed to edit persistent reply keyboard: {e}")
 
 # Removing conflicting on_message function from decorators.py
 # It should only be in handler_registry.py 
