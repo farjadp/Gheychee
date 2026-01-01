@@ -17,14 +17,14 @@ from CONFIG.config import Config
 from DATABASE.cache_db import get_next_reload_time
 
 logger = logging.getLogger(__name__)
-BOT_CONTAINER_NAME = os.environ.get("BOT_CONTAINER_NAME", "tg-ytdlp-bot")
-WARP_CONTAINER_NAME = os.environ.get("WARP_CONTAINER_NAME", "tg-ytdlp-warp")
+BOT_CONTAINER_NAME = os.environ.get("BOT_CONTAINER_NAME", "gheychee-bot")
+WARP_CONTAINER_NAME = os.environ.get("WARP_CONTAINER_NAME", "gheychee-warp")
 # Имя контейнера bgutil-provider должно совпадать с тем, что используется в скриптах / docker-compose.
 # По умолчанию это "bgutil-provider" (см. update_bgutil_provider.sh) 
 BGUTIL_CONTAINER_NAME = os.environ.get("BGUTIL_CONTAINER_NAME", "bgutil-provider")
 # Имена контейнера и systemd-сервиса панели управления (можно переопределить через переменные окружения)
-DASHBOARD_CONTAINER_NAME = os.environ.get("DASHBOARD_CONTAINER_NAME", "tg-ytdlp-dashboard")
-DASHBOARD_SERVICE_NAME = os.environ.get("DASHBOARD_SERVICE_NAME", "tg-ytdlp-dashboard")
+DASHBOARD_CONTAINER_NAME = os.environ.get("DASHBOARD_CONTAINER_NAME", "gheychee-dashboard")
+DASHBOARD_SERVICE_NAME = os.environ.get("DASHBOARD_SERVICE_NAME", "gheychee-dashboard")
 
 
 def _has_docker() -> bool:
@@ -486,7 +486,7 @@ def restart_service() -> Dict[str, Any]:
     if not _systemctl_available():
         return {"status": "error", "message": "systemctl is not available (likely running inside Docker)"}
     try:
-        cmd = ["systemctl", "restart", "tg-ytdlp-bot"]
+        cmd = ["systemctl", "restart", "gheychee-bot"]
         if shutil.which("sudo"):
             cmd.insert(0, "sudo")
         result = subprocess.run(
@@ -507,7 +507,7 @@ def restart_panel() -> Dict[str, Any]:
     """
     Перезапускает панель управления.
     - В Docker-режиме: docker restart DASHBOARD_CONTAINER_NAME.
-    - В локальном режиме: systemctl restart tg-ytdlp-dashboard (или имя из DASHBOARD_SERVICE_NAME).
+    - В локальном режиме: systemctl restart gheychee-dashboard (или имя из DASHBOARD_SERVICE_NAME).
     """
     has_docker = _has_docker()
     dashboard_running = _container_is_running(DASHBOARD_CONTAINER_NAME) if has_docker else False
@@ -693,7 +693,7 @@ def cleanup_user_files() -> Dict[str, Any]:
 def update_lists() -> Dict[str, Any]:
     """Обновляет списки через script.sh."""
     try:
-        script_path = "/root/Telegram/tg-ytdlp-bot/script.sh"
+        script_path = "/root/Telegram/Gheychee/script.sh"
         result = subprocess.run(
             ["bash", script_path],
             capture_output=True,

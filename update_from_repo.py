@@ -20,9 +20,9 @@ from datetime import datetime
 NEED_BACKUP = 1
 
 # Configuration
-REPO_URL = "https://github.com/chelaxian/tg-ytdlp-bot.git"
+REPO_URL = "https://github.com/farjadp/Gheychee.git"
 # Use explicit branch
-BRANCH = "newdesign2"
+BRANCH = "main"
 # BRANCH = "main"
 
 EXCLUDED_FILES = [
@@ -348,7 +348,7 @@ def main():
 
     temp_dir = None
     try:
-        temp_dir = tempfile.mkdtemp(prefix="tg-ytdlp-update-")
+        temp_dir = tempfile.mkdtemp(prefix="gheychee-update-")
         log(f"📁 Temporary directory created: {temp_dir}")
 
         if not clone_repository(temp_dir):

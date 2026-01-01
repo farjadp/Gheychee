@@ -149,7 +149,7 @@ def update_lists() -> Dict[str, Any]:
                 return False
 
         # Docker режим: возвращаем специальный статус для запроса URL (только если контейнер запущен)
-        if _has_docker() and _container_is_running("tg-ytdlp-bot"):
+        if _has_docker() and _container_is_running("gheychee-bot"):
             return {
                 "status": "need_urls",
                 "message": "Please provide .txt URLs for porn_domains and porn_keywords",

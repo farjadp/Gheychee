@@ -10,7 +10,7 @@
 > 🎥 **Advanced Telegram bot for downloading videos and media from 1500+ platforms**
 
 A powerful Telegram bot that downloads videos, audio, and images from YouTube, TikTok, Instagram, and 1500+ other platforms using yt-dlp and gallery-dl. Features advanced format selection, codec support, intelligent subtitle handling, proxy support, and direct stream links. \
-<img width="320" height="938" alt="tgytdlp1" src="https://github.com/user-attachments/assets/7a8398da-0968-454d-8a60-f81cbfe13e2f" /><img width="323" height="938" alt="tgytdlp2" src="https://github.com/user-attachments/assets/4e1a9e46-0a37-4bfe-a440-70688929c2b3" />
+<img width="320" height="938" alt="gheychee1" src="https://github.com/user-attachments/assets/7a8398da-0968-454d-8a60-f81cbfe13e2f" /><img width="323" height="938" alt="gheychee2" src="https://github.com/user-attachments/assets/4e1a9e46-0a37-4bfe-a440-70688929c2b3" />
 
 ## ✨ Features
 
@@ -126,8 +126,8 @@ This is the easiest way to run the bot: everything (bot + PO token provider + co
 **Step 1 – Create config file:**
 
 ```bash
-git clone https://github.com/chelaxian/tg-ytdlp-bot.git
-cd tg-ytdlp-bot
+git clone https://github.com/farjadp/Gheychee.git
+cd Gheychee
 cp CONFIG/_config.py CONFIG/config.py
 ```
 
@@ -142,7 +142,7 @@ Then edit `CONFIG/config.py` and fill in at least:
 
 **Configuration Example:**
 
-`tg-ytdlp-bot/CONFIG/config.py`:
+`Gheychee/CONFIG/config.py`:
 ```python
 #####################################################################
 # FILL IN ONLY THAT PART !!!
@@ -177,12 +177,12 @@ First fill in `TXT/cookie.txt` file. That cookie will be used by default for all
 
 
 ```
-tg-ytdlp-bot/
+Gheychee/
 └── TXT/
     └── cookie.txt
 ```
 
-`tg-ytdlp-bot/TXT/cookie.txt`:
+`Gheychee/TXT/cookie.txt`:
 ```
 # Netscape HTTP Cookie File
 # http://curl.haxx.se/rfc/cookie_spec.html
@@ -197,7 +197,7 @@ You can add up to 10 extra YouTube cookies. They will be used as a backup cookie
 All cookie URLs in the template already point to the internal `configuration-webserver` container,
 you only need to put real cookie files into `docker/configuration-webserver/site/cookies` before starting.
 ```
-tg-ytdlp-bot/
+Gheychee/
 └── docker/
     └── configuration-webserver/
         └── site/
@@ -215,7 +215,7 @@ tg-ytdlp-bot/
                 └── youtube-10.txt
 ```
 
-`tg-ytdlp-bot/docker/configuration-webserver/site/cookies/youtube.txt`:
+`Gheychee/docker/configuration-webserver/site/cookies/youtube.txt`:
 ```
 # Netscape HTTP Cookie File
 # http://curl.haxx.se/rfc/cookie_spec.html
@@ -295,8 +295,8 @@ P.S. do not forget to add your bot to your channels with admin rights
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/chelaxian/tg-ytdlp-bot.git
-cd tg-ytdlp-bot
+git clone https://github.com/farjadp/Gheychee.git
+cd Gheychee
 chmod +x *.sh
 ```
 
@@ -564,7 +564,7 @@ If you need to support extra languages such as arabic, chinese, japanese, korean
   
    1. **Download `yt-dlp`**  
       Visit the [official `yt-dlp` releases page](https://github.com/yt-dlp/yt-dlp/releases) and download the binary for your CPU architecture (e.g., `yt-dlp_x86_64`, `yt-dlp_arm`, etc.).  
-      Place the binary executable in the `tg-ytdlp-bot` project folder.
+      Place the binary executable in the `Gheychee` project folder.
  
   2. **Rename and make it executable**  
      ```bash
@@ -575,7 +575,7 @@ If you need to support extra languages such as arabic, chinese, japanese, korean
    3. **Create a symbolic link**  
       Create a symlink so that `yt-dlp` can be run from any directory (for example, in `/usr/local/bin`):
       ```bash
-      sudo ln -s /full/path/to/tg-ytdlp-bot/yt-dlp /usr/local/bin/yt-dlp
+      sudo ln -s /full/path/to/Gheychee/yt-dlp /usr/local/bin/yt-dlp
       ```
       Ensure `/usr/local/bin` is in your `PATH`. Now you can run `yt-dlp` directly.
 
@@ -600,7 +600,7 @@ For export you can use browser extension [Cookie-Editor](https://chromewebstore.
 create in project folder subfolder `TXT` and place `cookie.txt` extracted from YouTube here
 
 ```sh
-cd tg-ytdlp-bot/TXT
+cd Gheychee/TXT
 nano cookie.txt
 ```
 
