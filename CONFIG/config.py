@@ -102,13 +102,13 @@ class Config(object):
     # Cookie file URL
     # For Docker setup: served by configuration-webserver container
     # EX: "http://configuration-webserver/cookies/cookie.txt"
-    COOKIE_URL = "http://configuration-webserver/cookies/cookie.txt"
+    COOKIE_URL = _env("COOKIE_URL", "http://configuration-webserver/cookies/cookie.txt")
     # YouTube cookies URLs - main URL and backups
     # The bot will check cookies in the order: YOUTUBE_COOKIE_URL, YOUTUBE_COOKIE_URL_1, YOUTUBE_COOKIE_URL_2, etc. up to 10
     # If one URL does not work or the cookies are expired, the bot will automatically try the next one
-    YOUTUBE_COOKIE_URL = "http://configuration-webserver/cookies/youtube.txt"
-    YOUTUBE_COOKIE_URL_1 = "http://configuration-webserver/cookies/youtube-1.txt"
-    YOUTUBE_COOKIE_URL_2 = "http://configuration-webserver/cookies/youtube-[N=2-9].txt"
+    YOUTUBE_COOKIE_URL = _env("YOUTUBE_COOKIE_URL", "http://configuration-webserver/cookies/youtube.txt")
+    YOUTUBE_COOKIE_URL_1 = _env("YOUTUBE_COOKIE_URL_1", "http://configuration-webserver/cookies/youtube-1.txt")
+    YOUTUBE_COOKIE_URL_2 = _env("YOUTUBE_COOKIE_URL_2", "http://configuration-webserver/cookies/youtube-[N=2-9].txt")
     #YOUTUBE_COOKIE_URL_2 = "http://configuration-webserver/cookies/youtube-2.txt"
     #YOUTUBE_COOKIE_URL_3 = "http://configuration-webserver/cookies/youtube-3.txt"
     #YOUTUBE_COOKIE_URL_4 = "http://configuration-webserver/cookies/youtube-4.txt"
@@ -117,17 +117,17 @@ class Config(object):
     #YOUTUBE_COOKIE_URL_7 = "http://configuration-webserver/cookies/youtube-7.txt"
     #YOUTUBE_COOKIE_URL_8 = "http://configuration-webserver/cookies/youtube-8.txt"
     #YOUTUBE_COOKIE_URL_9 = "http://configuration-webserver/cookies/youtube-9.txt"    
-    YOUTUBE_COOKIE_URL_10 = "http://configuration-webserver/cookies/youtube-10.txt"
+    YOUTUBE_COOKIE_URL_10 = _env("YOUTUBE_COOKIE_URL_10", "http://configuration-webserver/cookies/youtube-10.txt")
     YOUTUBE_COOKIE_ORDER = "round_robin" # random, round_robin
     # YouTube test URL for cookie validation
     YOUTUBE_COOKIE_TEST_URL = "https://www.youtube.com/watch?v=_GuOjXYl5ew" #youtube official video
     #YOUTUBE_COOKIE_TEST_URL = "https://youtu.be/XqZsoesa55w"  # Baby Shark Dance
     #YOUTUBE_COOKIE_TEST_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"  # Rick Roll - short video
-    INSTAGRAM_COOKIE_URL = "http://configuration-webserver/cookies/instagram.txt"
-    TIKTOK_COOKIE_URL = "http://configuration-webserver/cookies/tiktok.txt"
-    FACEBOOK_COOKIE_URL = "http://configuration-webserver/cookies/facebook.txt"
-    TWITTER_COOKIE_URL = "http://configuration-webserver/cookies/twitter.txt"
-    VK_COOKIE_URL = "http://configuration-webserver/cookies/vk.txt"
+    INSTAGRAM_COOKIE_URL = _env("INSTAGRAM_COOKIE_URL", "http://configuration-webserver/cookies/instagram.txt")
+    TIKTOK_COOKIE_URL = _env("TIKTOK_COOKIE_URL", "http://configuration-webserver/cookies/tiktok.txt")
+    FACEBOOK_COOKIE_URL = _env("FACEBOOK_COOKIE_URL", "http://configuration-webserver/cookies/facebook.txt")
+    TWITTER_COOKIE_URL = _env("TWITTER_COOKIE_URL", "http://configuration-webserver/cookies/twitter.txt")
+    VK_COOKIE_URL = _env("VK_COOKIE_URL", "http://configuration-webserver/cookies/vk.txt")
     # Do not chanege this
     COOKIE_FILE_PATH = "TXT/cookie.txt"
     # Do not chanege this
